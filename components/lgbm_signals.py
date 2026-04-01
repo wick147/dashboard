@@ -48,18 +48,28 @@ FEATURE_COLS = [
 
 # ── universe ──────────────────────────────────────────────────────────────────
 
-def get_csi300_universe() -> list[str]:
+def get_csi300_universe() -> tuple[list[str], dict[str, str]]:
+    """返回 (codes列表, {code: name} 字典)，名称直接从成分股数据里取，不额外请求。"""
     try:
         df = ak.index_stock_cons_weight_csindex(symbol="000300")
-        return df["成分券代码"].astype(str).str.zfill(6).tolist()
+        codes = df["成分券代码"].astype(str).str.zfill(6).tolist()
+        names = dict(zip(
+            df["成分券代码"].astype(str).str.zfill(6),
+            df.get("成分券名称", df.get("名称", pd.Series(dtype=str))).fillna(""),
+        ))
+        return codes, names
     except Exception:
         pass
+    # fallback: 用 A 股实时数据（含名称）
     try:
         spot = ak.stock_zh_a_spot_em()
         spot["总市值"] = pd.to_numeric(spot.get("总市值", spot.get("市值", 0)), errors="coerce")
-        return spot.dropna(subset=["总市值"]).nlargest(UNIVERSE_SIZE, "总市值")["代码"].astype(str).str.zfill(6).tolist()
+        top = spot.dropna(subset=["总市值"]).nlargest(UNIVERSE_SIZE, "总市值")
+        codes = top["代码"].astype(str).str.zfill(6).tolist()
+        names = dict(zip(top["代码"].astype(str).str.zfill(6), top.get("名称", pd.Series(dtype=str)).fillna("")))
+        return codes, names
     except Exception:
-        return []
+        return [], {}
 
 
 # ── AKShare 数据获取 ───────────────────────────────────────────────────────────
@@ -406,7 +416,8 @@ def generate_signals(
         if effective_mode == "akshare":
             # ── AKShare 模式 ──────────────────────────────────────────────────
             if progress_cb: progress_cb(0.03)
-            codes = get_csi300_universe()[:UNIVERSE_SIZE]
+            codes, name_map = get_csi300_universe()
+            codes = codes[:UNIVERSE_SIZE]
             if not codes:
                 raise ValueError("无法获取股票池")
 
@@ -437,12 +448,10 @@ def generate_signals(
             if panel.empty:
                 raise ValueError("面板数据为空")
 
-            # 获取股票名称
-            spot_df = None
-            try:
-                spot_df = ak.stock_zh_a_spot_em()[["代码", "名称"]]
-            except Exception:
-                pass
+            # 名称已在 get_csi300_universe() 里取到，无需额外请求
+            spot_df = pd.DataFrame(
+                list(name_map.items()), columns=["代码", "名称"]
+            ) if name_map else None
 
             # 为每个周期训练模型并预测
             fi_dict: dict = {}

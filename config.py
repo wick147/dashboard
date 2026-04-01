@@ -18,16 +18,16 @@ QLIB_DATA_PATH = os.environ.get(
 LGBM_PARAMS = {
     "objective": "regression",
     "boosting_type": "gbdt",
-    "num_leaves": 63,
-    "max_depth": 6,
+    "num_leaves": 31,
+    "max_depth": 5,
     "learning_rate": 0.05,
-    "n_estimators": 400,
+    "n_estimators": 150,
     "colsample_bytree": 0.8879,
     "subsample": 0.8789,
     "reg_alpha": 2.0,
     "reg_lambda": 5.0,
     "verbose": -1,
-    "n_jobs": 4,
+    "n_jobs": 2,
 }
 LGBM_EARLY_STOP = 40
 LGBM_VERBOSE_EVAL = 50
@@ -39,11 +39,11 @@ HMM_COVARIANCE = "full"
 HMM_LOOKBACK_DAYS = 500   # days of history for fitting
 
 # ── Universe & signals ────────────────────────────────────────────────────────
-UNIVERSE_SIZE = 100        # stocks to pull for LightGBM
+UNIVERSE_SIZE = 60         # stocks to pull for LightGBM (cloud friendly)
 SIGNAL_TOP_N = 10          # top N per horizon
 HORIZONS = [5, 10, 20]     # forward return horizons (trading days)
 FEATURE_LOOKBACK = 160     # calendar days of OHLCV history (needs room for 20d labels)
-FETCH_WORKERS = 12         # parallel AKShare fetch threads
+FETCH_WORKERS = 8          # parallel AKShare fetch threads
 
 # ── Index symbols (AKShare convention) ───────────────────────────────────────
 INDICES = {
