@@ -360,13 +360,18 @@ def _generate_signals_qlib(progress_cb: Optional[Callable] = None) -> dict:
                 "code":       str(r["code"]),
                 "name":       "",
                 "rank_score": round(float(r["score"]), 4),
-                "gmr_daily":  None,
-                "total_ret":  None,
             }
             for _, r in top_codes.iterrows()
         ]
 
     if progress_cb: progress_cb(1.0)
+
+    # 返回训练/预测时间区间，供 Dashboard 展示
+    out["train_start"] = train_start
+    out["train_end"]   = train_end
+    out["pred_start"]  = pred_start
+    out["pred_end"]    = pred_end
+    out["pred_date"]   = str(latest_dt.date()) if hasattr(latest_dt, "date") else str(latest_dt)[:10]
     return out
 
 
@@ -376,22 +381,25 @@ def generate_signals(
     mode: str = "auto",
     progress_cb: Optional[Callable] = None,
     use_cache: bool = True,
+    cache_path: Optional[Path] = None,
 ) -> dict:
     """
     生成多周期选股信号。
 
     返回 dict：
       mode, updated_at, error
-      h5  / h10 / h20  : list[{code, name, rank_score, gmr_daily, total_ret}]
-      feature_importance: {h5: [...], h10: [...], h20: [...]}
+      h5 / h10 / h20      : list[{code, name, rank_score}]
+      feature_importance   : {h5: [...], h10: [...], h20: [...]}
+      data_start/data_end  : akshare 模式的行情数据区间
+      train_start/train_end/pred_start/pred_end/pred_date : qlib 模式的训练区间
     """
     tz = pytz.timezone(TZ)
+    read_path = cache_path or SIGNALS_CACHE
 
-    if use_cache and SIGNALS_CACHE.exists():
+    if use_cache and read_path.exists():
         try:
-            data = json.loads(SIGNALS_CACHE.read_text())
+            data = json.loads(read_path.read_text())
             age_h = (datetime.now(tz) - datetime.fromisoformat(data["updated_at"])).total_seconds() / 3600
-            # 有错误的缓存不复用，强制重新生成
             if age_h < 12 and not data.get("error"):
                 return data
         except Exception:
@@ -496,11 +504,18 @@ def generate_signals(
                 if progress_cb: progress_cb(base_prog + 0.15)
 
             result["feature_importance"] = fi_dict
+            # 记录行情数据区间
+            result["data_start"] = str(panel.index.min())[:10]
+            result["data_end"]   = str(panel.index.max())[:10]
 
     except Exception as exc:
         result["error"] = traceback.format_exc()
         logger.exception("信号生成失败: %s", exc)
 
     if progress_cb: progress_cb(1.0)
-    SIGNALS_CACHE.write_text(json.dumps(result, ensure_ascii=False, default=str, indent=2))
+    write_path = cache_path or SIGNALS_CACHE
+    write_path.write_text(json.dumps(result, ensure_ascii=False, default=str, indent=2))
+    # 同时保留 signals.json 供 notify.py 等旧消费者使用
+    if cache_path and cache_path != SIGNALS_CACHE:
+        SIGNALS_CACHE.write_text(write_path.read_text())
     return result

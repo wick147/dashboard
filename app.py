@@ -26,9 +26,11 @@ import streamlit as st
 DASH_DIR = Path(__file__).parent
 sys.path.insert(0, str(DASH_DIR))
 
-from config import TZ, SIGNAL_TOP_N, REGIME_COLORS
+import json as _json
+from config import (TZ, SIGNAL_TOP_N, REGIME_COLORS,
+                    SIGNALS_AKSHARE_CACHE, SIGNALS_QLIB_CACHE, SIGNALS_CACHE)
 from components.market_data import load_market_data, get_index_history
-from components.lgbm_signals import generate_signals
+from components.lgbm_signals import generate_signals, _qlib_available
 from components.hmm_regime import detect_regime
 from components.news import fetch_news
 
@@ -83,19 +85,10 @@ with st.sidebar:
     st.image("https://img.icons8.com/fluency/48/stocks.png", width=48)
     st.title("A股量化监控")
     st.caption(_now_bj())
-
-    signal_mode = st.radio(
-        "信号模式",
-        options=["akshare", "auto", "qlib"],
-        index=0,
-        help="akshare: 技术因子（云端默认）；auto: 自动检测 qlib；qlib: Alpha158（需本地数据）",
-    )
-
-    use_cache = st.checkbox("使用缓存（< 12 h）", value=True)
-    refresh_btn = st.button("🔄 立即刷新", use_container_width=True)
     st.divider()
-    st.caption("每日 08:00 (北京时间) 自动运行\n\n"
-               "`python dashboard/run_daily.py`\n\nor via cron / Claude Code schedule")
+    st.caption("🕗 AKShare 信号每日 08:00 CST 自动运行\n\n"
+               "🧪 Qlib 信号需本地手动触发")
+    refresh_btn = st.button("🔄 刷新行情/Regime/新闻", use_container_width=True)
 
 
 # ── header ────────────────────────────────────────────────────────────────────
@@ -252,137 +245,153 @@ with col_sector:
 # ─────────────────────────────────────────────────────────────────────────────
 st.markdown('<p class="section-hdr">🤖 LightGBM 选股信号</p>', unsafe_allow_html=True)
 
-signals_placeholder = st.empty()
+# ── 共用渲染函数 ──────────────────────────────────────────────────────────────
 
-# ── 读取信号：优先读预计算缓存，本地模式才实时跑 ──────────────────────────────
-from config import SIGNALS_CACHE
-import json as _json
-
-def _load_signals_cached() -> dict | None:
-    """读取 GitHub Actions 预计算的 results/signals.json。"""
-    if SIGNALS_CACHE.exists():
+def _load_cache(path) -> dict | None:
+    if path.exists():
         try:
-            data = _json.loads(SIGNALS_CACHE.read_text())
-            if not data.get("error") and any(data.get(f"h{h}") for h in [5, 10, 20]):
-                return data
+            d = _json.loads(path.read_text())
+            if not d.get("error") and any(d.get(f"h{h}") for h in [5, 10, 20]):
+                return d
         except Exception:
             pass
     return None
 
-precomputed = _load_signals_cached()
 
-# ── 模式判断逻辑 ──────────────────────────────────────────────────────────────
-# qlib 模式：始终实时计算，不读缓存（用户明确要用本地 Alpha158）
-# akshare/auto：优先读预计算缓存，缓存没有或强制刷新才实时跑
-use_precomputed = (
-    precomputed is not None
-    and not refresh_btn
-    and signal_mode != "qlib"
-)
-
-if use_precomputed:
-    # ── 展示预计算结果（GitHub Actions 或上次本地 push 的结果）──────────────
-    signals = precomputed
-    with signals_placeholder.container():
-        cached_mode = precomputed.get("mode", "unknown")
-        st.caption(f"📦 展示预计算缓存（来源: `{cached_mode}`）— 选 qlib 模式可实时用 Alpha158 重算")
-
-else:
-    # ── 实时计算 ──────────────────────────────────────────────────────────────
-    with signals_placeholder.container():
-        label = (
-            "使用本地 qlib Alpha158 计算中（约 5-8 分钟）..."
-            if signal_mode == "qlib"
-            else "生成选股信号中（全市场约 40-60 分钟）..."
-        )
-        progress = st.progress(0, text=label)
-
-        def _update_progress(p: float) -> None:
-            progress.progress(min(int(p * 100), 100),
-                              text=f"{label[:20]}... {min(int(p*100),100)}%")
-        try:
-            signals = generate_signals(
-                mode=signal_mode,
-                progress_cb=_update_progress,
-                use_cache=False,
-            )
-            progress.empty()
-        except Exception as exc:
-            progress.empty()
-            st.error(f"信号生成失败: {exc}")
-            signals = {"h5": [], "h10": [], "h20": [], "mode": "error", "error": str(exc)}
-
-# ── 信号展示 ──────────────────────────────────────────────────────────────────
-sig_mode_tag = signals.get("mode", "unknown")
-sig_updated  = signals.get("updated_at", "")[:19]
-sig_error    = signals.get("error")
-
-if sig_error:
-    st.warning(f"信号生成出错: {str(sig_error)[:300]}")
-
-st.caption(f"信号来源: `{sig_mode_tag}` | 更新: {sig_updated}")
-
-
-def _render_horizon_table(items: list[dict], horizon: int) -> None:
+def _render_horizon_table(items: list[dict]) -> None:
     if not items:
         st.info("暂无数据")
         return
     df = pd.DataFrame(items)
     df.insert(0, "排名", range(1, len(df) + 1))
     df = df.rename(columns={"code": "代码", "name": "名称", "rank_score": "截面排名分"})
-    # 截面排名分：LightGBM 对当日所有股票打的相对强弱分，越高越可能跑赢同期均值
-    df["截面排名分"] = df["截面排名分"].map(lambda x: f"{x:.4f}")
+    df["截面排名分"] = df["截面排名分"].map(lambda x: f"{float(x):.4f}")
     show_cols = [c for c in ["排名", "代码", "名称", "截面排名分"] if c in df.columns]
     st.dataframe(df[show_cols], use_container_width=True, hide_index=True)
 
 
-tab5, tab10, tab20 = st.tabs(["📅 5日", "📅 10日", "📅 20日"])
+def _render_signal_tabs(sig: dict, caption_prefix: str) -> None:
+    tab5, tab10, tab20 = st.tabs(["📅 5日", "📅 10日", "📅 20日"])
+    for tab, h in zip([tab5, tab10, tab20], [5, 10, 20]):
+        with tab:
+            st.caption(
+                f"**{h}日截面排名分 TOP 10** — {caption_prefix}"
+                "分数越高代表模型认为该股跑赢同期均值的概率越大，**非绝对收益预测**。"
+            )
+            _render_horizon_table(sig.get(f"h{h}", []))
 
-with tab5:
-    st.caption(
-        "**5日截面排名分 TOP 10** — "
-        "LightGBM 基于技术因子预测，该分数反映个股相对于同日所有股票的预期强弱，"
-        "分数越高代表模型认为未来5个交易日该股跑赢同期平均的概率越大，**非绝对收益预测**。"
-    )
-    _render_horizon_table(signals.get("h5", []), 5)
 
-with tab10:
-    st.caption(
-        "**10日截面排名分 TOP 10** — "
-        "LightGBM 基于技术因子预测，该分数反映个股相对于同日所有股票的预期强弱，"
-        "分数越高代表模型认为未来10个交易日该股跑赢同期平均的概率越大，**非绝对收益预测**。"
-    )
-    _render_horizon_table(signals.get("h10", []), 10)
-
-with tab20:
-    st.caption(
-        "**20日截面排名分 TOP 10** — "
-        "LightGBM 基于技术因子预测，该分数反映个股相对于同日所有股票的预期强弱，"
-        "分数越高代表模型认为未来20个交易日该股跑赢同期平均的概率越大，**非绝对收益预测**。"
-    )
-    _render_horizon_table(signals.get("h20", []), 20)
-
-# 特征重要性
-feat_imp_dict = signals.get("feature_importance", {})
-if feat_imp_dict:
+def _render_feat_imp(sig: dict) -> None:
+    fi = sig.get("feature_importance", {})
+    if not fi:
+        return
     with st.expander("📊 各周期特征重要性"):
         fi_tabs = st.tabs(["5日模型", "10日模型", "20日模型"])
         for fi_tab, hkey in zip(fi_tabs, ["h5", "h10", "h20"]):
             with fi_tab:
-                fi_list = feat_imp_dict.get(hkey, [])
+                fi_list = fi.get(hkey, [])
                 if fi_list:
                     fi_df = pd.DataFrame(fi_list).sort_values("importance", ascending=True)
-                    fig_fi = go.Figure(go.Bar(
+                    fig = go.Figure(go.Bar(
                         x=fi_df["importance"], y=fi_df["feature"],
                         orientation="h", marker_color="#7c3aed",
                     ))
-                    fig_fi.update_layout(
+                    fig.update_layout(
                         height=260, margin=dict(l=80, r=20, t=10, b=20),
                         plot_bgcolor="#0e1117", paper_bgcolor="#0e1117",
                         xaxis=dict(showgrid=False, color="#aaa"),
                         yaxis=dict(showgrid=False, color="#ddd"),
                     )
-                    st.plotly_chart(fig_fi, use_container_width=True)
+                    st.plotly_chart(fig, use_container_width=True)
+
+
+# one-time migration: 把旧 signals.json 迁移到 signals_akshare.json
+if not SIGNALS_AKSHARE_CACHE.exists() and SIGNALS_CACHE.exists():
+    try:
+        _old = _json.loads(SIGNALS_CACHE.read_text())
+        if _old.get("mode") == "akshare" and not _old.get("error"):
+            SIGNALS_AKSHARE_CACHE.write_text(
+                _json.dumps(_old, ensure_ascii=False, indent=2)
+            )
+    except Exception:
+        pass
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3a. AKShare 信号面板
+# ─────────────────────────────────────────────────────────────────────────────
+st.markdown('<p class="section-hdr">📡 AKShare 技术因子信号</p>', unsafe_allow_html=True)
+st.caption("GitHub Actions 每日 **08:00 CST** 自动运行 · 全市场除北交所/ST · 13个技术因子")
+
+ak_sig = _load_cache(SIGNALS_AKSHARE_CACHE)
+
+if ak_sig:
+    ak_updated    = ak_sig.get("updated_at", "")[:19]
+    ak_data_start = ak_sig.get("data_start", "—")
+    ak_data_end   = ak_sig.get("data_end",   "—")
+    st.success(f"🕗 最后计算: **{ak_updated}** &nbsp;|&nbsp; 行情数据区间: {ak_data_start} → {ak_data_end}")
+    _render_signal_tabs(ak_sig, "基于技术因子（全市场），")
+    _render_feat_imp(ak_sig)
+else:
+    st.info("暂无 AKShare 信号缓存，GitHub Actions 将于下一个工作日 08:00 自动生成，或点下方按钮手动触发。")
+
+if st.button("🔄 手动重跑 AKShare 信号", key="run_ak",
+             help="全市场拉取 + 训练，约需 40-60 分钟"):
+    prog = st.progress(0, text="AKShare 信号计算中（全市场约 40-60 分钟）...")
+    def _ak_prog(p):
+        prog.progress(min(int(p * 100), 100), text=f"AKShare 信号计算中... {min(int(p*100),100)}%")
+    try:
+        generate_signals(mode="akshare", progress_cb=_ak_prog,
+                         use_cache=False, cache_path=SIGNALS_AKSHARE_CACHE)
+        prog.empty()
+        st.success("✅ AKShare 信号已更新！")
+        st.rerun()
+    except Exception as e:
+        prog.empty()
+        st.error(f"AKShare 信号生成失败: {e}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3b. Qlib Alpha158 信号面板
+# ─────────────────────────────────────────────────────────────────────────────
+st.markdown('<p class="section-hdr">🧪 Qlib Alpha158 信号</p>', unsafe_allow_html=True)
+st.caption("需本地 qlib 数据环境 · **158个** Alpha 因子 · 手动触发后 push 至 Dashboard")
+
+ql_sig = _load_cache(SIGNALS_QLIB_CACHE)
+
+if ql_sig:
+    ql_updated     = ql_sig.get("updated_at",  "")[:19]
+    ql_train_start = ql_sig.get("train_start", "—")
+    ql_train_end   = ql_sig.get("train_end",   "—")
+    ql_pred_date   = ql_sig.get("pred_date",   "—")
+    st.success(
+        f"🕗 最后计算: **{ql_updated}** &nbsp;|&nbsp; "
+        f"训练区间: {ql_train_start} → {ql_train_end} &nbsp;|&nbsp; "
+        f"预测日期: **{ql_pred_date}**"
+    )
+    _render_signal_tabs(ql_sig, "基于 Alpha158（158个因子），")
+else:
+    st.info("暂无 Qlib 信号缓存。点下方按钮在本地运行，完成后自动 push 到 Dashboard。")
+
+qlib_ok = _qlib_available()
+if not qlib_ok:
+    st.warning("⚠️ 未检测到本地 qlib 数据，请先运行 `update-qlib-data` skill 更新数据。")
+
+if st.button("🔄 手动重跑 Qlib Alpha158", key="run_qlib",
+             disabled=not qlib_ok,
+             help="使用本地 qlib Alpha158，约需 5-8 分钟"):
+    prog = st.progress(0, text="Qlib Alpha158 计算中（约 5-8 分钟）...")
+    def _ql_prog(p):
+        prog.progress(min(int(p * 100), 100), text=f"Qlib Alpha158 计算中... {min(int(p*100),100)}%")
+    try:
+        generate_signals(mode="qlib", progress_cb=_ql_prog,
+                         use_cache=False, cache_path=SIGNALS_QLIB_CACHE)
+        prog.empty()
+        st.success("✅ Qlib 信号已更新！如需同步到云端，请运行 `bash push_signals.sh`")
+        st.rerun()
+    except Exception as e:
+        prog.empty()
+        st.error(f"Qlib 信号生成失败: {e}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

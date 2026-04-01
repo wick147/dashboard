@@ -39,6 +39,7 @@ from components.lgbm_signals import generate_signals
 from components.hmm_regime import detect_regime
 from components.news import fetch_news
 from components.notify import send_wechat
+from config import SIGNALS_AKSHARE_CACHE
 
 logging.basicConfig(
     level=logging.INFO,
@@ -80,7 +81,8 @@ def run(signal_mode: str = "auto") -> None:
                 log.info("  信号进度 %d%%", pct)
             step_pct[0] = pct
 
-        signals = generate_signals(mode=signal_mode, progress_cb=_progress, use_cache=False)
+        signals = generate_signals(mode=signal_mode, progress_cb=_progress,
+                                   use_cache=False, cache_path=SIGNALS_AKSHARE_CACHE)
         err = signals.get("error")
         if err:
             log.error("信号生成出错:\n%s", err[:500])

@@ -57,7 +57,9 @@ INDICES = {
 CSI300_SYMBOL = "sh000300"
 
 # ── Cache filenames ───────────────────────────────────────────────────────────
-SIGNALS_CACHE  = RESULTS_DIR / "signals.json"
+SIGNALS_CACHE         = RESULTS_DIR / "signals.json"       # backward compat
+SIGNALS_AKSHARE_CACHE = RESULTS_DIR / "signals_akshare.json"
+SIGNALS_QLIB_CACHE    = RESULTS_DIR / "signals_qlib.json"
 REGIME_CACHE   = RESULTS_DIR / "regime.json"
 MARKET_CACHE   = RESULTS_DIR / "market.json"
 NEWS_CACHE     = RESULTS_DIR / "news.json"
