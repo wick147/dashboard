@@ -145,7 +145,7 @@ with col_regime:
         regime_data: dict = {}
         if hist_df is not None and not hist_df.empty:
             try:
-                regime_data = detect_regime(hist_df, use_cache=(use_cache and not refresh_btn))
+                regime_data = detect_regime(hist_df, use_cache=(not refresh_btn))
             except Exception as exc:
                 st.error(f"HMM 计算失败: {exc}")
 
@@ -443,7 +443,7 @@ if hist_df is not None and not hist_df.empty and regime_data:
 st.markdown('<p class="section-hdr">📰 财经早餐 / 要闻</p>', unsafe_allow_html=True)
 
 with st.spinner("加载要闻..."):
-    news_data = fetch_news(use_cache=(use_cache and not refresh_btn))
+    news_data = fetch_news(use_cache=(not refresh_btn))
 
 news_updated = news_data.get("updated_at", "")[:19]
 st.caption(f"新闻更新时间: {news_updated}")
