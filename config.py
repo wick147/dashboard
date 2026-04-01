@@ -39,7 +39,7 @@ HMM_COVARIANCE = "full"
 HMM_LOOKBACK_DAYS = 500   # days of history for fitting
 
 # ── Universe & signals ────────────────────────────────────────────────────────
-UNIVERSE_SIZE = 500        # 全市场取市值前 N（GitHub Actions 跑，不限制）
+UNIVERSE_SIZE = 9999       # 全市场不限制（GitHub Actions 跑），实际约 4800 支（除北交所/ST）
 SIGNAL_TOP_N = 10          # top N per horizon
 HORIZONS = [5, 10, 20]     # forward return horizons (trading days)
 FEATURE_LOOKBACK = 160     # calendar days of OHLCV history (needs room for 20d labels)
