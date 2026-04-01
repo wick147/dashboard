@@ -27,12 +27,44 @@ DASH_DIR = Path(__file__).parent
 sys.path.insert(0, str(DASH_DIR))
 
 import json as _json
+import urllib.request
 from config import (TZ, SIGNAL_TOP_N, REGIME_COLORS,
                     SIGNALS_AKSHARE_CACHE, SIGNALS_QLIB_CACHE, SIGNALS_CACHE)
 from components.market_data import load_market_data, get_index_history
 from components.lgbm_signals import generate_signals
 from components.hmm_regime import detect_regime
 from components.news import fetch_news
+
+# ── GitHub Actions trigger ────────────────────────────────────────────────────
+_GH_REPO     = "wick147/dashboard"
+_GH_WORKFLOW = "daily.yml"
+
+def _trigger_workflow() -> tuple[bool, str]:
+    """POST workflow_dispatch to GitHub API. Returns (ok, message)."""
+    token = st.secrets.get("GITHUB_TOKEN", "") if hasattr(st, "secrets") else ""
+    import os
+    token = token or os.environ.get("GITHUB_TOKEN", "")
+    if not token:
+        return False, "未配置 GITHUB_TOKEN（请在 Streamlit Cloud Secrets 中添加）"
+    url = f"https://api.github.com/repos/{_GH_REPO}/actions/workflows/{_GH_WORKFLOW}/dispatches"
+    payload = _json.dumps({"ref": "main"}).encode()
+    req = urllib.request.Request(
+        url, data=payload, method="POST",
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return resp.status == 204, f"HTTP {resp.status}"
+    except urllib.error.HTTPError as e:
+        body = e.read().decode()[:200]
+        return False, f"HTTP {e.code}: {body}"
+    except Exception as e:
+        return False, str(e)
 
 
 # ── page config ───────────────────────────────────────────────────────────────
@@ -336,20 +368,13 @@ if ak_sig:
 else:
     st.info("暂无 AKShare 信号缓存，GitHub Actions 将于下一个工作日 08:00 自动生成，或点下方按钮手动触发。")
 
-if st.button("🔄 手动重跑 AKShare 信号", key="run_ak",
-             help="全市场拉取 + 训练，约需 40-60 分钟"):
-    prog = st.progress(0, text="AKShare 信号计算中（全市场约 40-60 分钟）...")
-    def _ak_prog(p):
-        prog.progress(min(int(p * 100), 100), text=f"AKShare 信号计算中... {min(int(p*100),100)}%")
-    try:
-        generate_signals(mode="akshare", progress_cb=_ak_prog,
-                         use_cache=False, cache_path=SIGNALS_AKSHARE_CACHE)
-        prog.empty()
-        st.success("✅ AKShare 信号已更新！")
-        st.rerun()
-    except Exception as e:
-        prog.empty()
-        st.error(f"AKShare 信号生成失败: {e}")
+if st.button("▶️ 触发 GitHub Actions 重跑", key="run_ak",
+             help="调用 GitHub API 触发 workflow_dispatch，Actions 约需 40-60 分钟"):
+    ok, msg = _trigger_workflow()
+    if ok:
+        st.success("✅ 已成功触发 GitHub Actions！约 40-60 分钟后信号自动更新，刷新页面即可看到新结果。")
+    else:
+        st.error(f"触发失败: {msg}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
