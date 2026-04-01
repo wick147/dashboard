@@ -63,6 +63,13 @@ NEWS_CACHE     = RESULTS_DIR / "news.json"
 MODEL_CACHE    = CACHE_DIR   / "lgbm_model.pkl"
 STOCK_DATA_CACHE = CACHE_DIR / "stock_data.pkl"
 
+# ── Regime colors ────────────────────────────────────────────────────────────
+REGIME_COLORS = {
+    "熊市 Bear":     "#EF5350",
+    "震荡 Sideways": "#FFA726",
+    "牛市 Bull":     "#66BB6A",
+}
+
 # ── Misc ──────────────────────────────────────────────────────────────────────
 TZ = "Asia/Shanghai"
 NEWS_COUNT = 20
