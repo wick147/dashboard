@@ -223,6 +223,11 @@ def predict_signals(
 # ── qlib mode ─────────────────────────────────────────────────────────────────
 
 def _qlib_available() -> bool:
+    # qlib 必须能 import，且本地二进制数据目录非空
+    try:
+        import qlib  # noqa: F401
+    except ImportError:
+        return False
     data_path = Path(QLIB_DATA_PATH).expanduser()
     return data_path.exists() and any(data_path.iterdir())
 
