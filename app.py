@@ -30,7 +30,7 @@ import json as _json
 from config import (TZ, SIGNAL_TOP_N, REGIME_COLORS,
                     SIGNALS_AKSHARE_CACHE, SIGNALS_QLIB_CACHE, SIGNALS_CACHE)
 from components.market_data import load_market_data, get_index_history
-from components.lgbm_signals import generate_signals, _qlib_available
+from components.lgbm_signals import generate_signals
 from components.hmm_regime import detect_regime
 from components.news import fetch_news
 
@@ -371,27 +371,7 @@ if ql_sig:
     )
     _render_signal_tabs(ql_sig, "基于 Alpha158（158个因子），")
 else:
-    st.info("暂无 Qlib 信号缓存。点下方按钮在本地运行，完成后自动 push 到 Dashboard。")
-
-qlib_ok = _qlib_available()
-if not qlib_ok:
-    st.warning("⚠️ 未检测到本地 qlib 数据，请先运行 `update-qlib-data` skill 更新数据。")
-
-if st.button("🔄 手动重跑 Qlib Alpha158", key="run_qlib",
-             disabled=not qlib_ok,
-             help="使用本地 qlib Alpha158，约需 5-8 分钟"):
-    prog = st.progress(0, text="Qlib Alpha158 计算中（约 5-8 分钟）...")
-    def _ql_prog(p):
-        prog.progress(min(int(p * 100), 100), text=f"Qlib Alpha158 计算中... {min(int(p*100),100)}%")
-    try:
-        generate_signals(mode="qlib", progress_cb=_ql_prog,
-                         use_cache=False, cache_path=SIGNALS_QLIB_CACHE)
-        prog.empty()
-        st.success("✅ Qlib 信号已更新！如需同步到云端，请运行 `bash push_signals.sh`")
-        st.rerun()
-    except Exception as e:
-        prog.empty()
-        st.error(f"Qlib 信号生成失败: {e}")
+    st.info("暂无 Qlib 信号缓存。本地运行 `bash push_signals.sh` 后自动更新。")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
