@@ -271,40 +271,46 @@ def _load_signals_cached() -> dict | None:
 
 precomputed = _load_signals_cached()
 
-if precomputed and not refresh_btn:
-    # ── 云端模式：直接展示 GitHub Actions 预计算结果 ──────────────────────────
+# ── 模式判断逻辑 ──────────────────────────────────────────────────────────────
+# qlib 模式：始终实时计算，不读缓存（用户明确要用本地 Alpha158）
+# akshare/auto：优先读预计算缓存，缓存没有或强制刷新才实时跑
+use_precomputed = (
+    precomputed is not None
+    and not refresh_btn
+    and signal_mode != "qlib"
+)
+
+if use_precomputed:
+    # ── 展示预计算结果（GitHub Actions 或上次本地 push 的结果）──────────────
     signals = precomputed
     with signals_placeholder.container():
-        pass  # 无需进度条
-else:
-    # ── 本地 / 强制刷新：实时计算 ────────────────────────────────────────────
-    if signal_mode == "akshare":
-        with signals_placeholder.container():
-            progress = st.progress(0, text="生成选股信号中（全市场需 3-5 分钟）...")
+        cached_mode = precomputed.get("mode", "unknown")
+        st.caption(f"📦 展示预计算缓存（来源: `{cached_mode}`）— 选 qlib 模式可实时用 Alpha158 重算")
 
-            def _update_progress(p: float) -> None:
-                progress.progress(min(int(p * 100), 100),
-                                  text=f"生成选股信号... {min(int(p*100),100)}%")
-            try:
-                signals = generate_signals(
-                    mode=signal_mode,
-                    progress_cb=_update_progress,
-                    use_cache=False,
-                )
-                progress.empty()
-            except Exception as exc:
-                progress.empty()
-                st.error(f"信号生成失败: {exc}")
-                signals = {"h5": [], "h10": [], "h20": [], "mode": "error", "error": str(exc)}
-    else:
-        signals = {"h5": [], "h10": [], "h20": [], "mode": signal_mode,
-                   "updated_at": "", "error": None}
-        with signals_placeholder.container():
-            st.info(
-                "⏳ 信号由 **GitHub Actions** 每天 08:00 自动计算（全市场 ~500 支），"
-                "结果会自动推送到此页面。\n\n"
-                "如需立即生成，请在侧栏切换为 `akshare` 模式并点击「立即刷新」。"
+else:
+    # ── 实时计算 ──────────────────────────────────────────────────────────────
+    with signals_placeholder.container():
+        label = (
+            "使用本地 qlib Alpha158 计算中（约 5-8 分钟）..."
+            if signal_mode == "qlib"
+            else "生成选股信号中（全市场约 40-60 分钟）..."
+        )
+        progress = st.progress(0, text=label)
+
+        def _update_progress(p: float) -> None:
+            progress.progress(min(int(p * 100), 100),
+                              text=f"{label[:20]}... {min(int(p*100),100)}%")
+        try:
+            signals = generate_signals(
+                mode=signal_mode,
+                progress_cb=_update_progress,
+                use_cache=False,
             )
+            progress.empty()
+        except Exception as exc:
+            progress.empty()
+            st.error(f"信号生成失败: {exc}")
+            signals = {"h5": [], "h10": [], "h20": [], "mode": "error", "error": str(exc)}
 
 # ── 信号展示 ──────────────────────────────────────────────────────────────────
 sig_mode_tag = signals.get("mode", "unknown")
