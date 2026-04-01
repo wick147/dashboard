@@ -374,7 +374,8 @@ def generate_signals(
         try:
             data = json.loads(SIGNALS_CACHE.read_text())
             age_h = (datetime.now(tz) - datetime.fromisoformat(data["updated_at"])).total_seconds() / 3600
-            if age_h < 12:
+            # 有错误的缓存不复用，强制重新生成
+            if age_h < 12 and not data.get("error"):
                 return data
         except Exception:
             pass
@@ -393,9 +394,16 @@ def generate_signals(
 
     try:
         if effective_mode == "qlib":
-            horizon_data = _generate_signals_qlib(progress_cb)
-            result.update(horizon_data)
-        else:
+            try:
+                horizon_data = _generate_signals_qlib(progress_cb)
+                result.update(horizon_data)
+            except (ImportError, ModuleNotFoundError):
+                # qlib 环境不完整，自动降级
+                logger.warning("qlib import 失败，自动降级到 akshare 模式")
+                effective_mode = "akshare"
+                result["mode"] = "akshare"
+
+        if effective_mode == "akshare":
             # ── AKShare 模式 ──────────────────────────────────────────────────
             if progress_cb: progress_cb(0.03)
             codes = get_csi300_universe()[:UNIVERSE_SIZE]

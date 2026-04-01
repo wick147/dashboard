@@ -86,9 +86,9 @@ with st.sidebar:
 
     signal_mode = st.radio(
         "信号模式",
-        options=["auto", "qlib", "akshare"],
+        options=["akshare", "auto", "qlib"],
         index=0,
-        help="auto: 自动检测 qlib 数据目录；qlib: 使用 Alpha158；akshare: 技术因子",
+        help="akshare: 技术因子（云端默认）；auto: 自动检测 qlib；qlib: Alpha158（需本地数据）",
     )
 
     use_cache = st.checkbox("使用缓存（< 12 h）", value=True)
