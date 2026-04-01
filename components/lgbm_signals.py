@@ -48,28 +48,35 @@ FEATURE_COLS = [
 
 # ── universe ──────────────────────────────────────────────────────────────────
 
-def get_csi300_universe() -> tuple[list[str], dict[str, str]]:
-    """返回 (codes列表, {code: name} 字典)，名称直接从成分股数据里取，不额外请求。"""
-    try:
-        df = ak.index_stock_cons_weight_csindex(symbol="000300")
-        codes = df["成分券代码"].astype(str).str.zfill(6).tolist()
-        names = dict(zip(
-            df["成分券代码"].astype(str).str.zfill(6),
-            df.get("成分券名称", df.get("名称", pd.Series(dtype=str))).fillna(""),
-        ))
-        return codes, names
-    except Exception:
-        pass
-    # fallback: 用 A 股实时数据（含名称）
-    try:
-        spot = ak.stock_zh_a_spot_em()
-        spot["总市值"] = pd.to_numeric(spot.get("总市值", spot.get("市值", 0)), errors="coerce")
-        top = spot.dropna(subset=["总市值"]).nlargest(UNIVERSE_SIZE, "总市值")
-        codes = top["代码"].astype(str).str.zfill(6).tolist()
-        names = dict(zip(top["代码"].astype(str).str.zfill(6), top.get("名称", pd.Series(dtype=str)).fillna("")))
-        return codes, names
-    except Exception:
-        return [], {}
+def get_full_market_universe() -> tuple[list[str], dict[str, str]]:
+    """
+    全 A 股股票池，过滤规则：
+      - 排除北交所：代码开头为 8x / 4x（83xxxx / 87xxxx / 43xxxx）
+      - 排除 ST / *ST：名称含 "ST"
+    返回 (codes, {code: name})，按市值从大到小排序。
+    """
+    spot = ak.stock_zh_a_spot_em()
+
+    # 北交所代码段：83xxxx / 87xxxx / 43xxxx → 开头是 8 或 43
+    mask_bse = spot["代码"].astype(str).str.match(r"^(8|43)")
+    # ST / *ST
+    mask_st  = spot["名称"].astype(str).str.contains("ST", na=False)
+
+    filtered = spot[~mask_bse & ~mask_st].copy()
+
+    # 按总市值排序，优先选流动性好的大盘股
+    if "总市值" in filtered.columns:
+        filtered["总市值"] = pd.to_numeric(filtered["总市值"], errors="coerce")
+        filtered = filtered.sort_values("总市值", ascending=False, na_position="last")
+
+    filtered = filtered.head(UNIVERSE_SIZE)
+    codes = filtered["代码"].astype(str).str.zfill(6).tolist()
+    names = dict(zip(
+        filtered["代码"].astype(str).str.zfill(6),
+        filtered["名称"].fillna(""),
+    ))
+    logger.info("股票池：%d 支（全市场除北交所/ST，市值前 %d）", len(codes), UNIVERSE_SIZE)
+    return codes, names
 
 
 # ── AKShare 数据获取 ───────────────────────────────────────────────────────────
@@ -416,8 +423,7 @@ def generate_signals(
         if effective_mode == "akshare":
             # ── AKShare 模式 ──────────────────────────────────────────────────
             if progress_cb: progress_cb(0.03)
-            codes, name_map = get_csi300_universe()
-            codes = codes[:UNIVERSE_SIZE]
+            codes, name_map = get_full_market_universe()
             if not codes:
                 raise ValueError("无法获取股票池")
 

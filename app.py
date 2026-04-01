@@ -254,23 +254,57 @@ st.markdown('<p class="section-hdr">🤖 LightGBM 选股信号</p>', unsafe_allo
 
 signals_placeholder = st.empty()
 
-with signals_placeholder.container():
-    progress = st.progress(0, text="生成选股信号中...")
+# ── 读取信号：优先读预计算缓存，本地模式才实时跑 ──────────────────────────────
+from config import SIGNALS_CACHE
+import json as _json
 
-    def _update_progress(p: float) -> None:
-        progress.progress(min(int(p * 100), 100), text=f"生成选股信号... {min(int(p*100),100)}%")
+def _load_signals_cached() -> dict | None:
+    """读取 GitHub Actions 预计算的 results/signals.json。"""
+    if SIGNALS_CACHE.exists():
+        try:
+            data = _json.loads(SIGNALS_CACHE.read_text())
+            if not data.get("error") and any(data.get(f"h{h}") for h in [5, 10, 20]):
+                return data
+        except Exception:
+            pass
+    return None
 
-    try:
-        signals = generate_signals(
-            mode=signal_mode,
-            progress_cb=_update_progress,
-            use_cache=(use_cache and not refresh_btn),
-        )
-        progress.empty()
-    except Exception as exc:
-        progress.empty()
-        st.error(f"信号生成失败: {exc}")
-        signals = {"h5": [], "h10": [], "h20": [], "mode": "error", "error": str(exc)}
+precomputed = _load_signals_cached()
+
+if precomputed and not refresh_btn:
+    # ── 云端模式：直接展示 GitHub Actions 预计算结果 ──────────────────────────
+    signals = precomputed
+    with signals_placeholder.container():
+        pass  # 无需进度条
+else:
+    # ── 本地 / 强制刷新：实时计算 ────────────────────────────────────────────
+    if signal_mode == "akshare":
+        with signals_placeholder.container():
+            progress = st.progress(0, text="生成选股信号中（全市场需 3-5 分钟）...")
+
+            def _update_progress(p: float) -> None:
+                progress.progress(min(int(p * 100), 100),
+                                  text=f"生成选股信号... {min(int(p*100),100)}%")
+            try:
+                signals = generate_signals(
+                    mode=signal_mode,
+                    progress_cb=_update_progress,
+                    use_cache=False,
+                )
+                progress.empty()
+            except Exception as exc:
+                progress.empty()
+                st.error(f"信号生成失败: {exc}")
+                signals = {"h5": [], "h10": [], "h20": [], "mode": "error", "error": str(exc)}
+    else:
+        signals = {"h5": [], "h10": [], "h20": [], "mode": signal_mode,
+                   "updated_at": "", "error": None}
+        with signals_placeholder.container():
+            st.info(
+                "⏳ 信号由 **GitHub Actions** 每天 08:00 自动计算（全市场 ~500 支），"
+                "结果会自动推送到此页面。\n\n"
+                "如需立即生成，请在侧栏切换为 `akshare` 模式并点击「立即刷新」。"
+            )
 
 # ── 信号展示 ──────────────────────────────────────────────────────────────────
 sig_mode_tag = signals.get("mode", "unknown")
@@ -278,7 +312,7 @@ sig_updated  = signals.get("updated_at", "")[:19]
 sig_error    = signals.get("error")
 
 if sig_error:
-    st.warning(f"信号生成出错（显示缓存结果）: {str(sig_error)[:300]}")
+    st.warning(f"信号生成出错: {str(sig_error)[:300]}")
 
 st.caption(f"信号来源: `{sig_mode_tag}` | 更新: {sig_updated}")
 

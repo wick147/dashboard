@@ -39,11 +39,11 @@ HMM_COVARIANCE = "full"
 HMM_LOOKBACK_DAYS = 500   # days of history for fitting
 
 # ── Universe & signals ────────────────────────────────────────────────────────
-UNIVERSE_SIZE = 60         # stocks to pull for LightGBM (cloud friendly)
+UNIVERSE_SIZE = 500        # 全市场取市值前 N（GitHub Actions 跑，不限制）
 SIGNAL_TOP_N = 10          # top N per horizon
 HORIZONS = [5, 10, 20]     # forward return horizons (trading days)
 FEATURE_LOOKBACK = 160     # calendar days of OHLCV history (needs room for 20d labels)
-FETCH_WORKERS = 8          # parallel AKShare fetch threads
+FETCH_WORKERS = 16         # parallel AKShare fetch threads（Actions 有 2 核，可加速）
 
 # ── Index symbols (AKShare convention) ───────────────────────────────────────
 INDICES = {
