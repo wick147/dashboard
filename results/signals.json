@@ -1,0 +1,325 @@
+{
+  "mode": "akshare",
+  "updated_at": "2026-04-01T18:41:46.371522+08:00",
+  "h5": [
+    {
+      "code": "600547",
+      "name": "山东黄金",
+      "rank_score": 0.2107,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "601600",
+      "name": "中国铝业",
+      "rank_score": 0.1934,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "603993",
+      "name": "洛阳钼业",
+      "rank_score": 0.1785,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002379",
+      "name": "宏桥控股",
+      "rank_score": 0.1757,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "688235",
+      "name": "百济神州-U",
+      "rank_score": 0.1572,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "001280",
+      "name": "中国铀业",
+      "rank_score": 0.1544,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "688802",
+      "name": "沐曦股份-U",
+      "rank_score": 0.1538,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "600276",
+      "name": "恒瑞医药",
+      "rank_score": 0.1479,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002916",
+      "name": "深南电路",
+      "rank_score": 0.1297,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "300274",
+      "name": "阳光电源",
+      "rank_score": 0.1124,
+      "gmr_daily": null,
+      "total_ret": null
+    }
+  ],
+  "h10": [
+    {
+      "code": "300274",
+      "name": "阳光电源",
+      "rank_score": 0.3134,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "603986",
+      "name": "兆易创新",
+      "rank_score": 0.2245,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002371",
+      "name": "北方华创",
+      "rank_score": 0.1463,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "000651",
+      "name": "格力电器",
+      "rank_score": 0.1305,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "601166",
+      "name": "兴业银行",
+      "rank_score": 0.1263,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "600000",
+      "name": "浦发银行",
+      "rank_score": 0.1206,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002916",
+      "name": "深南电路",
+      "rank_score": 0.1165,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "601998",
+      "name": "中信银行",
+      "rank_score": 0.1029,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "600887",
+      "name": "伊利股份",
+      "rank_score": 0.1025,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "600547",
+      "name": "山东黄金",
+      "rank_score": 0.0991,
+      "gmr_daily": null,
+      "total_ret": null
+    }
+  ],
+  "h20": [
+    {
+      "code": "603986",
+      "name": "兆易创新",
+      "rank_score": 0.2807,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "688008",
+      "name": "澜起科技",
+      "rank_score": 0.2461,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002916",
+      "name": "深南电路",
+      "rank_score": 0.2122,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "300274",
+      "name": "阳光电源",
+      "rank_score": 0.2119,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "603993",
+      "name": "洛阳钼业",
+      "rank_score": 0.2043,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "601600",
+      "name": "中国铝业",
+      "rank_score": 0.1916,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002714",
+      "name": "牧原股份",
+      "rank_score": 0.1913,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "001280",
+      "name": "中国铀业",
+      "rank_score": 0.1745,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "002371",
+      "name": "北方华创",
+      "rank_score": 0.1727,
+      "gmr_daily": null,
+      "total_ret": null
+    },
+    {
+      "code": "688041",
+      "name": "海光信息",
+      "rank_score": 0.1721,
+      "gmr_daily": null,
+      "total_ret": null
+    }
+  ],
+  "feature_importance": {
+    "h5": [
+      {
+        "feature": "Column_11",
+        "importance": 207.88667226408143
+      },
+      {
+        "feature": "Column_6",
+        "importance": 186.45480590732768
+      },
+      {
+        "feature": "Column_3",
+        "importance": 174.49910471064504
+      },
+      {
+        "feature": "Column_2",
+        "importance": 123.01390456501395
+      },
+      {
+        "feature": "Column_4",
+        "importance": 115.00266202555667
+      },
+      {
+        "feature": "Column_9",
+        "importance": 108.46585363497434
+      },
+      {
+        "feature": "Column_12",
+        "importance": 102.7848827559501
+      },
+      {
+        "feature": "Column_10",
+        "importance": 97.66149933935958
+      }
+    ],
+    "h10": [
+      {
+        "feature": "Column_11",
+        "importance": 304.7745702509419
+      },
+      {
+        "feature": "Column_6",
+        "importance": 269.7399804543511
+      },
+      {
+        "feature": "Column_3",
+        "importance": 193.26334905286785
+      },
+      {
+        "feature": "Column_2",
+        "importance": 132.94424220896326
+      },
+      {
+        "feature": "Column_12",
+        "importance": 126.73897872399539
+      },
+      {
+        "feature": "Column_5",
+        "importance": 123.6373286478738
+      },
+      {
+        "feature": "Column_8",
+        "importance": 108.31166196567528
+      },
+      {
+        "feature": "Column_9",
+        "importance": 103.78802359988913
+      }
+    ],
+    "h20": [
+      {
+        "feature": "Column_6",
+        "importance": 398.4174796464504
+      },
+      {
+        "feature": "Column_11",
+        "importance": 363.5671940986067
+      },
+      {
+        "feature": "Column_3",
+        "importance": 200.41560229938477
+      },
+      {
+        "feature": "Column_5",
+        "importance": 157.44810513663106
+      },
+      {
+        "feature": "Column_4",
+        "importance": 116.41388054886193
+      },
+      {
+        "feature": "Column_12",
+        "importance": 109.57416744565126
+      },
+      {
+        "feature": "Column_8",
+        "importance": 91.51242758526257
+      },
+      {
+        "feature": "Column_1",
+        "importance": 85.8936473398935
+      }
+    ]
+  },
+  "error": null
+}

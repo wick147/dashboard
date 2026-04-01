@@ -1,0 +1,2456 @@
+{
+  "updated_at": "2026-04-01T18:47:05.036733+08:00",
+  "current_regime": "震荡 Sideways",
+  "current_state": 1,
+  "history": [
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 2,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 0,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "1970-01-01",
+      "state": 1,
+      "regime": "震荡 Sideways"
+    }
+  ],
+  "state_stats": [
+    {
+      "state": 0,
+      "regime": "熊市 Bear",
+      "mean_ret": -0.21340202721643187,
+      "mean_rv": 0.1260052684486752,
+      "days": 224,
+      "pct": 46.6
+    },
+    {
+      "state": 1,
+      "regime": "震荡 Sideways",
+      "mean_ret": 0.24222503567236722,
+      "mean_rv": 0.12505463530697705,
+      "days": 225,
+      "pct": 46.8
+    },
+    {
+      "state": 2,
+      "regime": "牛市 Bull",
+      "mean_ret": 1.6641582918291105,
+      "mean_rv": 0.4075909747848565,
+      "days": 32,
+      "pct": 6.7
+    }
+  ],
+  "transition_matrix": [
+    [
+      4.591251371404952e-09,
+      0.9999999953569298,
+      5.181874547460217e-11
+    ],
+    [
+      0.9836042438551874,
+      3.507472044307676e-08,
+      0.01639572107009203
+    ],
+    [
+      0.112368789861496,
+      0.00030480280534583517,
+      0.8873264073331582
+    ]
+  ],
+  "error": null
+}
