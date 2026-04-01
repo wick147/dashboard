@@ -289,36 +289,37 @@ def _render_horizon_table(items: list[dict], horizon: int) -> None:
         return
     df = pd.DataFrame(items)
     df.insert(0, "排名", range(1, len(df) + 1))
-    rename = {"code": "代码", "name": "名称", "rank_score": "模型评分",
-              "gmr_daily": f"日均GMR(%)", "total_ret": f"{horizon}日预期收益(%)"}
-    df = df.rename(columns=rename)
-    # 颜色高亮：预期收益列
-    ret_col = f"{horizon}日预期收益(%)"
-    if ret_col in df.columns:
-        df[ret_col] = df[ret_col].map(
-            lambda x: f"+{x:.2f}%" if x is not None and x >= 0
-            else (f"{x:.2f}%" if x is not None else "-")
-        )
-    if f"日均GMR(%)" in df.columns:
-        df["日均GMR(%)"] = df["日均GMR(%)"].map(
-            lambda x: f"{x:.4f}%" if x is not None else "-"
-        )
-    show_cols = [c for c in ["排名", "代码", "名称", "模型评分", "日均GMR(%)", ret_col] if c in df.columns]
+    df = df.rename(columns={"code": "代码", "name": "名称", "rank_score": "截面排名分"})
+    # 截面排名分：LightGBM 对当日所有股票打的相对强弱分，越高越可能跑赢同期均值
+    df["截面排名分"] = df["截面排名分"].map(lambda x: f"{x:.4f}")
+    show_cols = [c for c in ["排名", "代码", "名称", "截面排名分"] if c in df.columns]
     st.dataframe(df[show_cols], use_container_width=True, hide_index=True)
 
 
-tab5, tab10, tab20 = st.tabs(["📅 5日持仓", "📅 10日持仓", "📅 20日持仓"])
+tab5, tab10, tab20 = st.tabs(["📅 5日", "📅 10日", "📅 20日"])
 
 with tab5:
-    st.caption("预测未来 **5个交易日** 几何平均日收益率最高的10支票")
+    st.caption(
+        "**5日截面排名分 TOP 10** — "
+        "LightGBM 基于技术因子预测，该分数反映个股相对于同日所有股票的预期强弱，"
+        "分数越高代表模型认为未来5个交易日该股跑赢同期平均的概率越大，**非绝对收益预测**。"
+    )
     _render_horizon_table(signals.get("h5", []), 5)
 
 with tab10:
-    st.caption("预测未来 **10个交易日** 几何平均日收益率最高的10支票")
+    st.caption(
+        "**10日截面排名分 TOP 10** — "
+        "LightGBM 基于技术因子预测，该分数反映个股相对于同日所有股票的预期强弱，"
+        "分数越高代表模型认为未来10个交易日该股跑赢同期平均的概率越大，**非绝对收益预测**。"
+    )
     _render_horizon_table(signals.get("h10", []), 10)
 
 with tab20:
-    st.caption("预测未来 **20个交易日** 几何平均日收益率最高的10支票")
+    st.caption(
+        "**20日截面排名分 TOP 10** — "
+        "LightGBM 基于技术因子预测，该分数反映个股相对于同日所有股票的预期强弱，"
+        "分数越高代表模型认为未来20个交易日该股跑赢同期平均的概率越大，**非绝对收益预测**。"
+    )
     _render_horizon_table(signals.get("h20", []), 20)
 
 # 特征重要性

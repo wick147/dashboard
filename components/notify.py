@@ -48,13 +48,12 @@ def _build_content(signals: dict, regime: dict, market: dict) -> tuple[str, str]
             idx_rows += f"**{name}** {arrow}{chg:+.2f}%  "
 
     def _horizon_table(items: list[dict], horizon: int, top: int = 5) -> str:
-        rows = f"| 代码 | 名称 | {horizon}日预期收益 |\n|------|------|------|\n"
+        rows = f"| 代码 | 名称 | 截面排名分 |\n|------|------|------|\n"
         for item in items[:top]:
-            code     = item.get("code", "")
-            name     = item.get("name", "") or ""
-            total    = item.get("total_ret")
-            ret_str  = f"+{total:.2f}%" if total is not None and total >= 0 else (f"{total:.2f}%" if total is not None else "-")
-            rows += f"| {code} | {name} | {ret_str} |\n"
+            code  = item.get("code", "")
+            name  = item.get("name", "") or ""
+            score = item.get("rank_score", 0)
+            rows += f"| {code} | {name} | {float(score):.4f} |\n"
         return rows
 
     h5_tbl  = _horizon_table(signals.get("h5",  []), 5)
