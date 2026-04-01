@@ -369,10 +369,10 @@ else:
     st.info("暂无 AKShare 信号缓存，GitHub Actions 将于下一个工作日 08:00 自动生成，或点下方按钮手动触发。")
 
 if st.button("▶️ 触发 GitHub Actions 重跑", key="run_ak",
-             help="调用 GitHub API 触发 workflow_dispatch，Actions 约需 40-60 分钟"):
+             help="调用 GitHub API 触发 workflow_dispatch，Actions 约需 10-15 分钟"):
     ok, msg = _trigger_workflow()
     if ok:
-        st.success("✅ 已成功触发 GitHub Actions！约 40-60 分钟后信号自动更新，刷新页面即可看到新结果。")
+        st.success("✅ 已成功触发 GitHub Actions！约 10-15 分钟后信号自动更新，刷新页面即可看到新结果。")
     else:
         st.error(f"触发失败: {msg}")
 
