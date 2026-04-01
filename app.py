@@ -50,8 +50,8 @@ st.markdown("""
         background: #1e1e2e; border-radius: 10px; padding: 16px 20px;
         border-left: 4px solid #7c3aed;
     }
-    .regime-bull  { background: #1a3a2a; border-left: 4px solid #66BB6A; }
-    .regime-bear  { background: #3a1a1a; border-left: 4px solid #EF5350; }
+    .regime-bull  { background: #3a1a1a; border-left: 4px solid #EF5350; }
+    .regime-bear  { background: #1a3a2a; border-left: 4px solid #26A69A; }
     .regime-side  { background: #2a2a1a; border-left: 4px solid #FFA726; }
     .news-item    { padding: 8px 0; border-bottom: 1px solid #333; }
     .section-hdr  { font-size:1.2rem; font-weight:700; margin: 1rem 0 0.5rem; }
@@ -70,7 +70,8 @@ def _now_bj() -> str:
 def _delta_color(val: float | None) -> str:
     if val is None:
         return "off"
-    return "normal" if val >= 0 else "inverse"
+    # A股惯例：红涨绿跌，inverse = red in Streamlit
+    return "inverse" if val >= 0 else "normal"
 
 
 def _pct_fmt(v) -> str:
@@ -220,7 +221,7 @@ with col_sector:
             y=sdf["板块名称"].values[:20],
             orientation="h",
             marker_color=[
-                "#EF5350" if v < 0 else "#66BB6A"
+                "#EF5350" if v >= 0 else "#26A69A"
                 for v in sdf["涨跌幅"].values[:20]
             ],
             text=[f"{v:+.2f}%" for v in sdf["涨跌幅"].values[:20]],
