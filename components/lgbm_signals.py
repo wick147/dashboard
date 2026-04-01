@@ -237,48 +237,119 @@ def _qlib_available() -> bool:
 
 
 def _generate_signals_qlib(progress_cb: Optional[Callable] = None) -> dict:
-    """qlib Alpha158 + 多周期 LGBModel。"""
+    """
+    qlib Alpha158 特征 + 3个独立 LightGBM 模型（5/10/20日）。
+
+    Alpha158 handler 只初始化一次，label 列表传入3个周期的总收益表达式。
+    总收益与 GMR 截面排名等价（单调变换），所以用总收益训练排名模型即可。
+    特征维度：158个 Alpha 因子（MACD/RSI/量价等）。
+    """
     import qlib
     from qlib.config import REG_CN
     from qlib.contrib.data.handler import Alpha158
-    from qlib.contrib.model.gbdt import LGBModel
     from qlib.data.dataset import DatasetH
+    from qlib.data.dataset.handler import DataHandlerLP
 
     tz = pytz.timezone(TZ)
-    today      = datetime.now(tz)
-    train_end  = (today - timedelta(days=365)).strftime("%Y-%m-%d")
-    pred_start = (today - timedelta(days=30)).strftime("%Y-%m-%d")
-    pred_end   = today.strftime("%Y-%m-%d")
+    today       = datetime.now(tz)
+    train_start = "2020-01-01"
+    train_end   = (today - timedelta(days=60)).strftime("%Y-%m-%d")
+    pred_start  = (today - timedelta(days=30)).strftime("%Y-%m-%d")
+    pred_end    = today.strftime("%Y-%m-%d")
 
     qlib.init(provider_uri=QLIB_DATA_PATH, region=REG_CN)
-    if progress_cb: progress_cb(0.1)
+    if progress_cb: progress_cb(0.05)
 
+    # ── 1. 一次性加载 Alpha158 特征 + 3列标签 ────────────────────────────────
+    # Alpha158 的 label 参数接受 qlib 表达式列表，列名自动命名 LABEL0/1/2
+    # Ref($close, -n)/$close - 1 = n日持仓总收益（截面排名等价于几何平均日收益率）
+    handler = Alpha158(
+        start_time=train_start,
+        end_time=pred_end,
+        fit_start_time=train_start,
+        fit_end_time=train_end,
+        instruments="csi300",
+        label=[
+            "Ref($close, -5)/$close - 1",    # LABEL0: 5日总收益
+            "Ref($close, -10)/$close - 1",   # LABEL1: 10日总收益
+            "Ref($close, -20)/$close - 1",   # LABEL2: 20日总收益
+        ],
+    )
+    dataset = DatasetH(
+        handler=handler,
+        segments={
+            "train": (train_start, train_end),
+            "test":  (pred_start,  pred_end),
+        },
+    )
+    if progress_cb: progress_cb(0.2)
+
+    # 一次性拿训练集特征+标签
+    train_df = dataset.prepare(
+        "train", col_set=["feature", "label"], data_key=DataHandlerLP.DK_L
+    )
+    X_train   = train_df["feature"]
+    y_all     = train_df["label"]        # columns: LABEL0, LABEL1, LABEL2
+
+    # 预测集特征
+    test_df   = dataset.prepare(
+        "test", col_set=["feature"], data_key=DataHandlerLP.DK_I
+    )
+    X_test    = test_df["feature"]
+    if progress_cb: progress_cb(0.35)
+
+    # ── 2. 为每个周期独立训练一个 LightGBM ───────────────────────────────────
     out: dict = {}
-    for i, h in enumerate(HORIZONS):
-        handler = Alpha158(
-            start_time="2020-01-01", end_time=pred_end,
-            fit_start_time="2020-01-01", fit_end_time=train_end,
-            instruments="csi300",
-            label=[f"Ref($close, -{h}) / $close - 1"],   # h日总收益
-        )
-        dataset = DatasetH(
-            handler=handler,
-            segments={"train": ("2020-01-01", train_end), "test": (pred_start, pred_end)},
-        )
-        model = LGBModel(
-            loss="mse", colsample_bytree=0.8879, learning_rate=0.1,
-            subsample=0.8789, num_leaves=63, max_depth=6,
-            num_boost_round=300, early_stopping_rounds=LGBM_EARLY_STOP,
-        )
-        model.fit(dataset)
-        pred = model.predict(dataset, segment="test").reset_index()
-        pred.columns = ["date", "code", "score"]
-        latest = pred[pred["date"] == pred["date"].max()].sort_values("score", ascending=False)
-        out[f"h{h}"] = latest.head(SIGNAL_TOP_N)[["code", "score"]].assign(
-            name="", gmr_daily=None, total_ret=None
-        ).to_dict("records")
-        if progress_cb: progress_cb(0.1 + (i + 1) / len(HORIZONS) * 0.85)
+    label_cols = list(y_all.columns)          # ["LABEL0", "LABEL1", "LABEL2"]
 
+    for i, h in enumerate(HORIZONS):
+        label_col = label_cols[i]
+
+        # 去掉标签缺失行（前向标签在时间轴末端会有 NaN）
+        y_h = y_all[label_col].dropna()
+        X_h = X_train.loc[y_h.index].fillna(0)
+
+        # 截面 rank 归一化：每个交易日内对标签排名，消除绝对收益水平的影响
+        y_rank = (
+            y_h.groupby(level="datetime").rank(pct=True) - 0.5
+        ).values
+
+        params = {**LGBM_PARAMS}
+        n_est  = params.pop("n_estimators", 400)
+        model_h = lgb.train(
+            params,
+            lgb.Dataset(X_h.values, label=y_rank),
+            num_boost_round=n_est,
+            callbacks=[lgb.log_evaluation(period=LGBM_VERBOSE_EVAL)],
+        )
+        if progress_cb: progress_cb(0.35 + (i + 1) / len(HORIZONS) * 0.50)
+
+        # 预测最新一个交易日的分数
+        scores     = model_h.predict(X_test.fillna(0).values)
+        score_idx  = X_test.index.get_level_values("datetime")
+        latest_dt  = score_idx.max()
+        mask       = score_idx == latest_dt
+
+        latest_scores = pd.Series(
+            scores[mask],
+            index=X_test.index[mask].get_level_values("instrument"),
+            name="score",
+        ).sort_values(ascending=False)
+
+        top_codes = latest_scores.head(SIGNAL_TOP_N).reset_index()
+        top_codes.columns = ["code", "score"]
+        out[f"h{h}"] = [
+            {
+                "code":       str(r["code"]),
+                "name":       "",
+                "rank_score": round(float(r["score"]), 4),
+                "gmr_daily":  None,
+                "total_ret":  None,
+            }
+            for _, r in top_codes.iterrows()
+        ]
+
+    if progress_cb: progress_cb(1.0)
     return out
 
 
