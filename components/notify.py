@@ -47,18 +47,19 @@ def _build_content(signals: dict, regime: dict, market: dict) -> tuple[str, str]
             arrow = "▲" if chg >= 0 else "▼"
             idx_rows += f"**{name}** {arrow}{chg:+.2f}%  "
 
-    # ── Buy / Sell top 3 ──────────────────────────────────────────────────────
-    def _signal_table(items: list[dict], top: int = 3) -> str:
-        rows = "| 代码 | 名称 | 评分 |\n|------|------|------|\n"
+    def _horizon_table(items: list[dict], horizon: int, top: int = 5) -> str:
+        rows = f"| 代码 | 名称 | {horizon}日预期收益 |\n|------|------|------|\n"
         for item in items[:top]:
-            code  = item.get("code", "")
-            name  = item.get("name", "") or ""
-            score = item.get("score", 0)
-            rows += f"| {code} | {name} | {float(score):.4f} |\n"
+            code     = item.get("code", "")
+            name     = item.get("name", "") or ""
+            total    = item.get("total_ret")
+            ret_str  = f"+{total:.2f}%" if total is not None and total >= 0 else (f"{total:.2f}%" if total is not None else "-")
+            rows += f"| {code} | {name} | {ret_str} |\n"
         return rows
 
-    buy_tbl  = _signal_table(signals.get("top_buy",  []))
-    sell_tbl = _signal_table(signals.get("top_sell", []))
+    h5_tbl  = _horizon_table(signals.get("h5",  []), 5)
+    h10_tbl = _horizon_table(signals.get("h10", []), 10)
+    h20_tbl = _horizon_table(signals.get("h20", []), 20)
     sig_mode = signals.get("mode", "akshare")
 
     title = f"📊 A股量化日报 {today} {regime_emoji} {cur_regime}"
@@ -71,10 +72,12 @@ def _build_content(signals: dict, regime: dict, market: dict) -> tuple[str, str]
 ## 市场宽度
 上涨 **{up}** | 下跌 **{down}** | 涨停 **{lu}** | 跌停 **{ld}**
 
-## 🟢 多头信号 TOP 3
-{buy_tbl}
-## 🔴 空头信号 TOP 3
-{sell_tbl}
+## 📅 5日持仓 TOP 5
+{h5_tbl}
+## 📅 10日持仓 TOP 5
+{h10_tbl}
+## 📅 20日持仓 TOP 5
+{h20_tbl}
 ---
 *信号来源: {sig_mode} | 仅供研究参考，不构成投资建议*
 """

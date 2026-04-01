@@ -256,12 +256,9 @@ signals_placeholder = st.empty()
 
 with signals_placeholder.container():
     progress = st.progress(0, text="生成选股信号中...")
-    _prog_val = [0.0]
 
     def _update_progress(p: float) -> None:
-        pct = min(int(p * 100), 100)
-        _prog_val[0] = pct
-        progress.progress(pct, text=f"生成选股信号... {pct}%")
+        progress.progress(min(int(p * 100), 100), text=f"生成选股信号... {min(int(p*100),100)}%")
 
     try:
         signals = generate_signals(
@@ -273,86 +270,78 @@ with signals_placeholder.container():
     except Exception as exc:
         progress.empty()
         st.error(f"信号生成失败: {exc}")
-        signals = {"top_buy": [], "top_sell": [], "mode": "error", "error": str(exc)}
+        signals = {"h5": [], "h10": [], "h20": [], "mode": "error", "error": str(exc)}
 
-# Display signals
+# ── 信号展示 ──────────────────────────────────────────────────────────────────
 sig_mode_tag = signals.get("mode", "unknown")
 sig_updated  = signals.get("updated_at", "")[:19]
 sig_error    = signals.get("error")
 
 if sig_error:
-    st.warning(f"信号生成出错（显示缓存结果）: {str(sig_error)[:200]}")
+    st.warning(f"信号生成出错（显示缓存结果）: {str(sig_error)[:300]}")
 
 st.caption(f"信号来源: `{sig_mode_tag}` | 更新: {sig_updated}")
 
-col_buy, col_sell = st.columns(2)
 
-with col_buy:
-    st.markdown("##### 🟢 多头信号 TOP {n}".format(n=SIGNAL_TOP_N))
-    buy_list = signals.get("top_buy", [])
-    if buy_list:
-        buy_df = pd.DataFrame(buy_list)
-        buy_df["score"] = buy_df["score"].map(lambda x: f"{x:.4f}")
-        if "ret1" in buy_df.columns:
-            buy_df["昨日涨跌"] = buy_df["ret1"].map(
-                lambda x: f"{x*100:+.2f}%" if pd.notnull(x) else "-"
-            )
-        if "ret5" in buy_df.columns:
-            buy_df["5日动量"] = buy_df["ret5"].map(
-                lambda x: f"{x*100:+.2f}%" if pd.notnull(x) else "-"
-            )
-        display_cols = [c for c in ["code", "name", "score", "昨日涨跌", "5日动量"] if c in buy_df.columns]
-        rename_map = {"code": "代码", "name": "名称", "score": "预测分"}
-        st.dataframe(
-            buy_df[display_cols].rename(columns=rename_map),
-            use_container_width=True, hide_index=True,
+def _render_horizon_table(items: list[dict], horizon: int) -> None:
+    if not items:
+        st.info("暂无数据")
+        return
+    df = pd.DataFrame(items)
+    df.insert(0, "排名", range(1, len(df) + 1))
+    rename = {"code": "代码", "name": "名称", "rank_score": "模型评分",
+              "gmr_daily": f"日均GMR(%)", "total_ret": f"{horizon}日预期收益(%)"}
+    df = df.rename(columns=rename)
+    # 颜色高亮：预期收益列
+    ret_col = f"{horizon}日预期收益(%)"
+    if ret_col in df.columns:
+        df[ret_col] = df[ret_col].map(
+            lambda x: f"+{x:.2f}%" if x is not None and x >= 0
+            else (f"{x:.2f}%" if x is not None else "-")
         )
-    else:
-        st.info("暂无多头信号")
+    if f"日均GMR(%)" in df.columns:
+        df["日均GMR(%)"] = df["日均GMR(%)"].map(
+            lambda x: f"{x:.4f}%" if x is not None else "-"
+        )
+    show_cols = [c for c in ["排名", "代码", "名称", "模型评分", "日均GMR(%)", ret_col] if c in df.columns]
+    st.dataframe(df[show_cols], use_container_width=True, hide_index=True)
 
-with col_sell:
-    st.markdown("##### 🔴 空头信号 TOP {n}".format(n=SIGNAL_TOP_N))
-    sell_list = signals.get("top_sell", [])
-    if sell_list:
-        sell_df = pd.DataFrame(sell_list)
-        sell_df["score"] = sell_df["score"].map(lambda x: f"{x:.4f}")
-        if "ret1" in sell_df.columns:
-            sell_df["昨日涨跌"] = sell_df["ret1"].map(
-                lambda x: f"{x*100:+.2f}%" if pd.notnull(x) else "-"
-            )
-        if "ret5" in sell_df.columns:
-            sell_df["5日动量"] = sell_df["ret5"].map(
-                lambda x: f"{x*100:+.2f}%" if pd.notnull(x) else "-"
-            )
-        display_cols = [c for c in ["code", "name", "score", "昨日涨跌", "5日动量"] if c in sell_df.columns]
-        rename_map = {"code": "代码", "name": "名称", "score": "预测分"}
-        st.dataframe(
-            sell_df[display_cols].rename(columns=rename_map),
-            use_container_width=True, hide_index=True,
-        )
-    else:
-        st.info("暂无空头信号")
 
-# Feature importance
-feat_imp = signals.get("feature_importance", [])
-if feat_imp:
-    with st.expander("📊 特征重要性"):
-        fi_df = pd.DataFrame(feat_imp).sort_values("importance", ascending=True)
-        fig_fi = go.Figure(go.Bar(
-            x=fi_df["importance"],
-            y=fi_df["feature"],
-            orientation="h",
-            marker_color="#7c3aed",
-        ))
-        fig_fi.update_layout(
-            height=300,
-            margin=dict(l=80, r=20, t=10, b=20),
-            plot_bgcolor="#0e1117",
-            paper_bgcolor="#0e1117",
-            xaxis=dict(showgrid=False, color="#aaa"),
-            yaxis=dict(showgrid=False, color="#ddd"),
-        )
-        st.plotly_chart(fig_fi, use_container_width=True)
+tab5, tab10, tab20 = st.tabs(["📅 5日持仓", "📅 10日持仓", "📅 20日持仓"])
+
+with tab5:
+    st.caption("预测未来 **5个交易日** 几何平均日收益率最高的10支票")
+    _render_horizon_table(signals.get("h5", []), 5)
+
+with tab10:
+    st.caption("预测未来 **10个交易日** 几何平均日收益率最高的10支票")
+    _render_horizon_table(signals.get("h10", []), 10)
+
+with tab20:
+    st.caption("预测未来 **20个交易日** 几何平均日收益率最高的10支票")
+    _render_horizon_table(signals.get("h20", []), 20)
+
+# 特征重要性
+feat_imp_dict = signals.get("feature_importance", {})
+if feat_imp_dict:
+    with st.expander("📊 各周期特征重要性"):
+        fi_tabs = st.tabs(["5日模型", "10日模型", "20日模型"])
+        for fi_tab, hkey in zip(fi_tabs, ["h5", "h10", "h20"]):
+            with fi_tab:
+                fi_list = feat_imp_dict.get(hkey, [])
+                if fi_list:
+                    fi_df = pd.DataFrame(fi_list).sort_values("importance", ascending=True)
+                    fig_fi = go.Figure(go.Bar(
+                        x=fi_df["importance"], y=fi_df["feature"],
+                        orientation="h", marker_color="#7c3aed",
+                    ))
+                    fig_fi.update_layout(
+                        height=260, margin=dict(l=80, r=20, t=10, b=20),
+                        plot_bgcolor="#0e1117", paper_bgcolor="#0e1117",
+                        xaxis=dict(showgrid=False, color="#aaa"),
+                        yaxis=dict(showgrid=False, color="#ddd"),
+                    )
+                    st.plotly_chart(fig_fi, use_container_width=True)
 
 
 # ─────────────────────────────────────────────────────────────────────────────

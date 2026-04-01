@@ -1,15 +1,18 @@
 """
-LightGBM stock-selection signal generator.
+LightGBM 多周期选股信号生成器。
 
-Two modes (auto-detected):
-  1. qlib mode  — uses Alpha158 features from the local qlib data store.
-  2. akshare mode — fetches OHLCV from AKShare and computes technical features.
+每个预测周期（5/10/20日）独立训练一个 LightGBM 模型，
+目标变量为持仓期几何平均日收益率：
+    gmr_n = (close[t+n] / close[t]) ^ (1/n) - 1
+
+模式（auto-detect）：
+  qlib   — Alpha158 特征 + qlib LGBModel
+  akshare — OHLCV 技术因子 + 标准 LightGBM
 """
 from __future__ import annotations
 
 import json
 import logging
-import os
 import pickle
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -22,43 +25,46 @@ import lightgbm as lgb
 import numpy as np
 import pandas as pd
 import pytz
-from sklearn.preprocessing import RobustScaler
 
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import (
     LGBM_PARAMS, LGBM_EARLY_STOP, LGBM_VERBOSE_EVAL,
-    UNIVERSE_SIZE, SIGNAL_TOP_N, FEATURE_LOOKBACK,
-    FETCH_WORKERS, SIGNALS_CACHE, MODEL_CACHE, STOCK_DATA_CACHE,
+    UNIVERSE_SIZE, SIGNAL_TOP_N, HORIZONS,
+    FEATURE_LOOKBACK, FETCH_WORKERS,
+    SIGNALS_CACHE, CACHE_DIR,
     QLIB_DATA_PATH, TZ,
 )
 
 logger = logging.getLogger(__name__)
 
+FEATURE_COLS = [
+    "ret1", "ret5", "ret10", "ret20",
+    "vol_rv5", "vol_rv10", "vol_rv20",
+    "vol_ratio5", "vol_ratio20",
+    "rsi14", "bb_pos", "macd_sig", "hi20_pos",
+]
+
 
 # ── universe ──────────────────────────────────────────────────────────────────
 
 def get_csi300_universe() -> list[str]:
-    """Return 6-digit stock codes in CSI300."""
     try:
         df = ak.index_stock_cons_weight_csindex(symbol="000300")
-        codes = df["成分券代码"].astype(str).str.zfill(6).tolist()
-        return codes
+        return df["成分券代码"].astype(str).str.zfill(6).tolist()
     except Exception:
         pass
-    # fallback: use spot data market-cap top stocks
     try:
         spot = ak.stock_zh_a_spot_em()
         spot["总市值"] = pd.to_numeric(spot.get("总市值", spot.get("市值", 0)), errors="coerce")
-        spot = spot.dropna(subset=["总市值"]).nlargest(UNIVERSE_SIZE, "总市值")
-        return spot["代码"].astype(str).str.zfill(6).tolist()
+        return spot.dropna(subset=["总市值"]).nlargest(UNIVERSE_SIZE, "总市值")["代码"].astype(str).str.zfill(6).tolist()
     except Exception:
         return []
 
 
-# ── AKShare feature engineering ───────────────────────────────────────────────
+# ── AKShare 数据获取 ───────────────────────────────────────────────────────────
 
-def _fetch_one_stock(code: str, start: str, end: str) -> tuple[str, pd.DataFrame | None]:
+def _fetch_one(code: str, start: str, end: str) -> tuple[str, pd.DataFrame | None]:
     try:
         df = ak.stock_zh_a_hist(
             symbol=code, period="daily",
@@ -69,39 +75,34 @@ def _fetch_one_stock(code: str, start: str, end: str) -> tuple[str, pd.DataFrame
         df = df.rename(columns={
             "日期": "date", "开盘": "open", "收盘": "close",
             "最高": "high", "最低": "low", "成交量": "volume",
-            "成交额": "amount", "涨跌幅": "pct",
         })
         df["date"] = pd.to_datetime(df["date"])
-        df = df.set_index("date").sort_index()
-        return code, df
+        return code, df.set_index("date").sort_index()
     except Exception:
         return code, None
 
 
-def fetch_stock_data(codes: list[str], lookback: int = FEATURE_LOOKBACK,
-                     progress_cb: Optional[Callable] = None) -> dict[str, pd.DataFrame]:
-    """Parallel-fetch OHLCV for each code; returns {code: df}."""
+def fetch_stock_data(codes: list[str], progress_cb: Optional[Callable] = None) -> dict[str, pd.DataFrame]:
     tz = pytz.timezone(TZ)
-    end = datetime.now(tz).strftime("%Y%m%d")
-    start = (datetime.now(tz) - timedelta(days=lookback + 30)).strftime("%Y%m%d")
-
+    end   = datetime.now(tz).strftime("%Y%m%d")
+    start = (datetime.now(tz) - timedelta(days=FEATURE_LOOKBACK + 40)).strftime("%Y%m%d")
     results: dict[str, pd.DataFrame] = {}
-    total = len(codes)
     done = 0
     with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as pool:
-        futures = {pool.submit(_fetch_one_stock, c, start, end): c for c in codes}
+        futures = {pool.submit(_fetch_one, c, start, end): c for c in codes}
         for fut in as_completed(futures):
             code, df = fut.result()
-            if df is not None and len(df) >= 30:
+            if df is not None and len(df) >= 40:
                 results[code] = df
             done += 1
             if progress_cb:
-                progress_cb(done / total)
+                progress_cb(done / len(codes))
     return results
 
 
-def _compute_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Compute technical features for a single stock DataFrame."""
+# ── 特征工程 ──────────────────────────────────────────────────────────────────
+
+def _compute_features(df: pd.DataFrame, code: str) -> pd.DataFrame:
     c = df["close"].astype(float)
     v = df["volume"].astype(float)
 
@@ -113,117 +114,120 @@ def _compute_features(df: pd.DataFrame) -> pd.DataFrame:
     feat["vol_ratio5"]  = v / v.rolling(5).mean()
     feat["vol_ratio20"] = v / v.rolling(20).mean()
 
-    # RSI-14
     delta = c.diff()
     gain  = delta.clip(lower=0).rolling(14).mean()
     loss  = (-delta.clip(upper=0)).rolling(14).mean()
     feat["rsi14"] = 100 - (100 / (1 + gain / loss.replace(0, 1e-9)))
 
-    # Bollinger position
-    ma20  = c.rolling(20).mean()
+    ma20 = c.rolling(20).mean()
     std20 = c.rolling(20).std()
     feat["bb_pos"] = (c - ma20) / (2 * std20.replace(0, 1e-9))
 
-    # MACD signal
     ema12 = c.ewm(span=12, adjust=False).mean()
     ema26 = c.ewm(span=26, adjust=False).mean()
     macd  = ema12 - ema26
     feat["macd_sig"] = macd - macd.ewm(span=9, adjust=False).mean()
-
-    # Price vs. 20-day high (momentum)
     feat["hi20_pos"] = c / c.rolling(20).max()
 
-    # Next-day return as label
-    feat["label"] = c.pct_change(1).shift(-1)
+    # 各周期几何平均日收益率（前向标签）
+    for n in HORIZONS:
+        feat[f"label_{n}"] = (c.shift(-n) / c) ** (1.0 / n) - 1
 
-    feat["code"] = df.name if hasattr(df, "name") else "unknown"
-    return feat.dropna()
+    feat["code"] = code
+    # 只丢弃特征为 NaN 的行，标签 NaN 留给各模型自己处理
+    return feat.dropna(subset=FEATURE_COLS)
 
 
 def build_panel(stock_data: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    """Stack per-stock feature frames into a cross-sectional panel."""
     frames = []
     for code, df in stock_data.items():
-        df = df.copy()
-        df.name = code
         try:
-            feat = _compute_features(df)
-            feat["code"] = code
-            frames.append(feat)
+            frames.append(_compute_features(df, code))
         except Exception:
             pass
     if not frames:
         return pd.DataFrame()
-    panel = pd.concat(frames).sort_index()
-    return panel
+    return pd.concat(frames).sort_index()
 
 
-FEATURE_COLS = [
-    "ret1", "ret5", "ret10", "ret20",
-    "vol_rv5", "vol_rv10", "vol_rv20",
-    "vol_ratio5", "vol_ratio20",
-    "rsi14", "bb_pos", "macd_sig", "hi20_pos",
-]
+# ── 训练 ──────────────────────────────────────────────────────────────────────
 
-
-def train_lgbm(panel: pd.DataFrame) -> lgb.Booster:
-    """Train LightGBM on historical cross-sectional panel."""
-    # Use all but the last trading day for training
+def train_lgbm_horizon(panel: pd.DataFrame, horizon: int) -> lgb.Booster:
+    """训练预测 horizon 日 GMR 的 LightGBM 模型。"""
+    label_col = f"label_{horizon}"
     dates = panel.index.unique().sort_values()
-    if len(dates) < 10:
-        raise ValueError("Not enough history to train model.")
-    train_dates = dates[:-1]
-    train = panel[panel.index.isin(train_dates)].dropna(subset=FEATURE_COLS + ["label"])
+
+    # 最后 horizon+5 个交易日没有完整的前向标签，排除
+    if len(dates) <= horizon + 5:
+        raise ValueError(f"数据不足以训练 {horizon}日 模型（共 {len(dates)} 个交易日）")
+    cutoff = dates[-(horizon + 5)]
+    train = panel[panel.index <= cutoff].dropna(subset=FEATURE_COLS + [label_col])
+    if len(train) < 100:
+        raise ValueError(f"{horizon}日 模型训练样本不足：{len(train)} 条")
 
     X = train[FEATURE_COLS].values
-    y = train["label"].values
-
-    # Cross-sectional rank normalise labels per day
-    rank_labels = (
-        train.assign(_y=y)
+    # 截面 rank 归一化（对齐 qlib 做法）
+    rank_y = (
+        train.assign(_y=train[label_col])
         .groupby(level=0)["_y"]
         .rank(pct=True)
         .values - 0.5
     )
-
-    dtrain = lgb.Dataset(X, label=rank_labels)
     params = {**LGBM_PARAMS}
     n_est = params.pop("n_estimators", 400)
     model = lgb.train(
-        params, dtrain,
+        params,
+        lgb.Dataset(X, label=rank_y),
         num_boost_round=n_est,
         callbacks=[lgb.log_evaluation(period=LGBM_VERBOSE_EVAL)],
     )
+    logger.info("训练完成：%d日 模型，样本数=%d", horizon, len(train))
     return model
 
 
-def predict_signals(
+# ── 预测 ──────────────────────────────────────────────────────────────────────
+
+def predict_top_n(
     model: lgb.Booster,
     panel: pd.DataFrame,
+    horizon: int,
     spot_df: Optional[pd.DataFrame] = None,
-) -> pd.DataFrame:
-    """Predict scores for the latest trading day."""
+    n: int = SIGNAL_TOP_N,
+) -> list[dict]:
+    """用最新交易日特征预测，返回 top-n 列表。"""
     last_date = panel.index.max()
     latest = panel[panel.index == last_date].copy()
     if latest.empty:
-        return pd.DataFrame()
+        return []
+
     X = latest[FEATURE_COLS].fillna(0).values
+    latest = latest.copy()
     latest["score"] = model.predict(X)
-    latest = latest.sort_values("score", ascending=False)
+    latest = latest.sort_values("score", ascending=False).head(n)
 
-    # Attach names from spot data if available
-    if spot_df is not None and "代码" in spot_df.columns:
-        name_map = spot_df.set_index("代码")["名称"].to_dict() if "名称" in spot_df.columns else {}
-        latest["name"] = latest["code"].map(name_map).fillna("")
-    else:
-        latest["name"] = ""
-    return latest[["code", "name", "score"] + FEATURE_COLS].reset_index()
+    name_map: dict = {}
+    if spot_df is not None and "代码" in spot_df.columns and "名称" in spot_df.columns:
+        name_map = spot_df.set_index("代码")["名称"].to_dict()
+
+    result = []
+    for _, row in latest.iterrows():
+        code = row["code"]
+        # 实际预测的 GMR（非 rank 分数）
+        label_col = f"label_{horizon}"
+        gmr_val = float(row[label_col]) if label_col in row and pd.notna(row[label_col]) else None
+        result.append({
+            "code":         code,
+            "name":         name_map.get(code, ""),
+            "rank_score":   round(float(row["score"]), 4),
+            "gmr_daily":    round(gmr_val * 100, 4) if gmr_val is not None else None,
+            "total_ret":    round(((1 + gmr_val) ** horizon - 1) * 100, 2) if gmr_val is not None else None,
+        })
+    return result
 
 
-# ── qlib mode ─────────────────────────────────────────────────────────────────
+# ── qlib 模式 ────────────────────────────────────────────────────────────────
 
 def _qlib_available() -> bool:
-    # qlib 必须能 import，且本地二进制数据目录非空
     try:
         import qlib  # noqa: F401
     except ImportError:
@@ -232,67 +236,53 @@ def _qlib_available() -> bool:
     return data_path.exists() and any(data_path.iterdir())
 
 
-def generate_signals_qlib(progress_cb: Optional[Callable] = None) -> pd.DataFrame:
-    """Use qlib Alpha158 + LGBModel for signal generation."""
+def _generate_signals_qlib(progress_cb: Optional[Callable] = None) -> dict:
+    """qlib Alpha158 + 多周期 LGBModel。"""
     import qlib
     from qlib.config import REG_CN
     from qlib.contrib.data.handler import Alpha158
     from qlib.contrib.model.gbdt import LGBModel
     from qlib.data.dataset import DatasetH
-    from qlib.data.dataset.handler import DataHandlerLP
 
     tz = pytz.timezone(TZ)
-    today = datetime.now(tz)
-    train_end = (today - timedelta(days=365)).strftime("%Y-%m-%d")
-    pred_start = (today - timedelta(days=10)).strftime("%Y-%m-%d")
+    today      = datetime.now(tz)
+    train_end  = (today - timedelta(days=365)).strftime("%Y-%m-%d")
+    pred_start = (today - timedelta(days=30)).strftime("%Y-%m-%d")
     pred_end   = today.strftime("%Y-%m-%d")
 
     qlib.init(provider_uri=QLIB_DATA_PATH, region=REG_CN)
-    if progress_cb:
-        progress_cb(0.2)
+    if progress_cb: progress_cb(0.1)
 
-    handler = Alpha158(
-        start_time="2020-01-01",
-        end_time=pred_end,
-        fit_start_time="2020-01-01",
-        fit_end_time=train_end,
-        instruments="csi300",
-    )
-    dataset = DatasetH(
-        handler=handler,
-        segments={
-            "train": ("2020-01-01", train_end),
-            "test":  (pred_start, pred_end),
-        },
-    )
-    if progress_cb:
-        progress_cb(0.5)
+    out: dict = {}
+    for i, h in enumerate(HORIZONS):
+        handler = Alpha158(
+            start_time="2020-01-01", end_time=pred_end,
+            fit_start_time="2020-01-01", fit_end_time=train_end,
+            instruments="csi300",
+            label=[f"Ref($close, -{h}) / $close - 1"],   # h日总收益
+        )
+        dataset = DatasetH(
+            handler=handler,
+            segments={"train": ("2020-01-01", train_end), "test": (pred_start, pred_end)},
+        )
+        model = LGBModel(
+            loss="mse", colsample_bytree=0.8879, learning_rate=0.1,
+            subsample=0.8789, num_leaves=63, max_depth=6,
+            num_boost_round=300, early_stopping_rounds=LGBM_EARLY_STOP,
+        )
+        model.fit(dataset)
+        pred = model.predict(dataset, segment="test").reset_index()
+        pred.columns = ["date", "code", "score"]
+        latest = pred[pred["date"] == pred["date"].max()].sort_values("score", ascending=False)
+        out[f"h{h}"] = latest.head(SIGNAL_TOP_N)[["code", "score"]].assign(
+            name="", gmr_daily=None, total_ret=None
+        ).to_dict("records")
+        if progress_cb: progress_cb(0.1 + (i + 1) / len(HORIZONS) * 0.85)
 
-    model = LGBModel(
-        loss="mse",
-        colsample_bytree=LGBM_PARAMS["colsample_bytree"],
-        learning_rate=0.1,
-        subsample=LGBM_PARAMS["subsample"],
-        num_leaves=LGBM_PARAMS["num_leaves"],
-        max_depth=LGBM_PARAMS["max_depth"],
-        num_boost_round=300,
-        early_stopping_rounds=LGBM_EARLY_STOP,
-    )
-    model.fit(dataset)
-    if progress_cb:
-        progress_cb(0.85)
-
-    pred = model.predict(dataset, segment="test")
-    pred_df = pred.reset_index()
-    pred_df.columns = ["date", "code", "score"]
-    latest_date = pred_df["date"].max()
-    result = pred_df[pred_df["date"] == latest_date].sort_values("score", ascending=False)
-    if progress_cb:
-        progress_cb(1.0)
-    return result.reset_index(drop=True)
+    return out
 
 
-# ── main entry ─────────────────────────────────────────────────────────────────
+# ── 主入口 ────────────────────────────────────────────────────────────────────
 
 def generate_signals(
     mode: str = "auto",
@@ -300,145 +290,123 @@ def generate_signals(
     use_cache: bool = True,
 ) -> dict:
     """
-    Generate LightGBM stock signals.
+    生成多周期选股信号。
 
-    Returns dict with keys:
-      mode, updated_at, top_buy (list), top_sell (list), feature_importance (list)
+    返回 dict：
+      mode, updated_at, error
+      h5  / h10 / h20  : list[{code, name, rank_score, gmr_daily, total_ret}]
+      feature_importance: {h5: [...], h10: [...], h20: [...]}
     """
-    # ── check cache freshness ─────────────────────────────────────────────────
+    tz = pytz.timezone(TZ)
+
     if use_cache and SIGNALS_CACHE.exists():
         try:
             data = json.loads(SIGNALS_CACHE.read_text())
-            updated = datetime.fromisoformat(data["updated_at"])
-            age_h = (datetime.now(pytz.timezone(TZ)) - updated).total_seconds() / 3600
+            age_h = (datetime.now(tz) - datetime.fromisoformat(data["updated_at"])).total_seconds() / 3600
             if age_h < 12:
                 return data
         except Exception:
             pass
 
-    tz = pytz.timezone(TZ)
-    updated_at = datetime.now(tz).isoformat()
-
-    # ── choose mode ───────────────────────────────────────────────────────────
     effective_mode = mode
     if mode == "auto":
         effective_mode = "qlib" if _qlib_available() else "akshare"
 
-    result: dict = {"mode": effective_mode, "updated_at": updated_at,
-                    "top_buy": [], "top_sell": [], "feature_importance": [],
-                    "error": None}
+    result: dict = {
+        "mode": effective_mode,
+        "updated_at": datetime.now(tz).isoformat(),
+        "h5": [], "h10": [], "h20": [],
+        "feature_importance": {},
+        "error": None,
+    }
+
     try:
         if effective_mode == "qlib":
-            signals_df = generate_signals_qlib(progress_cb)
-            top_buy  = signals_df.head(SIGNAL_TOP_N)[["code", "score"]].to_dict("records")
-            top_sell = signals_df.tail(SIGNAL_TOP_N)[["code", "score"]].to_dict("records")
-            result["top_buy"]  = top_buy
-            result["top_sell"] = top_sell
+            horizon_data = _generate_signals_qlib(progress_cb)
+            result.update(horizon_data)
         else:
-            # AKShare mode
-            if progress_cb:
-                progress_cb(0.05)
+            # ── AKShare 模式 ──────────────────────────────────────────────────
+            if progress_cb: progress_cb(0.03)
             codes = get_csi300_universe()[:UNIVERSE_SIZE]
             if not codes:
-                raise ValueError("Failed to get stock universe.")
+                raise ValueError("无法获取股票池")
 
-            # Try to reuse cached stock data
+            # 使用缓存的 OHLCV 数据
             stock_data: dict[str, pd.DataFrame] = {}
+            STOCK_DATA_CACHE = CACHE_DIR / "stock_data.pkl"
             if use_cache and STOCK_DATA_CACHE.exists():
                 try:
                     cached = pickle.loads(STOCK_DATA_CACHE.read_bytes())
-                    stamp  = cached.get("timestamp", 0)
-                    age_h  = (datetime.now(tz).timestamp() - stamp) / 3600
+                    age_h  = (datetime.now(tz).timestamp() - cached.get("timestamp", 0)) / 3600
                     if age_h < 12:
                         stock_data = cached["data"]
                 except Exception:
                     pass
 
             if not stock_data:
-                if progress_cb:
-                    progress_cb(0.1)
-                fetched_pct = [0.0]
-
-                def _pcb(p: float) -> None:
-                    fetched_pct[0] = p
-                    if progress_cb:
-                        progress_cb(0.1 + p * 0.4)
-
-                stock_data = fetch_stock_data(codes, progress_cb=_pcb)
+                if progress_cb: progress_cb(0.05)
+                stock_data = fetch_stock_data(
+                    codes,
+                    progress_cb=lambda p: progress_cb(0.05 + p * 0.35) if progress_cb else None,
+                )
                 STOCK_DATA_CACHE.write_bytes(pickle.dumps({
-                    "timestamp": datetime.now(tz).timestamp(),
-                    "data": stock_data,
+                    "timestamp": datetime.now(tz).timestamp(), "data": stock_data,
                 }))
 
-            if progress_cb:
-                progress_cb(0.55)
-
+            if progress_cb: progress_cb(0.42)
             panel = build_panel(stock_data)
             if panel.empty:
-                raise ValueError("No panel data built.")
+                raise ValueError("面板数据为空")
 
-            if progress_cb:
-                progress_cb(0.65)
-
-            # Train or load model
-            model: lgb.Booster
-            if use_cache and MODEL_CACHE.exists():
-                try:
-                    ts_path = MODEL_CACHE.with_suffix(".ts")
-                    if ts_path.exists():
-                        age_h = (datetime.now(tz).timestamp() - float(ts_path.read_text())) / 3600
-                        if age_h < 24:
-                            model = pickle.loads(MODEL_CACHE.read_bytes())
-                        else:
-                            raise ValueError("stale")
-                    else:
-                        raise ValueError("no ts")
-                except Exception:
-                    model = train_lgbm(panel)
-                    MODEL_CACHE.write_bytes(pickle.dumps(model))
-                    MODEL_CACHE.with_suffix(".ts").write_text(str(datetime.now(tz).timestamp()))
-            else:
-                model = train_lgbm(panel)
-                MODEL_CACHE.write_bytes(pickle.dumps(model))
-                MODEL_CACHE.with_suffix(".ts").write_text(str(datetime.now(tz).timestamp()))
-
-            if progress_cb:
-                progress_cb(0.9)
-
-            # Get spot names
+            # 获取股票名称
             spot_df = None
             try:
                 spot_df = ak.stock_zh_a_spot_em()[["代码", "名称"]]
             except Exception:
                 pass
 
-            signals_df = predict_signals(model, panel, spot_df)
-            if signals_df.empty:
-                raise ValueError("Empty prediction result.")
+            # 为每个周期训练模型并预测
+            fi_dict: dict = {}
+            for i, h in enumerate(HORIZONS):
+                base_prog = 0.44 + i * 0.17
+                if progress_cb: progress_cb(base_prog)
 
-            top_buy  = signals_df.head(SIGNAL_TOP_N)[["code", "name", "score", "ret1", "ret5"]].to_dict("records")
-            top_sell = signals_df.tail(SIGNAL_TOP_N)[::-1][["code", "name", "score", "ret1", "ret5"]].to_dict("records")
+                model_path = CACHE_DIR / f"lgbm_h{h}.pkl"
+                model_ts   = CACHE_DIR / f"lgbm_h{h}.ts"
+                model: lgb.Booster
 
-            # Feature importance
-            imp = pd.Series(
-                dict(zip(model.feature_name(), model.feature_importance(importance_type="gain")))
-            ).nlargest(10)
-            result["feature_importance"] = [{"feature": k, "importance": float(v)}
-                                             for k, v in imp.items()]
-            result["top_buy"]  = [
-                {k: (round(v, 6) if isinstance(v, float) else v) for k, v in r.items()}
-                for r in top_buy
-            ]
-            result["top_sell"] = [
-                {k: (round(v, 6) if isinstance(v, float) else v) for k, v in r.items()}
-                for r in top_sell
-            ]
+                if use_cache and model_path.exists() and model_ts.exists():
+                    try:
+                        age_h = (datetime.now(tz).timestamp() - float(model_ts.read_text())) / 3600
+                        if age_h < 24:
+                            model = pickle.loads(model_path.read_bytes())
+                        else:
+                            raise ValueError("stale")
+                    except Exception:
+                        model = train_lgbm_horizon(panel, h)
+                        model_path.write_bytes(pickle.dumps(model))
+                        model_ts.write_text(str(datetime.now(tz).timestamp()))
+                else:
+                    model = train_lgbm_horizon(panel, h)
+                    model_path.write_bytes(pickle.dumps(model))
+                    model_ts.write_text(str(datetime.now(tz).timestamp()))
+
+                result[f"h{h}"] = predict_top_n(model, panel, h, spot_df)
+
+                # 特征重要性
+                imp = dict(zip(model.feature_name(), model.feature_importance(importance_type="gain")))
+                fi_dict[f"h{h}"] = [
+                    {"feature": k, "importance": float(v)}
+                    for k, v in sorted(imp.items(), key=lambda x: -x[1])[:8]
+                ]
+                if progress_cb: progress_cb(base_prog + 0.15)
+
+            result["feature_importance"] = fi_dict
+
     except Exception as exc:
         result["error"] = traceback.format_exc()
-        logger.exception("Signal generation failed: %s", exc)
+        logger.exception("信号生成失败: %s", exc)
 
-    if progress_cb:
-        progress_cb(1.0)
-
+    if progress_cb: progress_cb(1.0)
     SIGNALS_CACHE.write_text(json.dumps(result, ensure_ascii=False, default=str, indent=2))
     return result

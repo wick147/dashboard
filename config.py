@@ -40,8 +40,9 @@ HMM_LOOKBACK_DAYS = 500   # days of history for fitting
 
 # ── Universe & signals ────────────────────────────────────────────────────────
 UNIVERSE_SIZE = 100        # stocks to pull for LightGBM
-SIGNAL_TOP_N = 15          # buy / sell list length
-FEATURE_LOOKBACK = 80      # days of OHLCV history per stock
+SIGNAL_TOP_N = 10          # top N per horizon
+HORIZONS = [5, 10, 20]     # forward return horizons (trading days)
+FEATURE_LOOKBACK = 160     # calendar days of OHLCV history (needs room for 20d labels)
 FETCH_WORKERS = 12         # parallel AKShare fetch threads
 
 # ── Index symbols (AKShare convention) ───────────────────────────────────────
