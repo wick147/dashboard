@@ -362,7 +362,12 @@ if ak_sig:
     ak_updated    = ak_sig.get("updated_at", "")[:19]
     ak_data_start = ak_sig.get("data_start", "—")
     ak_data_end   = ak_sig.get("data_end",   "—")
-    st.success(f"🕗 最后计算: **{ak_updated}** &nbsp;|&nbsp; 行情数据区间: {ak_data_start} → {ak_data_end}")
+    ak_universe   = ak_sig.get("universe_count", "—")
+    st.success(
+        f"🕗 最后计算: **{ak_updated}** &nbsp;|&nbsp; "
+        f"股票池: **{ak_universe}** 支 &nbsp;|&nbsp; "
+        f"行情数据区间: {ak_data_start} → {ak_data_end}"
+    )
     _render_signal_tabs(ak_sig, "基于技术因子（全市场），")
     _render_feat_imp(ak_sig)
 else:

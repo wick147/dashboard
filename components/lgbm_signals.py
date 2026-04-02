@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import pickle
+import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
@@ -54,8 +55,23 @@ def get_full_market_universe() -> tuple[list[str], dict[str, str]]:
       - 排除北交所：代码开头为 8x / 4x（83xxxx / 87xxxx / 43xxxx）
       - 排除 ST / *ST：名称含 "ST"
     返回 (codes, {code: name})，按市值从大到小排序。
+    stock_zh_a_spot_em 带市值数据，若失败自动降级到 stock_info_a_code_name。
     """
-    spot = ak.stock_zh_a_spot_em()
+    spot = None
+    for attempt in range(3):
+        try:
+            spot = ak.stock_zh_a_spot_em()
+            break
+        except Exception as exc:
+            logger.warning("stock_zh_a_spot_em 第%d次失败: %s", attempt + 1, exc)
+            if attempt < 2:
+                time.sleep(15 * (attempt + 1))
+
+    if spot is None:
+        # 降级：stock_info_a_code_name 只有代码+名称，无市值排序
+        logger.warning("降级到 stock_info_a_code_name（无市值排序）")
+        info = ak.stock_info_a_code_name()
+        spot = info.rename(columns={"code": "代码", "name": "名称"})
 
     # 北交所代码段：83xxxx / 87xxxx / 43xxxx → 开头是 8 或 43
     mask_bse = spot["代码"].astype(str).str.match(r"^(8|43)")
@@ -504,9 +520,10 @@ def generate_signals(
                 if progress_cb: progress_cb(base_prog + 0.15)
 
             result["feature_importance"] = fi_dict
-            # 记录行情数据区间
-            result["data_start"] = str(panel.index.min())[:10]
-            result["data_end"]   = str(panel.index.max())[:10]
+            # 记录行情数据区间 & 股票池数量
+            result["data_start"]      = str(panel.index.min())[:10]
+            result["data_end"]        = str(panel.index.max())[:10]
+            result["universe_count"]  = len(codes)
 
     except Exception as exc:
         result["error"] = traceback.format_exc()
