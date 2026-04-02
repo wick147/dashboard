@@ -1,492 +1,372 @@
 """
 A股量化信号监控 Dashboard
-─────────────────────────────────────────────────────────────
-• AKShare 最新行情  （指数 / 板块 / 市场宽度）
-• LightGBM 选股信号 （qlib Alpha158 or AKShare 技术因子）
-• HMM 市场 Regime   （牛市 / 震荡 / 熊市 三态）
-• 财经早餐 / 要闻
-─────────────────────────────────────────────────────────────
-Run:
-    streamlit run dashboard/app.py
+专注于展示 GitHub Actions 自动运行的 Qlib Alpha158 LightGBM 多周期选股信号。
+
+数据来源: chenditc/investment_data (qlib 格式离线数据)
+不依赖任何实时行情 API。
 """
 from __future__ import annotations
 
-import sys
-import time
+import json
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 import pytz
+import requests
 import streamlit as st
 
-# ── path setup ────────────────────────────────────────────────────────────────
-DASH_DIR = Path(__file__).parent
-sys.path.insert(0, str(DASH_DIR))
+# ── Paths ─────────────────────────────────────────────────────────────────────
+DASH_DIR    = Path(__file__).parent
+RESULTS_DIR = DASH_DIR / "results"
 
-import json as _json
-import urllib.request
-from config import (TZ, SIGNAL_TOP_N, REGIME_COLORS,
-                    SIGNALS_AKSHARE_CACHE, SIGNALS_QLIB_CACHE, SIGNALS_CACHE)
-from components.market_data import load_market_data, get_index_history
-from components.lgbm_signals import generate_signals
-from components.hmm_regime import detect_regime
-from components.news import fetch_news
+# ── Constants ─────────────────────────────────────────────────────────────────
+TZ = "Asia/Shanghai"
 
-# ── GitHub Actions trigger ────────────────────────────────────────────────────
-_GH_REPO     = "wick147/dashboard"
-_GH_WORKFLOW = "daily.yml"
+REGIME_COLORS = {
+    "牛市 Bull":     "#EF5350",
+    "震荡 Sideways": "#FFA726",
+    "熊市 Bear":     "#26A69A",
+}
 
-def _trigger_workflow() -> tuple[bool, str]:
-    """POST workflow_dispatch to GitHub API. Returns (ok, message)."""
-    token = st.secrets.get("GITHUB_TOKEN", "") if hasattr(st, "secrets") else ""
-    import os
-    token = token or os.environ.get("GITHUB_TOKEN", "")
-    if not token:
-        return False, "未配置 GITHUB_TOKEN（请在 Streamlit Cloud Secrets 中添加）"
-    url = f"https://api.github.com/repos/{_GH_REPO}/actions/workflows/{_GH_WORKFLOW}/dispatches"
-    payload = _json.dumps({"ref": "main"}).encode()
-    req = urllib.request.Request(
-        url, data=payload, method="POST",
-        headers={
-            "Authorization": f"Bearer {token}",
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-            "Content-Type": "application/json",
-        },
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            return resp.status == 204, f"HTTP {resp.status}"
-    except urllib.error.HTTPError as e:
-        body = e.read().decode()[:200]
-        return False, f"HTTP {e.code}: {body}"
-    except Exception as e:
-        return False, str(e)
+HORIZONS = [
+    ("h5",  "📅 5日持仓"),
+    ("h10", "📅 10日持仓"),
+    ("h20", "📅 20日持仓"),
+]
 
-
-# ── page config ───────────────────────────────────────────────────────────────
+# ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="A股量化信号监控",
+    page_title="A股量化信号",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# ── custom CSS ────────────────────────────────────────────────────────────────
+# ── CSS ───────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    .metric-card {
-        background: #1e1e2e; border-radius: 10px; padding: 16px 20px;
-        border-left: 4px solid #7c3aed;
-    }
-    .regime-bull  { background: #3a1a1a; border-left: 4px solid #EF5350; }
-    .regime-bear  { background: #1a3a2a; border-left: 4px solid #26A69A; }
-    .regime-side  { background: #2a2a1a; border-left: 4px solid #FFA726; }
-    .news-item    { padding: 8px 0; border-bottom: 1px solid #333; }
-    .section-hdr  { font-size:1.2rem; font-weight:700; margin: 1rem 0 0.5rem; }
-    div[data-testid="stMetric"] label { font-size: 0.8rem !important; }
+.regime-card {
+    padding: 24px 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+.regime-card .rname {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+}
+.regime-card .rlabel {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    margin-top: 6px;
+}
+.info-banner {
+    background: rgba(100,181,246,0.08);
+    border-left: 4px solid #64B5F6;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0 20px 0;
+    font-size: 0.95rem;
+}
 </style>
 """, unsafe_allow_html=True)
 
 
-# ── helpers ───────────────────────────────────────────────────────────────────
+# ── Helpers ───────────────────────────────────────────────────────────────────
 
-def _now_bj() -> str:
-    tz = pytz.timezone(TZ)
-    return datetime.now(tz).strftime("%Y-%m-%d  %H:%M  CST")
-
-
-def _delta_color(val: float | None) -> str:
-    if val is None:
-        return "off"
-    # A股惯例：红涨绿跌，inverse = red in Streamlit
-    return "inverse" if val >= 0 else "normal"
-
-
-def _pct_fmt(v) -> str:
-    if v is None:
-        return "N/A"
-    return f"{v:+.2f}%"
-
-
-# ── sidebar ───────────────────────────────────────────────────────────────────
-
-with st.sidebar:
-    st.image("https://img.icons8.com/fluency/48/stocks.png", width=48)
-    st.title("A股量化监控")
-    st.caption(_now_bj())
-    st.divider()
-    st.caption("🕗 AKShare 信号每日 08:00 CST 自动运行\n\n"
-               "🧪 Qlib 信号需本地手动触发")
-    refresh_btn = st.button("🔄 刷新行情/Regime/新闻", use_container_width=True)
-
-
-# ── header ────────────────────────────────────────────────────────────────────
-
-st.markdown("## 📊 A股量化信号监控 Dashboard")
-st.caption(f"更新时间: {_now_bj()}")
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 1. Market overview
-# ─────────────────────────────────────────────────────────────────────────────
-st.markdown('<p class="section-hdr">📈 指数行情</p>', unsafe_allow_html=True)
-
-with st.spinner("加载行情数据..."):
-    market = load_market_data() if not refresh_btn else __import__(
-        "components.market_data", fromlist=["fetch_market_data"]
-    ).fetch_market_data()
-
-# Index metrics
-idx_df = pd.DataFrame(market.get("indices", []))
-if not idx_df.empty:
-    cols = st.columns(len(idx_df))
-    for i, row in idx_df.iterrows():
-        chg = row.get("涨跌幅")
-        price = row.get("最新价")
-        delta_color = _delta_color(chg)
-        with cols[i]:
-            st.metric(
-                label=row["名称"],
-                value=f"{price:,.2f}" if price else "N/A",
-                delta=_pct_fmt(chg),
-                delta_color=delta_color,
-            )
-
-# Market breadth
-breadth = market.get("breadth", {})
-if breadth.get("up") is not None:
-    st.markdown("")
-    b1, b2, b3, b4, b5 = st.columns(5)
-    b1.metric("上涨", breadth.get("up", "-"), delta_color="off")
-    b2.metric("下跌", breadth.get("down", "-"), delta_color="off")
-    b3.metric("平盘", breadth.get("flat", "-"), delta_color="off")
-    b4.metric("涨停", breadth.get("limit_up", "-"), delta_color="off")
-    b5.metric("跌停", breadth.get("limit_down", "-"), delta_color="off")
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 2. HMM Regime (left) + Sector heatmap (right)
-# ─────────────────────────────────────────────────────────────────────────────
-st.markdown('<p class="section-hdr">🧠 HMM 市场状态 & 板块表现</p>', unsafe_allow_html=True)
-col_regime, col_sector = st.columns([1, 2])
-
-with col_regime:
-    with st.spinner("计算 HMM Regime..."):
-        hist_df = get_index_history()
-        regime_data: dict = {}
-        if hist_df is not None and not hist_df.empty:
-            try:
-                regime_data = detect_regime(hist_df, use_cache=(not refresh_btn))
-            except Exception as exc:
-                st.error(f"HMM 计算失败: {exc}")
-
-    if regime_data:
-        cur_regime = regime_data.get("current_regime", "未知")
-        color_map = REGIME_COLORS
-        cur_color = color_map.get(cur_regime, "#888")
-
-        regime_css = (
-            "regime-bull" if "Bull" in cur_regime
-            else "regime-bear" if "Bear" in cur_regime
-            else "regime-side"
-        )
-        st.markdown(f"""
-        <div class="metric-card {regime_css}">
-            <div style="font-size:0.85rem; color:#aaa">当前 Regime</div>
-            <div style="font-size:2rem; font-weight:bold; color:{cur_color}">{cur_regime}</div>
-        </div>""", unsafe_allow_html=True)
-
-        # State stats table
-        ss = regime_data.get("state_stats", [])
-        if ss:
-            ss_df = pd.DataFrame(ss)
-            ss_df = ss_df.rename(columns={
-                "regime": "状态", "mean_ret": "年化收益",
-                "mean_rv": "年化波动", "days": "天数", "pct": "占比%",
-            })
-            ss_df["年化收益"] = ss_df["年化收益"].map("{:.1%}".format)
-            ss_df["年化波动"] = ss_df["年化波动"].map("{:.1%}".format)
-            st.dataframe(
-                ss_df[["状态", "年化收益", "年化波动", "占比%"]],
-                use_container_width=True, hide_index=True,
-            )
-
-        # Regime history chart
-        hist = regime_data.get("history", [])
-        if hist:
-            hdf = pd.DataFrame(hist)
-            hdf["date"] = pd.to_datetime(hdf["date"])
-            hdf["color"] = hdf["regime"].map(color_map).fillna("#888")
-            hdf["y"] = 1
-
-            fig_r = px.bar(
-                hdf.tail(252), x="date", y="y", color="regime",
-                color_discrete_map=color_map,
-                height=160,
-                labels={"date": "", "y": "", "regime": ""},
-            )
-            fig_r.update_layout(
-                margin=dict(l=0, r=0, t=10, b=0),
-                legend=dict(orientation="h", y=-0.4),
-                plot_bgcolor="#0e1117",
-                paper_bgcolor="#0e1117",
-                showlegend=True,
-                bargap=0, barmode="stack",
-                xaxis=dict(showgrid=False, zeroline=False),
-                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-            )
-            st.plotly_chart(fig_r, use_container_width=True)
-    else:
-        st.info("等待 HMM 数据...")
-
-with col_sector:
-    sector_data = market.get("sector", [])
-    if sector_data:
-        sdf = pd.DataFrame(sector_data)
-        sdf["涨跌幅"] = pd.to_numeric(sdf.get("涨跌幅", 0), errors="coerce").fillna(0)
-        sdf = sdf.sort_values("涨跌幅", ascending=False)
-
-        fig_s = go.Figure(go.Bar(
-            x=sdf["涨跌幅"].values[:20],
-            y=sdf["板块名称"].values[:20],
-            orientation="h",
-            marker_color=[
-                "#EF5350" if v >= 0 else "#26A69A"
-                for v in sdf["涨跌幅"].values[:20]
-            ],
-            text=[f"{v:+.2f}%" for v in sdf["涨跌幅"].values[:20]],
-            textposition="outside",
-        ))
-        fig_s.update_layout(
-            height=420,
-            margin=dict(l=100, r=60, t=20, b=20),
-            plot_bgcolor="#0e1117",
-            paper_bgcolor="#0e1117",
-            xaxis=dict(showgrid=False, zeroline=True, zerolinecolor="#555",
-                       ticksuffix="%", color="#aaa"),
-            yaxis=dict(showgrid=False, color="#ddd", tickfont=dict(size=11)),
-        )
-        st.plotly_chart(fig_s, use_container_width=True)
-    else:
-        st.info("板块数据不可用")
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 3. LightGBM Signals
-# ─────────────────────────────────────────────────────────────────────────────
-st.markdown('<p class="section-hdr">🤖 LightGBM 选股信号</p>', unsafe_allow_html=True)
-
-# ── 共用渲染函数 ──────────────────────────────────────────────────────────────
-
-def _load_cache(path) -> dict | None:
-    if path.exists():
-        try:
-            d = _json.loads(path.read_text())
-            if not d.get("error") and any(d.get(f"h{h}") for h in [5, 10, 20]):
-                return d
-        except Exception:
-            pass
-    return None
-
-
-def _render_horizon_table(items: list[dict]) -> None:
-    if not items:
-        st.info("暂无数据")
-        return
-    df = pd.DataFrame(items)
-    df.insert(0, "排名", range(1, len(df) + 1))
-    df = df.rename(columns={"code": "代码", "name": "名称", "rank_score": "截面排名分"})
-    df["截面排名分"] = df["截面排名分"].map(lambda x: f"{float(x):.4f}")
-    show_cols = [c for c in ["排名", "代码", "名称", "截面排名分"] if c in df.columns]
-    st.dataframe(df[show_cols], use_container_width=True, hide_index=True)
-
-
-def _render_signal_tabs(sig: dict, caption_prefix: str) -> None:
-    tab5, tab10, tab20 = st.tabs(["📅 5日", "📅 10日", "📅 20日"])
-    for tab, h in zip([tab5, tab10, tab20], [5, 10, 20]):
-        with tab:
-            st.caption(
-                f"**{h}日截面排名分 TOP 10** — {caption_prefix}"
-                "分数越高代表模型认为该股跑赢同期均值的概率越大，**非绝对收益预测**。"
-            )
-            _render_horizon_table(sig.get(f"h{h}", []))
-
-
-def _render_feat_imp(sig: dict) -> None:
-    fi = sig.get("feature_importance", {})
-    if not fi:
-        return
-    with st.expander("📊 各周期特征重要性"):
-        fi_tabs = st.tabs(["5日模型", "10日模型", "20日模型"])
-        for fi_tab, hkey in zip(fi_tabs, ["h5", "h10", "h20"]):
-            with fi_tab:
-                fi_list = fi.get(hkey, [])
-                if fi_list:
-                    fi_df = pd.DataFrame(fi_list).sort_values("importance", ascending=True)
-                    fig = go.Figure(go.Bar(
-                        x=fi_df["importance"], y=fi_df["feature"],
-                        orientation="h", marker_color="#7c3aed",
-                    ))
-                    fig.update_layout(
-                        height=260, margin=dict(l=80, r=20, t=10, b=20),
-                        plot_bgcolor="#0e1117", paper_bgcolor="#0e1117",
-                        xaxis=dict(showgrid=False, color="#aaa"),
-                        yaxis=dict(showgrid=False, color="#ddd"),
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
-
-
-# one-time migration: 把旧 signals.json 迁移到 signals_akshare.json
-if not SIGNALS_AKSHARE_CACHE.exists() and SIGNALS_CACHE.exists():
+def _load(path: Path) -> dict | None:
     try:
-        _old = _json.loads(SIGNALS_CACHE.read_text())
-        if _old.get("mode") == "akshare" and not _old.get("error"):
-            SIGNALS_AKSHARE_CACHE.write_text(
-                _json.dumps(_old, ensure_ascii=False, indent=2)
-            )
+        return json.loads(path.read_text())
     except Exception:
-        pass
+        return None
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 3a. AKShare 信号面板
-# ─────────────────────────────────────────────────────────────────────────────
-st.markdown('<p class="section-hdr">📡 AKShare 技术因子信号</p>', unsafe_allow_html=True)
-st.caption("GitHub Actions 每日 **08:00 CST** 自动运行 · 全市场除北交所/ST · 13个技术因子")
+def _fmt_dt(iso: str | None) -> str:
+    if not iso:
+        return "—"
+    try:
+        dt = datetime.fromisoformat(iso).astimezone(pytz.timezone(TZ))
+        return dt.strftime("%Y-%m-%d %H:%M CST")
+    except Exception:
+        return iso
 
-ak_sig = _load_cache(SIGNALS_AKSHARE_CACHE)
 
-if ak_sig:
-    ak_updated    = ak_sig.get("updated_at", "")[:19]
-    ak_data_start = ak_sig.get("data_start", "—")
-    ak_data_end   = ak_sig.get("data_end",   "—")
-    ak_universe   = ak_sig.get("universe_count", "—")
-    st.success(
-        f"🕗 最后计算: **{ak_updated}** &nbsp;|&nbsp; "
-        f"股票池: **{ak_universe}** 支 &nbsp;|&nbsp; "
-        f"行情数据区间: {ak_data_start} → {ak_data_end}"
+def _trigger_workflow() -> tuple[bool, str]:
+    """通过 GitHub API 触发 qlib-signals workflow。"""
+    token = st.secrets.get("GITHUB_TOKEN", "")
+    repo  = st.secrets.get("GITHUB_REPO", "wick147/dashboard")
+    if not token:
+        return False, "未配置 GITHUB_TOKEN（在 Streamlit Secrets 中设置后生效）"
+    url  = f"https://api.github.com/repos/{repo}/actions/workflows/qlib-signals.yml/dispatches"
+    resp = requests.post(
+        url,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept":        "application/vnd.github+json",
+        },
+        json={"ref": "main"},
+        timeout=10,
     )
-    _render_signal_tabs(ak_sig, "基于技术因子（全市场），")
-    _render_feat_imp(ak_sig)
-else:
-    st.info("暂无 AKShare 信号缓存，GitHub Actions 将于下一个工作日 08:00 自动生成，或点下方按钮手动触发。")
+    if resp.status_code == 204:
+        return True, "✅ 已触发！约 40-60 分钟后结果自动更新到仓库。"
+    return False, f"触发失败 ({resp.status_code}): {resp.text[:200]}"
 
-if st.button("▶️ 触发 GitHub Actions 重跑", key="run_ak",
-             help="调用 GitHub API 触发 workflow_dispatch，Actions 约需 10-15 分钟"):
-    ok, msg = _trigger_workflow()
-    if ok:
-        st.success("✅ 已成功触发 GitHub Actions！约 10-15 分钟后信号自动更新，刷新页面即可看到新结果。")
+
+# ── Load cached results ───────────────────────────────────────────────────────
+signals = _load(RESULTS_DIR / "signals_qlib.json")
+regime  = _load(RESULTS_DIR / "regime.json")
+history = _load(RESULTS_DIR / "market_history.json")
+
+has_signals = signals and not signals.get("error") and any(
+    signals.get(k) for k in ["h5", "h10", "h20"]
+)
+
+# ── Sidebar ───────────────────────────────────────────────────────────────────
+with st.sidebar:
+    st.markdown("## 📊 A股量化信号监控")
+    st.caption("Qlib Alpha158 · LightGBM · GitHub Actions")
+    st.divider()
+
+    if has_signals:
+        st.markdown("**⏱ 最近更新**")
+        st.markdown(f"`{_fmt_dt(signals.get('updated_at'))}`")
+        st.markdown(f"**📅 预测日期** `{signals.get('pred_date', '—')}`")
+        t0 = signals.get("train_start", "")
+        t1 = signals.get("train_end", "")
+        if t0 and t1:
+            st.markdown("**📆 训练区间**")
+            st.markdown(f"`{t0}` ~ `{t1}`")
+    elif signals and signals.get("error"):
+        st.error("信号生成出错（见主页面详情）")
     else:
-        st.error(f"触发失败: {msg}")
+        st.info("暂无信号数据")
 
+    st.divider()
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 3b. Qlib Alpha158 信号面板
-# ─────────────────────────────────────────────────────────────────────────────
-st.markdown('<p class="section-hdr">🧪 Qlib Alpha158 信号</p>', unsafe_allow_html=True)
-st.caption("需本地 qlib 数据环境 · **158个** Alpha 因子 · 手动触发后 push 至 Dashboard")
+    if st.button("▶️ 触发 GitHub Actions 重跑", use_container_width=True, type="primary"):
+        with st.spinner("正在触发..."):
+            ok, msg = _trigger_workflow()
+        if ok:
+            st.success(msg)
+        else:
+            st.warning(msg)
 
-ql_sig = _load_cache(SIGNALS_QLIB_CACHE)
-
-if ql_sig:
-    ql_updated     = ql_sig.get("updated_at",  "")[:19]
-    ql_train_start = ql_sig.get("train_start", "—")
-    ql_train_end   = ql_sig.get("train_end",   "—")
-    ql_pred_date   = ql_sig.get("pred_date",   "—")
-    st.success(
-        f"🕗 最后计算: **{ql_updated}** &nbsp;|&nbsp; "
-        f"训练区间: {ql_train_start} → {ql_train_end} &nbsp;|&nbsp; "
-        f"预测日期: **{ql_pred_date}**"
+    st.divider()
+    st.caption(
+        "⏰ 每日 **09:30 CST** 自动运行\n\n"
+        "📦 数据: [chenditc/investment_data]"
+        "(https://github.com/chenditc/investment_data)"
     )
-    _render_signal_tabs(ql_sig, "基于 Alpha158（158个因子），")
-else:
-    st.info("暂无 Qlib 信号缓存。本地运行 `bash push_signals.sh` 后自动更新。")
 
+# ── Main ──────────────────────────────────────────────────────────────────────
+st.title("🤖 A股 Qlib Alpha158 选股信号")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 4. CSI300 price chart with regime overlay
-# ─────────────────────────────────────────────────────────────────────────────
-if hist_df is not None and not hist_df.empty and regime_data:
-    st.markdown('<p class="section-hdr">📉 沪深300 走势 + Regime 背景</p>', unsafe_allow_html=True)
-    hist_recent = hist_df.tail(252).copy()
-
-    fig_idx = go.Figure()
-    fig_idx.add_trace(go.Scatter(
-        x=hist_recent.index,
-        y=hist_recent["close"],
-        line=dict(color="#60a5fa", width=2),
-        name="沪深300",
-    ))
-
-    # Overlay regime bands
-    hist_map = {r["date"]: r["regime"] for r in regime_data.get("history", [])}
-    if hist_map:
-        idx_dates = hist_recent.index.strftime("%Y-%m-%d").tolist()
-        for i, d in enumerate(idx_dates):
-            regime = hist_map.get(d)
-            if regime:
-                col = REGIME_COLORS.get(regime, "rgba(128,128,128,0.1)")
-                fig_idx.add_vrect(
-                    x0=hist_recent.index[i],
-                    x1=hist_recent.index[min(i + 1, len(idx_dates) - 1)],
-                    fillcolor=col, opacity=0.12,
-                    layer="below", line_width=0,
-                )
-
-    fig_idx.update_layout(
-        height=350,
-        margin=dict(l=20, r=20, t=10, b=20),
-        plot_bgcolor="#0e1117",
-        paper_bgcolor="#0e1117",
-        xaxis=dict(showgrid=False, color="#aaa"),
-        yaxis=dict(showgrid=False, color="#aaa", tickformat=","),
-        legend=dict(orientation="h", y=1.08),
-        hovermode="x unified",
-    )
-    st.plotly_chart(fig_idx, use_container_width=True)
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 5. Morning briefing / news
-# ─────────────────────────────────────────────────────────────────────────────
-st.markdown('<p class="section-hdr">📰 财经早餐 / 要闻</p>', unsafe_allow_html=True)
-
-with st.spinner("加载要闻..."):
-    news_data = fetch_news(use_cache=(not refresh_btn))
-
-news_updated = news_data.get("updated_at", "")[:19]
-st.caption(f"新闻更新时间: {news_updated}")
-
-news_items = news_data.get("items", [])
-if news_items:
-    for item in news_items:
-        source  = item.get("source", "")
-        t       = item.get("time", "")
-        title   = item.get("title", "")
-        content = item.get("content", "")
-        if not title:
-            continue
-        time_str = t[:16] if len(t) >= 16 else t
-        badge = f"`{source}`" if source else ""
+# ── No-data / Error state ─────────────────────────────────────────────────────
+if not has_signals:
+    if signals and signals.get("error"):
+        st.error("上次运行出错，详情如下：")
+        with st.expander("错误日志"):
+            st.code(signals["error"][:2000])
+    else:
         st.markdown(
-            f'<div class="news-item">'
-            f'<span style="color:#888;font-size:0.8rem">{time_str}&nbsp;</span>'
-            f'<span style="color:#ccc;font-size:0.78rem">{badge}&nbsp;</span>'
-            f'<span style="font-weight:600">{title}</span>'
-            + (f'<br><span style="color:#999;font-size:0.8rem">{content[:120]}</span>' if content else "")
-            + "</div>",
+            '<div class="info-banner">'
+            '暂无信号数据。GitHub Actions 将于下一个工作日 09:30 CST 自动生成，'
+            '或点击左侧栏「触发 GitHub Actions 重跑」手动启动。'
+            '</div>',
             unsafe_allow_html=True,
         )
-else:
-    st.info("暂时没有新闻数据")
+    st.stop()
 
-# ─────────────────────────────────────────────────────────────────────────────
-# footer
-# ─────────────────────────────────────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════════════════════
+# Section 1 — 多周期持仓推荐
+# ═══════════════════════════════════════════════════════════════════════════════
+st.subheader("📋 多周期持仓推荐")
+st.caption(
+    f"预测日期: **{signals.get('pred_date', '—')}** · "
+    "股票池: CSI300 · "
+    "158个 Alpha 因子 · "
+    "截面排名分越高 = 预测超额收益越大"
+)
+
+tabs = st.tabs([label for _, label in HORIZONS])
+
+for tab, (key, label) in zip(tabs, HORIZONS):
+    with tab:
+        stocks = signals.get(key, [])
+        if not stocks:
+            st.info(f"{label} 暂无数据")
+            continue
+
+        df = pd.DataFrame(stocks)
+        df.index = range(1, len(df) + 1)
+        df.index.name = "排名"
+
+        rename = {"code": "代码", "name": "名称", "rank_score": "截面排名分"}
+        df = df.rename(columns={k: v for k, v in rename.items() if k in df.columns})
+
+        if "截面排名分" in df.columns:
+            df["截面排名分"] = df["截面排名分"].map(lambda x: f"{x:.4f}")
+
+        show = [c for c in ["代码", "名称", "截面排名分"] if c in df.columns]
+        st.dataframe(df[show], use_container_width=True, height=420)
+
+# ── Feature importance ────────────────────────────────────────────────────────
+feat_imp = signals.get("feature_importance", {})
+if any(feat_imp.get(k) for k in ["h5", "h10", "h20"]):
+    with st.expander("📊 特征重要性"):
+        fi_tabs = st.tabs(["5日模型", "10日模型", "20日模型"])
+        for fi_tab, (key, _) in zip(fi_tabs, HORIZONS):
+            with fi_tab:
+                items = feat_imp.get(key, [])
+                if not items:
+                    st.info("暂无数据")
+                    continue
+                fi_df = pd.DataFrame(items).sort_values("importance").tail(12)
+                fig = go.Figure(go.Bar(
+                    x=fi_df["importance"],
+                    y=fi_df["feature"],
+                    orientation="h",
+                    marker_color="#5C6BC0",
+                ))
+                fig.update_layout(
+                    height=340,
+                    margin=dict(l=0, r=20, t=10, b=0),
+                    xaxis_title="重要性 (gain)",
+                    yaxis_title=None,
+                    plot_bgcolor="rgba(0,0,0,0)",
+                )
+                st.plotly_chart(fig, use_container_width=True)
+
+st.divider()
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Section 2 — HMM 市场状态
+# ═══════════════════════════════════════════════════════════════════════════════
+if regime and not regime.get("error"):
+    st.subheader("🧠 市场状态 (HMM · 3状态高斯隐马尔可夫)")
+
+    col_left, col_right = st.columns([2, 3])
+
+    with col_left:
+        cur   = regime.get("current_regime", "震荡 Sideways")
+        color = REGIME_COLORS.get(cur, "#90A4AE")
+        st.markdown(
+            f'<div class="regime-card" style="background:{color};">'
+            f'<div class="rname">{cur}</div>'
+            f'<div class="rlabel">当前市场状态</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+        stats = regime.get("state_stats", [])
+        if stats:
+            rows = [{
+                "状态":    s.get("regime", "?"),
+                "年化收益": f"{s.get('mean_ret', 0)*100:.1f}%",
+                "年化波动": f"{s.get('mean_rv', 0)*100:.1f}%",
+                "占比":    f"{s.get('pct', 0):.1f}%",
+            } for s in stats]
+            st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+
+    with col_right:
+        hist = regime.get("history", [])
+        if hist:
+            h_df   = pd.DataFrame(hist).tail(252)
+            colors = [REGIME_COLORS.get(r, "#90A4AE") for r in h_df.get("regime", [])]
+
+            fig = go.Figure()
+            fig.add_trace(go.Bar(
+                x=h_df["date"],
+                y=[1] * len(h_df),
+                marker_color=colors,
+                showlegend=False,
+            ))
+            for name, c in REGIME_COLORS.items():
+                fig.add_trace(go.Bar(
+                    x=[None], y=[None],
+                    marker_color=c,
+                    name=name,
+                    showlegend=True,
+                ))
+            fig.update_layout(
+                title="近252个交易日市场状态",
+                height=220,
+                barmode="stack",
+                bargap=0,
+                margin=dict(l=0, r=0, t=36, b=0),
+                yaxis=dict(showticklabels=False, showgrid=False),
+                xaxis=dict(showgrid=False),
+                legend=dict(orientation="h", y=-0.25),
+                plot_bgcolor="rgba(0,0,0,0)",
+            )
+            st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Section 3 — CSI300 价格走势
+# ═══════════════════════════════════════════════════════════════════════════════
+if history and history.get("data"):
+    st.subheader("📈 沪深300走势")
+
+    data   = history["data"]
+    dates  = [d["date"] for d in data]
+    closes = [d["close"] for d in data]
+
+    fig = go.Figure()
+
+    # Regime 背景色带
+    if regime and regime.get("history"):
+        reg_map = {d["date"]: d.get("regime", "") for d in regime["history"]}
+        cur_reg, seg_start = None, None
+        for date in dates:
+            r = reg_map.get(date, cur_reg)
+            if r != cur_reg:
+                if cur_reg and seg_start:
+                    fig.add_vrect(
+                        x0=seg_start, x1=date,
+                        fillcolor=REGIME_COLORS.get(cur_reg, "#90A4AE"),
+                        opacity=0.12, layer="below", line_width=0,
+                    )
+                cur_reg, seg_start = r, date
+        if cur_reg and seg_start:
+            fig.add_vrect(
+                x0=seg_start, x1=dates[-1],
+                fillcolor=REGIME_COLORS.get(cur_reg, "#90A4AE"),
+                opacity=0.12, layer="below", line_width=0,
+            )
+
+    fig.add_trace(go.Scatter(
+        x=dates, y=closes,
+        mode="lines",
+        name="沪深300",
+        line=dict(color="#1E88E5", width=2),
+        hovertemplate="%{x}<br>收盘: %{y:.2f}<extra></extra>",
+    ))
+
+    fig.update_layout(
+        height=340,
+        margin=dict(l=0, r=0, t=10, b=0),
+        xaxis=dict(showgrid=False),
+        yaxis=dict(
+            title="收盘价",
+            showgrid=True,
+            gridcolor="rgba(128,128,128,0.15)",
+        ),
+        hovermode="x unified",
+        showlegend=False,
+        plot_bgcolor="rgba(0,0,0,0)",
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+# ── Footer ────────────────────────────────────────────────────────────────────
 st.divider()
 st.caption(
-    "数据来源: AKShare · 模型: qlib LightGBM Alpha158 / 技术因子 · HMM: hmmlearn · "
-    "仅供研究参考，不构成投资建议"
+    "📦 数据来源: [chenditc/investment_data](https://github.com/chenditc/investment_data) · "
+    "🤖 模型: qlib LightGBM Alpha158 (CSI300) · "
+    "📊 市场状态: HMM hmmlearn · "
+    "⚠️ 仅供研究参考，不构成投资建议"
 )

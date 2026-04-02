@@ -27,7 +27,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import (
     HMM_N_STATES, HMM_N_ITER, HMM_COVARIANCE,
-    HMM_LOOKBACK_DAYS, CSI300_SYMBOL,
+    HMM_LOOKBACK_DAYS,
     REGIME_CACHE, CACHE_DIR, TZ,
 )
 
