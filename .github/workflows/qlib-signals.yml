@@ -1,0 +1,62 @@
+name: Qlib Alpha158 选股信号
+
+on:
+  schedule:
+    # 北京时间 09:30 = UTC 01:30，周一到周五（开盘后跑，拿最新数据）
+    - cron: '30 1 * * 1-5'
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  qlib-signals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120  # 下载+训练预计 40-60 分钟
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyqlib
+
+      - name: Download qlib data (~518MB)
+        run: |
+          mkdir -p ~/.qlib/qlib_data/cn_data
+          curl -L --retry 3 --retry-delay 10 \
+            -o ~/.qlib/qlib_data/cn_data/qlib_bin.tar.gz \
+            "https://github.com/chenditc/investment_data/releases/latest/download/qlib_bin.tar.gz"
+
+      - name: Extract qlib data
+        run: |
+          tar -zxf ~/.qlib/qlib_data/cn_data/qlib_bin.tar.gz \
+            -C ~/.qlib/qlib_data/cn_data \
+            --strip-components=1
+          rm ~/.qlib/qlib_data/cn_data/qlib_bin.tar.gz
+          echo "数据目录股票数: $(ls ~/.qlib/qlib_data/cn_data/features/ | wc -l)"
+
+      - name: Run Qlib LightGBM signals (5/10/20日)
+        run: python run_qlib_signals.py
+
+      - name: Delete qlib data
+        if: always()  # 即使训练失败也删
+        run: rm -rf ~/.qlib
+
+      - name: Commit & push results
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add results/signals_qlib.json
+          git diff --staged --quiet \
+            || git commit -m "🤖 Qlib信号更新 $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M CST')"
+          git pull --rebase origin main
+          git push
