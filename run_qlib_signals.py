@@ -24,6 +24,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import pytz
+import requests
 
 DASH_DIR = Path(__file__).parent
 sys.path.insert(0, str(DASH_DIR))
@@ -109,6 +110,45 @@ def main() -> None:
     if signals.get("error"):
         log.error("LightGBM 信号生成失败:\n%s", signals["error"][:800])
         sys.exit(1)
+
+    # ── 补充中文股票名称（Eastmoney 原始 API，不依赖 AKShare）────────────────
+    log.info("  获取股票中文名称...")
+    name_map: dict[str, str] = {}
+    try:
+        for market in ["m:0+t:6,m:0+t:13,m:1+t:2,m:1+t:23"]:   # 沪深A股
+            resp = requests.get(
+                "http://push2.eastmoney.com/api/qt/clist/get",
+                params={
+                    "pn": 1, "pz": 5000, "po": 1, "np": 1,
+                    "fltt": 2, "invt": 2, "fid": "f3",
+                    "fs": market,
+                    "fields": "f12,f14",   # f12=代码, f14=名称
+                    "ut": "bd1d9ddb04089700cf9c27f6f7426281",
+                },
+                timeout=15,
+            )
+            items = resp.json().get("data", {}).get("diff", [])
+            for item in items:
+                code = str(item.get("f12", ""))
+                name = str(item.get("f14", ""))
+                if code and name:
+                    name_map[code] = name
+        log.info("  获取名称 %d 只", len(name_map))
+    except Exception as e:
+        log.warning("  名称获取失败（展示代码）: %s", e)
+
+    def _apply_names(stock_list: list) -> list:
+        for s in stock_list:
+            raw = s.get("code", "")           # e.g. "SH600588"
+            short = raw[2:] if raw[:2] in ("SH", "SZ", "BJ") else raw
+            s["name"] = name_map.get(short, short)
+        return stock_list
+
+    for key in ["h5", "h10", "h20"]:
+        signals[key] = _apply_names(signals.get(key, []))
+
+    SIGNALS_QLIB_CACHE.write_text(json.dumps(signals, ensure_ascii=False, indent=2))
+    log.info("  名称已写入 signals_qlib.json")
 
     log.info(
         "  完成  H5: %d只  H10: %d只  H20: %d只  预测日: %s",
