@@ -1,159 +1,159 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-04-02T15:11:47.102380+08:00",
+  "updated_at": "2026-04-02T16:50:50.079459+08:00",
   "h5": [
     {
       "code": "SH600588",
-      "name": "SH600588",
+      "name": "600588",
       "rank_score": 0.1122
     },
     {
       "code": "SH603993",
-      "name": "SH603993",
+      "name": "603993",
       "rank_score": 0.0658
     },
     {
       "code": "SH600115",
-      "name": "SH600115",
+      "name": "600115",
       "rank_score": 0.0588
     },
     {
       "code": "SH601868",
-      "name": "SH601868",
+      "name": "601868",
       "rank_score": 0.0581
     },
     {
       "code": "SH601698",
-      "name": "SH601698",
+      "name": "601698",
       "rank_score": 0.0575
     },
     {
       "code": "SH601166",
-      "name": "SH601166",
+      "name": "601166",
       "rank_score": 0.0568
     },
     {
       "code": "SH601169",
-      "name": "SH601169",
+      "name": "601169",
       "rank_score": 0.0563
     },
     {
       "code": "SH601658",
-      "name": "SH601658",
+      "name": "601658",
       "rank_score": 0.0556
     },
     {
       "code": "SH601668",
-      "name": "SH601668",
+      "name": "601668",
       "rank_score": 0.0525
     },
     {
       "code": "SH600919",
-      "name": "SH600919",
+      "name": "600919",
       "rank_score": 0.0521
     }
   ],
   "h10": [
     {
       "code": "SZ300251",
-      "name": "SZ300251",
+      "name": "300251",
       "rank_score": 0.1129
     },
     {
       "code": "SH600588",
-      "name": "SH600588",
+      "name": "600588",
       "rank_score": 0.0998
     },
     {
       "code": "SH600183",
-      "name": "SH600183",
+      "name": "600183",
       "rank_score": 0.0785
     },
     {
       "code": "SH603993",
-      "name": "SH603993",
+      "name": "603993",
       "rank_score": 0.0693
     },
     {
       "code": "SZ000630",
-      "name": "SZ000630",
+      "name": "000630",
       "rank_score": 0.0671
     },
     {
       "code": "SH601658",
-      "name": "SH601658",
+      "name": "601658",
       "rank_score": 0.0606
     },
     {
       "code": "SZ301269",
-      "name": "SZ301269",
+      "name": "301269",
       "rank_score": 0.0585
     },
     {
       "code": "SZ000651",
-      "name": "SZ000651",
+      "name": "000651",
       "rank_score": 0.0574
     },
     {
       "code": "SH600887",
-      "name": "SH600887",
+      "name": "600887",
       "rank_score": 0.0573
     },
     {
       "code": "SZ301236",
-      "name": "SZ301236",
+      "name": "301236",
       "rank_score": 0.0568
     }
   ],
   "h20": [
     {
       "code": "SH603993",
-      "name": "SH603993",
+      "name": "603993",
       "rank_score": 0.1158
     },
     {
       "code": "SZ300251",
-      "name": "SZ300251",
+      "name": "300251",
       "rank_score": 0.1142
     },
     {
       "code": "SH600183",
-      "name": "SH600183",
+      "name": "600183",
       "rank_score": 0.0897
     },
     {
       "code": "SZ300413",
-      "name": "SZ300413",
+      "name": "300413",
       "rank_score": 0.0877
     },
     {
       "code": "SZ000001",
-      "name": "SZ000001",
+      "name": "000001",
       "rank_score": 0.0856
     },
     {
       "code": "SH688111",
-      "name": "SH688111",
+      "name": "688111",
       "rank_score": 0.0804
     },
     {
       "code": "SH600588",
-      "name": "SH600588",
+      "name": "600588",
       "rank_score": 0.0792
     },
     {
       "code": "SH601169",
-      "name": "SH601169",
+      "name": "601169",
       "rank_score": 0.0779
     },
     {
       "code": "SZ301236",
-      "name": "SZ301236",
+      "name": "301236",
       "rank_score": 0.0767
     },
     {
       "code": "SH601658",
-      "name": "SH601658",
+      "name": "601658",
       "rank_score": 0.0753
     }
   ],
