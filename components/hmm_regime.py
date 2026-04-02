@@ -112,8 +112,9 @@ def detect_regime(hist_df: pd.DataFrame, use_cache: bool = True) -> dict:
 
     history = []
     for date, state in zip(feat_df.index, hidden_states):
+        parsed_date = pd.to_datetime(date, errors="coerce")
         history.append({
-            "date":   str(date)[:10],
+            "date":   parsed_date.strftime("%Y-%m-%d") if not pd.isna(parsed_date) else str(date)[:10],
             "state":  int(state),
             "regime": label_map[int(state)],
         })

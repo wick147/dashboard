@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import sys
 import time
 from datetime import datetime, timedelta
@@ -43,6 +44,217 @@ logging.basicConfig(
 )
 log = logging.getLogger("run_qlib_signals")
 
+NAME_API_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/123.0.0.0 Safari/537.36"
+    ),
+    "Accept": "*/*",
+    "Referer": "https://finance.sina.com.cn/",
+}
+
+
+def _normalize_stock_code(raw: str) -> str | None:
+    """Normalize a stock code into Qlib style, e.g. SH600588 / SZ000001."""
+    code = str(raw or "").strip().upper()
+    if len(code) >= 8 and code[:2] in {"SH", "SZ", "BJ"} and code[2:].isdigit():
+        return code[:8]
+
+    digits = re.sub(r"\D", "", code)
+    if len(digits) < 6:
+        return None
+    digits = digits[-6:]
+
+    prefix = "SH" if digits[0] in {"5", "6", "9"} else "SZ"
+    return f"{prefix}{digits}"
+
+
+def _vendor_symbol(code: str) -> str | None:
+    norm = _normalize_stock_code(code)
+    if not norm:
+        return None
+    market = norm[:2].lower()
+    return f"{market}{norm[2:]}"
+
+
+def _chunked(items: list[str], size: int) -> list[list[str]]:
+    return [items[i:i + size] for i in range(0, len(items), size)]
+
+
+def _extract_signal_codes(signals: dict) -> list[str]:
+    codes: set[str] = set()
+    for key in ["h5", "h10", "h20"]:
+        for stock in signals.get(key, []):
+            norm = _normalize_stock_code(stock.get("code", ""))
+            if norm:
+                codes.add(norm)
+    return sorted(codes)
+
+
+def _fetch_names_sina(codes: list[str]) -> dict[str, str]:
+    """
+    Fetch stock names from Sina HQ in small batches.
+
+    Example response line:
+      var hq_str_sh600588="用友网络,16.34,...";
+    """
+    if not codes:
+        return {}
+
+    session = requests.Session()
+    session.headers.update(NAME_API_HEADERS)
+
+    name_map: dict[str, str] = {}
+    symbols = []
+    symbol_to_code: dict[str, str] = {}
+
+    for code in codes:
+        symbol = _vendor_symbol(code)
+        if symbol:
+            symbols.append(symbol)
+            symbol_to_code[symbol] = _normalize_stock_code(code) or code
+
+    for chunk in _chunked(symbols, 120):
+        resp = session.get(
+            "https://hq.sinajs.cn/list=" + ",".join(chunk),
+            timeout=12,
+        )
+        resp.raise_for_status()
+
+        text = resp.content.decode("gb18030", errors="ignore")
+        for line in text.splitlines():
+            m = re.match(r'var hq_str_([a-z0-9]+)="([^"]*)";?', line.strip())
+            if not m:
+                continue
+            symbol, payload = m.groups()
+            name = payload.split(",", 1)[0].strip()
+            code = symbol_to_code.get(symbol)
+            if code and name:
+                name_map[code] = name
+
+    return name_map
+
+
+def _fetch_names_tencent(codes: list[str]) -> dict[str, str]:
+    """
+    Fallback name source from Tencent quote API.
+
+    Example response line:
+      v_sh600588="1~用友网络~600588~16.34~...";
+    """
+    if not codes:
+        return {}
+
+    session = requests.Session()
+    session.headers.update(NAME_API_HEADERS)
+
+    name_map: dict[str, str] = {}
+    symbols = []
+    symbol_to_code: dict[str, str] = {}
+
+    for code in codes:
+        symbol = _vendor_symbol(code)
+        if symbol:
+            symbols.append(symbol)
+            symbol_to_code[symbol] = _normalize_stock_code(code) or code
+
+    for chunk in _chunked(symbols, 80):
+        resp = session.get(
+            "https://qt.gtimg.cn/q=" + ",".join(chunk),
+            timeout=12,
+        )
+        resp.raise_for_status()
+
+        text = resp.content.decode("gb18030", errors="ignore")
+        for line in text.splitlines():
+            m = re.match(r'v_([a-z0-9]+)="([^"]*)";?', line.strip())
+            if not m:
+                continue
+            symbol, payload = m.groups()
+            parts = payload.split("~")
+            if len(parts) < 2:
+                continue
+            name = parts[1].strip()
+            code = symbol_to_code.get(symbol)
+            if code and name:
+                name_map[code] = name
+
+    return name_map
+
+
+def _enrich_signal_names(signals: dict) -> dict[str, str]:
+    codes = _extract_signal_codes(signals)
+    if not codes:
+        return {}
+
+    resolved: dict[str, str] = {}
+
+    for source_name, fetcher in [
+        ("Sina", _fetch_names_sina),
+        ("Tencent", _fetch_names_tencent),
+    ]:
+        missing = [code for code in codes if code not in resolved]
+        if not missing:
+            break
+        try:
+            fetched = fetcher(missing)
+            resolved.update(fetched)
+            log.info(
+                "  %s 名称补全: %d/%d",
+                source_name,
+                len(fetched),
+                len(missing),
+            )
+        except Exception as e:
+            log.warning("  %s 名称获取失败: %s", source_name, e)
+
+    unresolved = [code for code in codes if code not in resolved]
+    if unresolved:
+        log.warning("  仍有 %d 只股票未补全名称", len(unresolved))
+    else:
+        log.info("  股票名称已全部补全")
+
+    return resolved
+
+
+def _normalize_date_index(index: pd.Index) -> pd.DatetimeIndex:
+    """
+    Normalize qlib/pandas date-like indexes into a clean DatetimeIndex.
+
+    qlib data may surface dates as strings like "2026-04-01", integers like
+    20260401, or already-parsed timestamps. If integer dates are passed
+    directly to pd.to_datetime, pandas interprets them as Unix epoch numbers,
+    which yields 1970-era timestamps.
+    """
+    if isinstance(index, pd.DatetimeIndex):
+        return pd.DatetimeIndex(index)
+
+    parsed = []
+    for value in index:
+        if isinstance(value, pd.Timestamp):
+            parsed.append(value)
+            continue
+
+        if isinstance(value, (int, np.integer)):
+            text = str(int(value))
+            if len(text) == 8 and text.isdigit():
+                parsed.append(pd.to_datetime(text, format="%Y%m%d", errors="coerce"))
+                continue
+
+        text = str(value).strip()
+        if len(text) == 8 and text.isdigit():
+            parsed.append(pd.to_datetime(text, format="%Y%m%d", errors="coerce"))
+            continue
+
+        parsed.append(pd.to_datetime(value, errors="coerce"))
+
+    parsed_index = pd.DatetimeIndex(parsed)
+    if parsed_index.isna().any():
+        bad_count = int(parsed_index.isna().sum())
+        raise ValueError(f"存在无法解析的交易日索引: {bad_count} 条")
+    return parsed_index
+
 
 def _get_csi300_history(start_date: str, end_date: str) -> pd.DataFrame | None:
     """
@@ -68,10 +280,19 @@ def _get_csi300_history(start_date: str, end_date: str) -> pd.DataFrame | None:
         log.info("  CSI300 成分股: %d 只", len(inst))
 
         df = D.features(inst, ["$close"], start_time=start_date, end_time=end_date)
-        pivot  = df["$close"].unstack(level=1)     # date x instrument
+
+        close_series = df["$close"]
+        index_names = list(close_series.index.names)
+        if "instrument" in index_names:
+            pivot = close_series.unstack(level="instrument")
+        else:
+            # Fallback for unnamed or legacy index orders: put instruments on columns.
+            pivot = close_series.unstack(level=0 if index_names and index_names[0] != "datetime" else 1)
+
         normed = pivot.div(pivot.iloc[0])           # 归一化到第一天=1
         avg    = normed.mean(axis=1) * 3000         # 缩放到 CSI300 量级
-        avg.index = pd.to_datetime(avg.index)
+        avg.index = _normalize_date_index(avg.index)
+        avg = avg.sort_index()
         log.info("  CSI300 等权合成指数: %d 条", len(avg))
         return pd.DataFrame({"close": avg})
     except Exception as e:
@@ -111,37 +332,17 @@ def main() -> None:
         log.error("LightGBM 信号生成失败:\n%s", signals["error"][:800])
         sys.exit(1)
 
-    # ── 补充中文股票名称（Eastmoney 原始 API，不依赖 AKShare）────────────────
+    # ── 补充中文股票名称（只拉 top 信号股票，避免整市场请求不稳定）──────────────
     log.info("  获取股票中文名称...")
-    name_map: dict[str, str] = {}
-    try:
-        for market in ["m:0+t:6,m:0+t:13,m:1+t:2,m:1+t:23"]:   # 沪深A股
-            resp = requests.get(
-                "http://push2.eastmoney.com/api/qt/clist/get",
-                params={
-                    "pn": 1, "pz": 5000, "po": 1, "np": 1,
-                    "fltt": 2, "invt": 2, "fid": "f3",
-                    "fs": market,
-                    "fields": "f12,f14",   # f12=代码, f14=名称
-                    "ut": "bd1d9ddb04089700cf9c27f6f7426281",
-                },
-                timeout=15,
-            )
-            items = resp.json().get("data", {}).get("diff", [])
-            for item in items:
-                code = str(item.get("f12", ""))
-                name = str(item.get("f14", ""))
-                if code and name:
-                    name_map[code] = name
-        log.info("  获取名称 %d 只", len(name_map))
-    except Exception as e:
-        log.warning("  名称获取失败（展示代码）: %s", e)
+    name_map = _enrich_signal_names(signals)
 
     def _apply_names(stock_list: list) -> list:
         for s in stock_list:
-            raw = s.get("code", "")           # e.g. "SH600588"
-            short = raw[2:] if raw[:2] in ("SH", "SZ", "BJ") else raw
-            s["name"] = name_map.get(short, short)
+            norm = _normalize_stock_code(s.get("code", ""))
+            if norm and norm in name_map:
+                s["name"] = name_map[norm]
+            elif norm:
+                s["name"] = norm[2:]
         return stock_list
 
     for key in ["h5", "h10", "h20"]:
