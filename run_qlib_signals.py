@@ -47,43 +47,31 @@ def _get_csi300_history(start_date: str, end_date: str) -> pd.DataFrame | None:
     """
     从已初始化的 qlib 数据中提取 CSI300 价格历史。
 
-    优先尝试直接读取 sh000300 指数；
-    若不存在，则用 CSI300 成分股归一化均值（等权合成指数）作为代理。
+    用 D.list_instruments(D.instruments("csi300")) 获取成分股列表，
+    再调 D.features() 拿收盘价，归一化后合成等权指数（缩放至 ~3000 量级）。
     返回包含 'close' 列、DatetimeIndex 的 DataFrame；失败则返回 None。
     """
     from qlib.data import D
 
-    # ── 优先: 直接读取 sh000300 指数 ──────────────────────────────────────────
     try:
-        df = D.features(
-            ["sh000300"],
-            fields=["$close"],
+        # 正确获取 CSI300 成分股列表（不能直接把字符串 "csi300" 传给 D.features）
+        inst = D.list_instruments(
+            D.instruments("csi300"),
             start_time=start_date,
             end_time=end_date,
-            freq="day",
+            as_list=True,
         )
-        if not df.empty:
-            close = df["$close"].unstack(level=1).iloc[:, 0]
-            close.index = pd.to_datetime(close.index)
-            log.info("  sh000300 指数数据: %d 条", len(close))
-            return pd.DataFrame({"close": close})
-    except Exception as e:
-        log.warning("  sh000300 直接读取失败，尝试成分股均值: %s", e)
+        if not inst:
+            log.error("  CSI300 成分股列表为空")
+            return None
+        log.info("  CSI300 成分股: %d 只", len(inst))
 
-    # ── 备选: CSI300 成分股归一化均值 ─────────────────────────────────────────
-    try:
-        df = D.features(
-            "csi300",
-            fields=["$close"],
-            start_time=start_date,
-            end_time=end_date,
-            freq="day",
-        )
-        pivot = df["$close"].unstack(level=1)           # date x instrument
-        normed = pivot.div(pivot.iloc[0])               # 归一化到第一天=1
-        avg = normed.mean(axis=1) * 3000                # 缩放到 CSI300 量级
+        df = D.features(inst, ["$close"], start_time=start_date, end_time=end_date)
+        pivot  = df["$close"].unstack(level=1)     # date x instrument
+        normed = pivot.div(pivot.iloc[0])           # 归一化到第一天=1
+        avg    = normed.mean(axis=1) * 3000         # 缩放到 CSI300 量级
         avg.index = pd.to_datetime(avg.index)
-        log.info("  CSI300 成分股均值(代理): %d 条", len(avg))
+        log.info("  CSI300 等权合成指数: %d 条", len(avg))
         return pd.DataFrame({"close": avg})
     except Exception as e:
         log.error("  CSI300 历史数据获取失败: %s", e)
