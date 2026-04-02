@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-01T18:41:46.369999+08:00",
+  "updated_at": "2026-04-02T10:52:08.289607+08:00",
   "indices": [
     {
       "名称": "上证指数",
@@ -52,10 +52,10 @@
   ],
   "sector": [],
   "breadth": {
-    "up": 4495,
-    "down": 887,
-    "flat": 103,
-    "limit_up": 102,
-    "limit_down": 13
+    "up": null,
+    "down": null,
+    "flat": null,
+    "limit_up": null,
+    "limit_down": null
   }
 }
