@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-04-07T12:15:02.216679+08:00",
+  "updated_at": "2026-04-08T12:18:37.877055+08:00",
   "h5": [
-    {
-      "code": "SH600588",
-      "name": "用友网络",
-      "rank_score": 0.0936
-    },
     {
       "code": "SZ000630",
       "name": "铜陵有色",
-      "rank_score": 0.0899
+      "rank_score": 0.0931
     },
     {
-      "code": "SH603993",
-      "name": "洛阳钼业",
-      "rank_score": 0.0756
+      "code": "SH600588",
+      "name": "用友网络",
+      "rank_score": 0.0733
     },
     {
-      "code": "SH603501",
-      "name": "豪威集团",
-      "rank_score": 0.0634
-    },
-    {
-      "code": "SH600362",
-      "name": "江西铜业",
-      "rank_score": 0.0626
-    },
-    {
-      "code": "SH600415",
-      "name": "小商品城",
-      "rank_score": 0.0619
-    },
-    {
-      "code": "SH603799",
-      "name": "华友钴业",
-      "rank_score": 0.0614
+      "code": "SZ300316",
+      "name": "晶盛机电",
+      "rank_score": 0.0696
     },
     {
       "code": "SZ300251",
       "name": "光线传媒",
+      "rank_score": 0.0683
+    },
+    {
+      "code": "SH603799",
+      "name": "华友钴业",
+      "rank_score": 0.0641
+    },
+    {
+      "code": "SH603993",
+      "name": "洛阳钼业",
+      "rank_score": 0.0635
+    },
+    {
+      "code": "SH600489",
+      "name": "中金黄金",
       "rank_score": 0.0611
     },
     {
-      "code": "SH601698",
-      "name": "中国卫通",
-      "rank_score": 0.0609
+      "code": "SZ000001",
+      "name": "平安银行",
+      "rank_score": 0.061
     },
     {
-      "code": "SH600570",
-      "name": "恒生电子",
-      "rank_score": 0.0581
+      "code": "SH600362",
+      "name": "江西铜业",
+      "rank_score": 0.0607
+    },
+    {
+      "code": "SH601658",
+      "name": "邮储银行",
+      "rank_score": 0.0596
     }
   ],
   "h10": [
     {
       "code": "SH600588",
       "name": "用友网络",
-      "rank_score": 0.1201
+      "rank_score": 0.1037
     },
     {
       "code": "SZ300251",
       "name": "光线传媒",
-      "rank_score": 0.1013
+      "rank_score": 0.0956
     },
     {
       "code": "SZ000630",
       "name": "铜陵有色",
-      "rank_score": 0.0957
+      "rank_score": 0.0924
     },
     {
       "code": "SH603993",
       "name": "洛阳钼业",
-      "rank_score": 0.0939
+      "rank_score": 0.0923
     },
     {
-      "code": "SH600183",
-      "name": "生益科技",
-      "rank_score": 0.0872
+      "code": "SH603799",
+      "name": "华友钴业",
+      "rank_score": 0.09
+    },
+    {
+      "code": "SZ300316",
+      "name": "晶盛机电",
+      "rank_score": 0.0862
     },
     {
       "code": "SH603501",
       "name": "豪威集团",
-      "rank_score": 0.0787
+      "rank_score": 0.0695
     },
     {
-      "code": "SH601868",
-      "name": "中国能建",
-      "rank_score": 0.0727
-    },
-    {
-      "code": "SH603260",
-      "name": "合盛硅业",
-      "rank_score": 0.0679
-    },
-    {
-      "code": "SH688169",
-      "name": "石头科技",
-      "rank_score": 0.067
+      "code": "SH600887",
+      "name": "伊利股份",
+      "rank_score": 0.0667
     },
     {
       "code": "SZ301236",
       "name": "软通动力",
-      "rank_score": 0.0664
+      "rank_score": 0.0662
+    },
+    {
+      "code": "SZ000001",
+      "name": "平安银行",
+      "rank_score": 0.0616
     }
   ],
   "h20": [
     {
       "code": "SZ300251",
       "name": "光线传媒",
-      "rank_score": 0.1514
-    },
-    {
-      "code": "SH600183",
-      "name": "生益科技",
-      "rank_score": 0.1132
-    },
-    {
-      "code": "SH600588",
-      "name": "用友网络",
-      "rank_score": 0.1101
-    },
-    {
-      "code": "SH688223",
-      "name": "晶科能源",
-      "rank_score": 0.11
+      "rank_score": 0.1483
     },
     {
       "code": "SZ300413",
       "name": "芒果超媒",
-      "rank_score": 0.1035
+      "rank_score": 0.1077
     },
     {
-      "code": "SH603993",
-      "name": "洛阳钼业",
-      "rank_score": 0.1033
-    },
-    {
-      "code": "SZ301269",
-      "name": "华大九天",
-      "rank_score": 0.0987
-    },
-    {
-      "code": "SH603986",
-      "name": "兆易创新",
-      "rank_score": 0.0921
+      "code": "SH600588",
+      "name": "用友网络",
+      "rank_score": 0.1063
     },
     {
       "code": "SH688111",
       "name": "金山办公",
-      "rank_score": 0.091
+      "rank_score": 0.0909
     },
     {
-      "code": "SH688396",
-      "name": "华润微",
-      "rank_score": 0.0881
+      "code": "SH600893",
+      "name": "航发动力",
+      "rank_score": 0.0895
+    },
+    {
+      "code": "SH603501",
+      "name": "豪威集团",
+      "rank_score": 0.0883
+    },
+    {
+      "code": "SH603993",
+      "name": "洛阳钼业",
+      "rank_score": 0.0874
+    },
+    {
+      "code": "SH603986",
+      "name": "兆易创新",
+      "rank_score": 0.079
+    },
+    {
+      "code": "SZ300896",
+      "name": "爱美客",
+      "rank_score": 0.0767
+    },
+    {
+      "code": "SH601607",
+      "name": "上海医药",
+      "rank_score": 0.0755
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-02-06",
-  "pred_start": "2026-03-08",
-  "pred_end": "2026-04-07",
-  "pred_date": "2026-04-03"
+  "train_end": "2026-02-07",
+  "pred_start": "2026-03-09",
+  "pred_end": "2026-04-08",
+  "pred_date": "2026-04-07"
 }
