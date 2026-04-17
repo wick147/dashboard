@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-04-16T12:34:56.799400+08:00",
+  "updated_at": "2026-04-17T12:30:45.588332+08:00",
   "h5": [
-    {
-      "code": "SH601166",
-      "name": "兴业银行",
-      "rank_score": 0.0594
-    },
-    {
-      "code": "SH600588",
-      "name": "用友网络",
-      "rank_score": 0.0575
-    },
-    {
-      "code": "SZ000001",
-      "name": "平安银行",
-      "rank_score": 0.0575
-    },
-    {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0548
-    },
     {
       "code": "SH600926",
       "name": "杭州银行",
-      "rank_score": 0.0443
-    },
-    {
-      "code": "SH601658",
-      "name": "邮储银行",
-      "rank_score": 0.0443
-    },
-    {
-      "code": "SH600919",
-      "name": "江苏银行",
-      "rank_score": 0.0431
+      "rank_score": 0.0602
     },
     {
       "code": "SH601607",
       "name": "上海医药",
-      "rank_score": 0.0412
+      "rank_score": 0.0589
     },
     {
-      "code": "SH601838",
-      "name": "成都银行",
-      "rank_score": 0.0406
+      "code": "SZ000858",
+      "name": "五 粮 液",
+      "rank_score": 0.0588
+    },
+    {
+      "code": "SH600660",
+      "name": "福耀玻璃",
+      "rank_score": 0.0578
+    },
+    {
+      "code": "SZ000001",
+      "name": "平安银行",
+      "rank_score": 0.0564
+    },
+    {
+      "code": "SH600588",
+      "name": "用友网络",
+      "rank_score": 0.0544
     },
     {
       "code": "SH601825",
       "name": "沪农商行",
-      "rank_score": 0.0404
+      "rank_score": 0.0504
+    },
+    {
+      "code": "SH601658",
+      "name": "邮储银行",
+      "rank_score": 0.0503
+    },
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.0481
+    },
+    {
+      "code": "SZ002304",
+      "name": "洋河股份",
+      "rank_score": 0.0465
     }
   ],
   "h10": [
     {
-      "code": "SH600926",
-      "name": "杭州银行",
-      "rank_score": 0.1009
-    },
-    {
-      "code": "SH600588",
-      "name": "用友网络",
-      "rank_score": 0.0945
+      "code": "SZ300433",
+      "name": "蓝思科技",
+      "rank_score": 0.071
     },
     {
       "code": "SH601166",
       "name": "兴业银行",
-      "rank_score": 0.0715
+      "rank_score": 0.065
     },
     {
-      "code": "SZ301236",
-      "name": "软通动力",
+      "code": "SH688169",
+      "name": "石头科技",
       "rank_score": 0.0588
-    },
-    {
-      "code": "SZ000001",
-      "name": "平安银行",
-      "rank_score": 0.0526
-    },
-    {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0526
-    },
-    {
-      "code": "SH600919",
-      "name": "江苏银行",
-      "rank_score": 0.0506
-    },
-    {
-      "code": "SH688169",
-      "name": "石头科技",
-      "rank_score": 0.0499
-    },
-    {
-      "code": "SZ002415",
-      "name": "海康威视",
-      "rank_score": 0.0443
-    },
-    {
-      "code": "SZ300274",
-      "name": "阳光电源",
-      "rank_score": 0.0436
-    }
-  ],
-  "h20": [
-    {
-      "code": "SH688169",
-      "name": "石头科技",
-      "rank_score": 0.0755
-    },
-    {
-      "code": "SH601939",
-      "name": "建设银行",
-      "rank_score": 0.072
-    },
-    {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0688
-    },
-    {
-      "code": "SH600919",
-      "name": "江苏银行",
-      "rank_score": 0.0687
-    },
-    {
-      "code": "SZ000001",
-      "name": "平安银行",
-      "rank_score": 0.0636
     },
     {
       "code": "SH600588",
       "name": "用友网络",
-      "rank_score": 0.0607
+      "rank_score": 0.0585
     },
     {
-      "code": "SH600460",
-      "name": "士兰微",
+      "code": "SZ000001",
+      "name": "平安银行",
       "rank_score": 0.0575
     },
     {
-      "code": "SZ301236",
-      "name": "软通动力",
+      "code": "SH601607",
+      "name": "上海医药",
       "rank_score": 0.0559
     },
     {
       "code": "SH601658",
       "name": "邮储银行",
-      "rank_score": 0.0553
+      "rank_score": 0.0555
     },
     {
-      "code": "SH601328",
-      "name": "交通银行",
-      "rank_score": 0.0506
+      "code": "SH600660",
+      "name": "福耀玻璃",
+      "rank_score": 0.0538
+    },
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.0494
+    },
+    {
+      "code": "SZ002304",
+      "name": "洋河股份",
+      "rank_score": 0.0494
+    }
+  ],
+  "h20": [
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.0865
+    },
+    {
+      "code": "SZ000001",
+      "name": "平安银行",
+      "rank_score": 0.0691
+    },
+    {
+      "code": "SH600741",
+      "name": "华域汽车",
+      "rank_score": 0.0673
+    },
+    {
+      "code": "SZ000708",
+      "name": "中信特钢",
+      "rank_score": 0.0639
+    },
+    {
+      "code": "SH688169",
+      "name": "石头科技",
+      "rank_score": 0.0628
+    },
+    {
+      "code": "SH601607",
+      "name": "上海医药",
+      "rank_score": 0.0589
+    },
+    {
+      "code": "SZ300433",
+      "name": "蓝思科技",
+      "rank_score": 0.0581
+    },
+    {
+      "code": "SH601658",
+      "name": "邮储银行",
+      "rank_score": 0.0562
+    },
+    {
+      "code": "SH600919",
+      "name": "江苏银行",
+      "rank_score": 0.0554
+    },
+    {
+      "code": "SH600660",
+      "name": "福耀玻璃",
+      "rank_score": 0.0538
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-02-15",
-  "pred_start": "2026-03-17",
-  "pred_end": "2026-04-16",
-  "pred_date": "2026-04-14"
+  "train_end": "2026-02-16",
+  "pred_start": "2026-03-18",
+  "pred_end": "2026-04-17",
+  "pred_date": "2026-04-16"
 }
