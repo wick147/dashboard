@@ -1,294 +1,294 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-05-14T13:07:41.219739+08:00",
+  "updated_at": "2026-05-15T13:14:18.351509+08:00",
   "h5": [
-    {
-      "code": "SH601995",
-      "name": "中金公司",
-      "rank_score": 0.069
-    },
     {
       "code": "SH601668",
       "name": "中国建筑",
-      "rank_score": 0.0659
-    },
-    {
-      "code": "SH600377",
-      "name": "宁沪高速",
-      "rank_score": 0.0656
-    },
-    {
-      "code": "SH601728",
-      "name": "中国电信",
-      "rank_score": 0.0654
-    },
-    {
-      "code": "SZ001391",
-      "name": "国货航",
-      "rank_score": 0.0603
-    },
-    {
-      "code": "SH600941",
-      "name": "中国移动",
-      "rank_score": 0.0585
-    },
-    {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0579
-    },
-    {
-      "code": "SH601456",
-      "name": "国联民生",
-      "rank_score": 0.0579
+      "rank_score": 0.0674
     },
     {
       "code": "SH600018",
       "name": "上港集团",
-      "rank_score": 0.0557
+      "rank_score": 0.0649
+    },
+    {
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.0617
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.058
+    },
+    {
+      "code": "SH601995",
+      "name": "中金公司",
+      "rank_score": 0.0576
+    },
+    {
+      "code": "SH600176",
+      "name": "中国巨石",
+      "rank_score": 0.0564
+    },
+    {
+      "code": "SH600941",
+      "name": "中国移动",
+      "rank_score": 0.0551
     },
     {
       "code": "SZ001965",
       "name": "招商公路",
-      "rank_score": 0.054
+      "rank_score": 0.0546
+    },
+    {
+      "code": "SZ002463",
+      "name": "沪电股份",
+      "rank_score": 0.0537
+    },
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.0535
     }
   ],
   "h10": [
     {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.0873
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0859
+    },
+    {
+      "code": "SZ000651",
+      "name": "格力电器",
+      "rank_score": 0.078
+    },
+    {
       "code": "SH600941",
       "name": "中国移动",
-      "rank_score": 0.0995
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0922
-    },
-    {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0833
-    },
-    {
-      "code": "SH601995",
-      "name": "中金公司",
-      "rank_score": 0.0765
+      "rank_score": 0.075
     },
     {
       "code": "SH601668",
       "name": "中国建筑",
-      "rank_score": 0.0706
-    },
-    {
-      "code": "SH601456",
-      "name": "国联民生",
-      "rank_score": 0.0671
-    },
-    {
-      "code": "SH601728",
-      "name": "中国电信",
-      "rank_score": 0.0655
-    },
-    {
-      "code": "SH600900",
-      "name": "长江电力",
-      "rank_score": 0.0646
-    },
-    {
-      "code": "SZ001965",
-      "name": "招商公路",
-      "rank_score": 0.0642
-    },
-    {
-      "code": "SH601059",
-      "name": "信达证券",
-      "rank_score": 0.0616
-    }
-  ],
-  "h20": [
-    {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0908
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0894
-    },
-    {
-      "code": "SH601456",
-      "name": "国联民生",
-      "rank_score": 0.0842
-    },
-    {
-      "code": "SH601788",
-      "name": "光大证券",
-      "rank_score": 0.0813
-    },
-    {
-      "code": "SZ001391",
-      "name": "国货航",
-      "rank_score": 0.081
-    },
-    {
-      "code": "SH600900",
-      "name": "长江电力",
-      "rank_score": 0.0804
-    },
-    {
-      "code": "SZ300408",
-      "name": "三环集团",
-      "rank_score": 0.0794
-    },
-    {
-      "code": "SH601668",
-      "name": "中国建筑",
-      "rank_score": 0.078
+      "rank_score": 0.0747
     },
     {
       "code": "SH600377",
       "name": "宁沪高速",
-      "rank_score": 0.0743
+      "rank_score": 0.0715
+    },
+    {
+      "code": "SH601916",
+      "name": "浙商银行",
+      "rank_score": 0.0669
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.059
+    },
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.058
+    },
+    {
+      "code": "SH601995",
+      "name": "中金公司",
+      "rank_score": 0.0557
+    }
+  ],
+  "h20": [
+    {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.1542
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0993
     },
     {
       "code": "SH601818",
       "name": "光大银行",
-      "rank_score": 0.0742
+      "rank_score": 0.0886
+    },
+    {
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.0846
+    },
+    {
+      "code": "SZ002463",
+      "name": "沪电股份",
+      "rank_score": 0.0757
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.0735
+    },
+    {
+      "code": "SH601916",
+      "name": "浙商银行",
+      "rank_score": 0.0711
+    },
+    {
+      "code": "SH600941",
+      "name": "中国移动",
+      "rank_score": 0.071
+    },
+    {
+      "code": "SH601808",
+      "name": "中海油服",
+      "rank_score": 0.0707
+    },
+    {
+      "code": "SH601668",
+      "name": "中国建筑",
+      "rank_score": 0.0693
     }
   ],
   "feature_importance": {
     "h5": [
       {
         "feature": "CORD60",
-        "importance": 415.409
+        "importance": 402.8861
       },
       {
         "feature": "STD20",
-        "importance": 378.6062
-      },
-      {
-        "feature": "MAX30",
-        "importance": 306.6267
-      },
-      {
-        "feature": "QTLU60",
-        "importance": 292.6317
+        "importance": 387.4837
       },
       {
         "feature": "WVMA60",
-        "importance": 288.5821
+        "importance": 295.622
+      },
+      {
+        "feature": "MAX30",
+        "importance": 286.113
       },
       {
         "feature": "STD60",
-        "importance": 272.2077
-      },
-      {
-        "feature": "STD10",
-        "importance": 267.3803
+        "importance": 269.633
       },
       {
         "feature": "STD30",
-        "importance": 238.7628
+        "importance": 266.2238
+      },
+      {
+        "feature": "QTLU60",
+        "importance": 265.961
+      },
+      {
+        "feature": "STD10",
+        "importance": 265.6487
       },
       {
         "feature": "CORD30",
-        "importance": 230.9946
+        "importance": 242.0749
       },
       {
         "feature": "IMXD60",
-        "importance": 228.4503
+        "importance": 211.5833
       }
     ],
     "h10": [
       {
         "feature": "CORD60",
-        "importance": 703.7449
-      },
-      {
-        "feature": "STD30",
-        "importance": 589.3071
+        "importance": 706.7535
       },
       {
         "feature": "STD20",
-        "importance": 562.2067
+        "importance": 580.2889
       },
       {
         "feature": "QTLU60",
-        "importance": 514.9276
+        "importance": 541.4706
       },
       {
         "feature": "WVMA60",
-        "importance": 501.6578
+        "importance": 530.7702
+      },
+      {
+        "feature": "STD30",
+        "importance": 517.8081
       },
       {
         "feature": "IMXD60",
-        "importance": 492.835
-      },
-      {
-        "feature": "STD60",
-        "importance": 393.2059
-      },
-      {
-        "feature": "IMIN60",
-        "importance": 379.6051
+        "importance": 453.1086
       },
       {
         "feature": "CORR60",
-        "importance": 360.035
+        "importance": 413.311
+      },
+      {
+        "feature": "STD60",
+        "importance": 405.8181
+      },
+      {
+        "feature": "IMIN60",
+        "importance": 334.9924
       },
       {
         "feature": "CORD30",
-        "importance": 339.9156
+        "importance": 333.8351
       }
     ],
     "h20": [
       {
         "feature": "CORD60",
-        "importance": 1104.1971
-      },
-      {
-        "feature": "WVMA60",
-        "importance": 789.3899
+        "importance": 1082.421
       },
       {
         "feature": "STD20",
-        "importance": 784.6304
-      },
-      {
-        "feature": "STD30",
-        "importance": 778.8057
+        "importance": 822.8043
       },
       {
         "feature": "IMXD60",
-        "importance": 743.8303
+        "importance": 789.5463
+      },
+      {
+        "feature": "WVMA60",
+        "importance": 784.0666
+      },
+      {
+        "feature": "STD30",
+        "importance": 712.0325
       },
       {
         "feature": "CORR60",
-        "importance": 665.5268
+        "importance": 603.3244
       },
       {
         "feature": "CNTN60",
-        "importance": 619.486
+        "importance": 588.3087
       },
       {
         "feature": "STD60",
-        "importance": 526.0229
+        "importance": 580.661
       },
       {
         "feature": "ROC30",
-        "importance": 478.6368
+        "importance": 513.6177
       },
       {
-        "feature": "CORR30",
-        "importance": 464.3576
+        "feature": "IMIN60",
+        "importance": 497.0363
       }
     ]
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-03-15",
-  "pred_start": "2026-04-14",
-  "pred_end": "2026-05-14",
-  "pred_date": "2026-05-13"
+  "train_end": "2026-03-16",
+  "pred_start": "2026-04-15",
+  "pred_end": "2026-05-15",
+  "pred_date": "2026-05-14"
 }
