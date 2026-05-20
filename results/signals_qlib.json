@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-05-19T13:39:34.788438+08:00",
+  "updated_at": "2026-05-20T13:42:14.139563+08:00",
   "h5": [
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0756
-    },
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0746
+      "rank_score": 0.0807
     },
     {
-      "code": "SH600887",
-      "name": "伊利股份",
-      "rank_score": 0.0556
-    },
-    {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0553
-    },
-    {
-      "code": "SH600900",
-      "name": "长江电力",
-      "rank_score": 0.0522
-    },
-    {
-      "code": "SZ300408",
-      "name": "三环集团",
-      "rank_score": 0.051
-    },
-    {
-      "code": "SH600377",
-      "name": "宁沪高速",
-      "rank_score": 0.0477
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0667
     },
     {
       "code": "SH601006",
       "name": "大秦铁路",
-      "rank_score": 0.0477
+      "rank_score": 0.0642
     },
     {
-      "code": "SZ001965",
-      "name": "招商公路",
-      "rank_score": 0.0454
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.0577
+    },
+    {
+      "code": "SH600887",
+      "name": "伊利股份",
+      "rank_score": 0.0537
+    },
+    {
+      "code": "SH601939",
+      "name": "建设银行",
+      "rank_score": 0.0529
+    },
+    {
+      "code": "SH600547",
+      "name": "山东黄金",
+      "rank_score": 0.0498
+    },
+    {
+      "code": "SH600023",
+      "name": "浙能电力",
+      "rank_score": 0.0491
+    },
+    {
+      "code": "SH600803",
+      "name": "新奥股份",
+      "rank_score": 0.0481
     },
     {
       "code": "SZ000651",
       "name": "格力电器",
-      "rank_score": 0.0451
+      "rank_score": 0.0461
     }
   ],
   "h10": [
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0968
+      "rank_score": 0.0976
+    },
+    {
+      "code": "SH600023",
+      "name": "浙能电力",
+      "rank_score": 0.0787
+    },
+    {
+      "code": "SH600803",
+      "name": "新奥股份",
+      "rank_score": 0.0712
     },
     {
       "code": "SZ001965",
       "name": "招商公路",
-      "rank_score": 0.0709
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0684
-    },
-    {
-      "code": "SH600900",
-      "name": "长江电力",
-      "rank_score": 0.065
-    },
-    {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0633
-    },
-    {
-      "code": "SH600025",
-      "name": "华能水电",
-      "rank_score": 0.0612
-    },
-    {
-      "code": "SH601838",
-      "name": "成都银行",
-      "rank_score": 0.0585
+      "rank_score": 0.0702
     },
     {
       "code": "SH601006",
       "name": "大秦铁路",
-      "rank_score": 0.0566
+      "rank_score": 0.0696
+    },
+    {
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.066
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.0654
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0559
+    },
+    {
+      "code": "SZ300347",
+      "name": "泰格医药",
+      "rank_score": 0.0544
     },
     {
       "code": "SH600941",
       "name": "中国移动",
-      "rank_score": 0.0495
-    },
-    {
-      "code": "SH600219",
-      "name": "南山铝业",
-      "rank_score": 0.0453
+      "rank_score": 0.0519
     }
   ],
   "h20": [
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0808
-    },
-    {
-      "code": "SH600900",
-      "name": "长江电力",
-      "rank_score": 0.0714
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0625
+      "rank_score": 0.1003
     },
     {
       "code": "SH601006",
       "name": "大秦铁路",
-      "rank_score": 0.0581
+      "rank_score": 0.0978
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0831
+    },
+    {
+      "code": "SH601818",
+      "name": "光大银行",
+      "rank_score": 0.0795
     },
     {
       "code": "SH601808",
       "name": "中海油服",
-      "rank_score": 0.0576
-    },
-    {
-      "code": "SH601012",
-      "name": "隆基绿能",
-      "rank_score": 0.056
+      "rank_score": 0.0708
     },
     {
       "code": "SH601398",
       "name": "工商银行",
-      "rank_score": 0.0524
+      "rank_score": 0.0675
     },
     {
-      "code": "SZ001965",
-      "name": "招商公路",
-      "rank_score": 0.0523
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.0636
     },
     {
-      "code": "SH600039",
-      "name": "四川路桥",
-      "rank_score": 0.05
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.0627
     },
     {
-      "code": "SZ002463",
-      "name": "沪电股份",
-      "rank_score": 0.0495
+      "code": "SH601988",
+      "name": "中国银行",
+      "rank_score": 0.0611
+    },
+    {
+      "code": "SZ003816",
+      "name": "中国广核",
+      "rank_score": 0.055
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-03-20",
-  "pred_start": "2026-04-19",
-  "pred_end": "2026-05-19",
-  "pred_date": "2026-05-18"
+  "train_end": "2026-03-21",
+  "pred_start": "2026-04-20",
+  "pred_end": "2026-05-20",
+  "pred_date": "2026-05-19"
 }
