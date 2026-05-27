@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-05-26T13:38:49.423278+08:00",
+  "updated_at": "2026-05-27T13:52:00.953134+08:00",
   "h5": [
     {
       "code": "SH600018",
       "name": "上港集团",
-      "rank_score": 0.077
-    },
-    {
-      "code": "SH600377",
-      "name": "宁沪高速",
-      "rank_score": 0.0564
+      "rank_score": 0.068
     },
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0555
+      "rank_score": 0.0603
+    },
+    {
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.0587
+    },
+    {
+      "code": "SH601059",
+      "name": "信达证券",
+      "rank_score": 0.0544
     },
     {
       "code": "SH601988",
       "name": "中国银行",
-      "rank_score": 0.0544
-    },
-    {
-      "code": "SH601808",
-      "name": "中海油服",
       "rank_score": 0.0499
     },
     {
       "code": "SH601939",
       "name": "建设银行",
-      "rank_score": 0.0445
+      "rank_score": 0.0437
     },
     {
-      "code": "SH600426",
-      "name": "华鲁恒升",
-      "rank_score": 0.0441
+      "code": "SH601166",
+      "name": "兴业银行",
+      "rank_score": 0.0363
     },
     {
-      "code": "SH601059",
-      "name": "信达证券",
-      "rank_score": 0.0438
-    },
-    {
-      "code": "SH600346",
-      "name": "恒力石化",
-      "rank_score": 0.0406
-    },
-    {
-      "code": "SH601298",
-      "name": "青岛港",
-      "rank_score": 0.0368
-    }
-  ],
-  "h10": [
-    {
-      "code": "SH600346",
-      "name": "恒力石化",
-      "rank_score": 0.0796
-    },
-    {
-      "code": "SZ300347",
-      "name": "泰格医药",
-      "rank_score": 0.0646
-    },
-    {
-      "code": "SH600426",
-      "name": "华鲁恒升",
-      "rank_score": 0.0614
-    },
-    {
-      "code": "SH600377",
-      "name": "宁沪高速",
-      "rank_score": 0.057
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0552
-    },
-    {
-      "code": "SZ001965",
-      "name": "招商公路",
-      "rank_score": 0.0551
-    },
-    {
-      "code": "SH601988",
-      "name": "中国银行",
-      "rank_score": 0.054
-    },
-    {
-      "code": "SH601939",
-      "name": "建设银行",
-      "rank_score": 0.0535
-    },
-    {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0447
-    },
-    {
-      "code": "SZ000651",
-      "name": "格力电器",
-      "rank_score": 0.0446
-    }
-  ],
-  "h20": [
-    {
-      "code": "SH600346",
-      "name": "恒力石化",
-      "rank_score": 0.1021
-    },
-    {
-      "code": "SZ002384",
-      "name": "东山精密",
-      "rank_score": 0.0984
-    },
-    {
-      "code": "SH600547",
-      "name": "山东黄金",
-      "rank_score": 0.0806
-    },
-    {
-      "code": "SH600426",
-      "name": "华鲁恒升",
-      "rank_score": 0.0775
-    },
-    {
-      "code": "SZ000617",
-      "name": "中油资本",
-      "rank_score": 0.0743
-    },
-    {
-      "code": "SH601988",
-      "name": "中国银行",
-      "rank_score": 0.0714
+      "code": "SH600919",
+      "name": "江苏银行",
+      "rank_score": 0.0358
     },
     {
       "code": "SH601808",
       "name": "中海油服",
-      "rank_score": 0.0711
+      "rank_score": 0.0354
     },
     {
-      "code": "SZ000792",
-      "name": "盐湖股份",
-      "rank_score": 0.0702
+      "code": "SH601398",
+      "name": "工商银行",
+      "rank_score": 0.0348
+    }
+  ],
+  "h10": [
+    {
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.0756
+    },
+    {
+      "code": "SH600346",
+      "name": "恒力石化",
+      "rank_score": 0.0719
+    },
+    {
+      "code": "SH600547",
+      "name": "山东黄金",
+      "rank_score": 0.0631
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0625
+    },
+    {
+      "code": "SH601916",
+      "name": "浙商银行",
+      "rank_score": 0.053
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.0456
+    },
+    {
+      "code": "SH600015",
+      "name": "华夏银行",
+      "rank_score": 0.0445
+    },
+    {
+      "code": "SH601988",
+      "name": "中国银行",
+      "rank_score": 0.0439
+    },
+    {
+      "code": "SH601059",
+      "name": "信达证券",
+      "rank_score": 0.0428
+    },
+    {
+      "code": "SZ001965",
+      "name": "招商公路",
+      "rank_score": 0.0428
+    }
+  ],
+  "h20": [
+    {
+      "code": "SZ000617",
+      "name": "中油资本",
+      "rank_score": 0.1059
+    },
+    {
+      "code": "SH600346",
+      "name": "恒力石化",
+      "rank_score": 0.0876
+    },
+    {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.0782
+    },
+    {
+      "code": "SH600377",
+      "name": "宁沪高速",
+      "rank_score": 0.078
+    },
+    {
+      "code": "SH600426",
+      "name": "华鲁恒升",
+      "rank_score": 0.0747
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.0658
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0648
+    },
+    {
+      "code": "SH601808",
+      "name": "中海油服",
+      "rank_score": 0.0623
     },
     {
       "code": "SH601818",
       "name": "光大银行",
-      "rank_score": 0.0676
+      "rank_score": 0.0558
     },
     {
-      "code": "SZ300347",
-      "name": "泰格医药",
-      "rank_score": 0.0609
+      "code": "SH601988",
+      "name": "中国银行",
+      "rank_score": 0.0554
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-03-27",
-  "pred_start": "2026-04-26",
-  "pred_end": "2026-05-26",
-  "pred_date": "2026-05-25"
+  "train_end": "2026-03-28",
+  "pred_start": "2026-04-27",
+  "pred_end": "2026-05-27",
+  "pred_date": "2026-05-26"
 }
