@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-06-02T14:12:53.373285+08:00",
+  "updated_at": "2026-06-03T14:27:02.364538+08:00",
   "h5": [
     {
-      "code": "SZ300308",
-      "name": "中际旭创",
-      "rank_score": 0.0746
-    },
-    {
-      "code": "SH601808",
-      "name": "中海油服",
-      "rank_score": 0.0702
-    },
-    {
-      "code": "SH600547",
-      "name": "山东黄金",
-      "rank_score": 0.065
-    },
-    {
-      "code": "SH600346",
-      "name": "XD恒力石",
-      "rank_score": 0.0607
-    },
-    {
-      "code": "SH601059",
-      "name": "信达证券",
-      "rank_score": 0.0485
-    },
-    {
-      "code": "SH600426",
-      "name": "华鲁恒升",
-      "rank_score": 0.0484
-    },
-    {
-      "code": "SZ000975",
-      "name": "山金国际",
-      "rank_score": 0.0471
+      "code": "SZ000617",
+      "name": "中油资本",
+      "rank_score": 0.0928
     },
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0468
+      "rank_score": 0.0704
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0667
     },
     {
       "code": "SH601012",
       "name": "隆基绿能",
-      "rank_score": 0.0459
+      "rank_score": 0.0527
     },
     {
-      "code": "SZ002601",
-      "name": "龙佰集团",
+      "code": "SH601818",
+      "name": "光大银行",
+      "rank_score": 0.0525
+    },
+    {
+      "code": "SZ002459",
+      "name": "晶澳科技",
+      "rank_score": 0.0508
+    },
+    {
+      "code": "SH600015",
+      "name": "华夏银行",
+      "rank_score": 0.0497
+    },
+    {
+      "code": "SH600346",
+      "name": "恒力石化",
+      "rank_score": 0.0473
+    },
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.0468
+    },
+    {
+      "code": "SH600919",
+      "name": "江苏银行",
       "rank_score": 0.0437
     }
   ],
   "h10": [
     {
-      "code": "SH600346",
-      "name": "XD恒力石",
-      "rank_score": 0.0954
+      "code": "SZ000617",
+      "name": "中油资本",
+      "rank_score": 0.0951
     },
     {
-      "code": "SH600547",
-      "name": "山东黄金",
-      "rank_score": 0.0791
-    },
-    {
-      "code": "SZ002384",
-      "name": "东山精密",
-      "rank_score": 0.0751
-    },
-    {
-      "code": "SZ000975",
-      "name": "山金国际",
-      "rank_score": 0.0747
-    },
-    {
-      "code": "SH600426",
-      "name": "华鲁恒升",
-      "rank_score": 0.0655
-    },
-    {
-      "code": "SZ000792",
-      "name": "盐湖股份",
-      "rank_score": 0.0606
+      "code": "SH601012",
+      "name": "隆基绿能",
+      "rank_score": 0.0885
     },
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0604
-    },
-    {
-      "code": "SH600989",
-      "name": "宝丰能源",
-      "rank_score": 0.0579
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0563
-    },
-    {
-      "code": "SZ300347",
-      "name": "泰格医药",
-      "rank_score": 0.0556
-    }
-  ],
-  "h20": [
-    {
-      "code": "SZ000792",
-      "name": "盐湖股份",
-      "rank_score": 0.1226
-    },
-    {
-      "code": "SH600346",
-      "name": "XD恒力石",
-      "rank_score": 0.1166
-    },
-    {
-      "code": "SZ000975",
-      "name": "山金国际",
-      "rank_score": 0.1146
-    },
-    {
-      "code": "SZ000617",
-      "name": "中油资本",
-      "rank_score": 0.1088
-    },
-    {
-      "code": "SZ300408",
-      "name": "三环集团",
-      "rank_score": 0.1063
-    },
-    {
-      "code": "SZ002648",
-      "name": "卫星化学",
-      "rank_score": 0.101
-    },
-    {
-      "code": "SH600547",
-      "name": "山东黄金",
-      "rank_score": 0.0999
-    },
-    {
-      "code": "SZ300498",
-      "name": "温氏股份",
-      "rank_score": 0.0847
+      "rank_score": 0.0804
     },
     {
       "code": "SH600426",
       "name": "华鲁恒升",
-      "rank_score": 0.0844
+      "rank_score": 0.0763
     },
     {
-      "code": "SZ300661",
-      "name": "圣邦股份",
-      "rank_score": 0.0823
+      "code": "SH600018",
+      "name": "上港集团",
+      "rank_score": 0.0735
+    },
+    {
+      "code": "SH600346",
+      "name": "恒力石化",
+      "rank_score": 0.0695
+    },
+    {
+      "code": "SZ000792",
+      "name": "盐湖股份",
+      "rank_score": 0.0686
+    },
+    {
+      "code": "SH601818",
+      "name": "光大银行",
+      "rank_score": 0.0604
+    },
+    {
+      "code": "SH600036",
+      "name": "招商银行",
+      "rank_score": 0.0567
+    },
+    {
+      "code": "SH600026",
+      "name": "中远海能",
+      "rank_score": 0.0544
+    }
+  ],
+  "h20": [
+    {
+      "code": "SZ000617",
+      "name": "中油资本",
+      "rank_score": 0.1249
+    },
+    {
+      "code": "SZ000792",
+      "name": "盐湖股份",
+      "rank_score": 0.1196
+    },
+    {
+      "code": "SH600346",
+      "name": "恒力石化",
+      "rank_score": 0.1137
+    },
+    {
+      "code": "SH601012",
+      "name": "隆基绿能",
+      "rank_score": 0.1085
+    },
+    {
+      "code": "SH601916",
+      "name": "浙商银行",
+      "rank_score": 0.1056
+    },
+    {
+      "code": "SH688223",
+      "name": "晶科能源",
+      "rank_score": 0.1049
+    },
+    {
+      "code": "SZ000975",
+      "name": "山金国际",
+      "rank_score": 0.0953
+    },
+    {
+      "code": "SH601818",
+      "name": "光大银行",
+      "rank_score": 0.0931
+    },
+    {
+      "code": "SH600875",
+      "name": "东方电气",
+      "rank_score": 0.0859
+    },
+    {
+      "code": "SZ000661",
+      "name": "长春高新",
+      "rank_score": 0.0851
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-04-03",
-  "pred_start": "2026-05-03",
-  "pred_end": "2026-06-02",
-  "pred_date": "2026-05-29"
+  "train_end": "2026-04-04",
+  "pred_start": "2026-05-04",
+  "pred_end": "2026-06-03",
+  "pred_date": "2026-06-02"
 }
