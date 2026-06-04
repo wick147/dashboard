@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-06-03T14:27:02.364538+08:00",
+  "updated_at": "2026-06-04T14:18:38.824442+08:00",
   "h5": [
     {
       "code": "SZ000617",
       "name": "中油资本",
-      "rank_score": 0.0928
-    },
-    {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0704
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0667
-    },
-    {
-      "code": "SH601012",
-      "name": "隆基绿能",
-      "rank_score": 0.0527
-    },
-    {
-      "code": "SH601818",
-      "name": "光大银行",
-      "rank_score": 0.0525
+      "rank_score": 0.0792
     },
     {
       "code": "SZ002459",
       "name": "晶澳科技",
-      "rank_score": 0.0508
+      "rank_score": 0.0603
     },
     {
-      "code": "SH600015",
-      "name": "华夏银行",
-      "rank_score": 0.0497
+      "code": "SH601916",
+      "name": "浙商银行",
+      "rank_score": 0.0564
     },
     {
-      "code": "SH600346",
-      "name": "恒力石化",
+      "code": "SH601818",
+      "name": "光大银行",
+      "rank_score": 0.0515
+    },
+    {
+      "code": "SH600018",
+      "name": "上港集团",
       "rank_score": 0.0473
+    },
+    {
+      "code": "SH601012",
+      "name": "隆基绿能",
+      "rank_score": 0.047
+    },
+    {
+      "code": "SH600036",
+      "name": "招商银行",
+      "rank_score": 0.0449
+    },
+    {
+      "code": "SH601328",
+      "name": "交通银行",
+      "rank_score": 0.0449
     },
     {
       "code": "SZ000333",
       "name": "美的集团",
-      "rank_score": 0.0468
+      "rank_score": 0.0447
     },
     {
-      "code": "SH600919",
-      "name": "江苏银行",
-      "rank_score": 0.0437
+      "code": "SH600039",
+      "name": "四川路桥",
+      "rank_score": 0.0432
     }
   ],
   "h10": [
     {
       "code": "SZ000617",
       "name": "中油资本",
-      "rank_score": 0.0951
+      "rank_score": 0.0982
     },
     {
-      "code": "SH601012",
-      "name": "隆基绿能",
-      "rank_score": 0.0885
+      "code": "SH688223",
+      "name": "晶科能源",
+      "rank_score": 0.0917
     },
     {
       "code": "SH601916",
       "name": "浙商银行",
-      "rank_score": 0.0804
+      "rank_score": 0.0783
     },
     {
-      "code": "SH600426",
-      "name": "华鲁恒升",
-      "rank_score": 0.0763
+      "code": "SH601012",
+      "name": "隆基绿能",
+      "rank_score": 0.078
     },
     {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0735
+      "code": "SZ300308",
+      "name": "中际旭创",
+      "rank_score": 0.0755
     },
     {
       "code": "SH600346",
       "name": "恒力石化",
-      "rank_score": 0.0695
+      "rank_score": 0.0737
+    },
+    {
+      "code": "SH600426",
+      "name": "华鲁恒升",
+      "rank_score": 0.0686
+    },
+    {
+      "code": "SZ002459",
+      "name": "晶澳科技",
+      "rank_score": 0.066
     },
     {
       "code": "SZ000792",
       "name": "盐湖股份",
-      "rank_score": 0.0686
+      "rank_score": 0.0635
     },
     {
       "code": "SH601818",
       "name": "光大银行",
-      "rank_score": 0.0604
-    },
-    {
-      "code": "SH600036",
-      "name": "招商银行",
-      "rank_score": 0.0567
-    },
-    {
-      "code": "SH600026",
-      "name": "中远海能",
-      "rank_score": 0.0544
+      "rank_score": 0.061
     }
   ],
   "h20": [
     {
       "code": "SZ000617",
       "name": "中油资本",
-      "rank_score": 0.1249
+      "rank_score": 0.1359
     },
     {
       "code": "SZ000792",
       "name": "盐湖股份",
-      "rank_score": 0.1196
+      "rank_score": 0.1156
     },
     {
-      "code": "SH600346",
-      "name": "恒力石化",
-      "rank_score": 0.1137
+      "code": "SZ300418",
+      "name": "昆仑万维",
+      "rank_score": 0.1052
     },
     {
       "code": "SH601012",
       "name": "隆基绿能",
-      "rank_score": 0.1085
+      "rank_score": 0.1029
     },
     {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.1056
+      "code": "SH601872",
+      "name": "招商轮船",
+      "rank_score": 0.0984
+    },
+    {
+      "code": "SH600346",
+      "name": "恒力石化",
+      "rank_score": 0.0956
+    },
+    {
+      "code": "SZ002459",
+      "name": "晶澳科技",
+      "rank_score": 0.0943
     },
     {
       "code": "SH688223",
       "name": "晶科能源",
-      "rank_score": 0.1049
+      "rank_score": 0.0935
     },
     {
       "code": "SZ000975",
       "name": "山金国际",
-      "rank_score": 0.0953
-    },
-    {
-      "code": "SH601818",
-      "name": "光大银行",
-      "rank_score": 0.0931
-    },
-    {
-      "code": "SH600875",
-      "name": "东方电气",
-      "rank_score": 0.0859
+      "rank_score": 0.0911
     },
     {
       "code": "SZ000661",
       "name": "长春高新",
-      "rank_score": 0.0851
+      "rank_score": 0.0889
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-04-04",
-  "pred_start": "2026-05-04",
-  "pred_end": "2026-06-03",
-  "pred_date": "2026-06-02"
+  "train_end": "2026-04-05",
+  "pred_start": "2026-05-05",
+  "pred_end": "2026-06-04",
+  "pred_date": "2026-06-03"
 }
