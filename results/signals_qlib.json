@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-06-30T13:44:42.661400+08:00",
+  "updated_at": "2026-07-01T14:03:45.582665+08:00",
   "h5": [
     {
       "code": "SZ000975",
       "name": "山金国际",
-      "rank_score": 0.1225
+      "rank_score": 0.1006
     },
     {
-      "code": "SH688223",
-      "name": "晶科能源",
-      "rank_score": 0.0743
-    },
-    {
-      "code": "SZ000807",
-      "name": "云铝股份",
-      "rank_score": 0.0717
+      "code": "SH600026",
+      "name": "中远海能",
+      "rank_score": 0.0991
     },
     {
       "code": "SH600547",
       "name": "山东黄金",
-      "rank_score": 0.0642
+      "rank_score": 0.076
     },
     {
-      "code": "SZ300413",
-      "name": "芒果超媒",
-      "rank_score": 0.0591
+      "code": "SZ002625",
+      "name": "光启技术",
+      "rank_score": 0.0736
+    },
+    {
+      "code": "SH600219",
+      "name": "南山铝业",
+      "rank_score": 0.0582
+    },
+    {
+      "code": "SH600426",
+      "name": "华鲁恒升",
+      "rank_score": 0.0548
+    },
+    {
+      "code": "SH601872",
+      "name": "招商轮船",
+      "rank_score": 0.0536
+    },
+    {
+      "code": "SH601600",
+      "name": "中国铝业",
+      "rank_score": 0.0534
     },
     {
       "code": "SH600989",
       "name": "宝丰能源",
-      "rank_score": 0.0573
+      "rank_score": 0.0475
     },
     {
-      "code": "SH600875",
-      "name": "东方电气",
-      "rank_score": 0.0557
-    },
-    {
-      "code": "SH605499",
-      "name": "东鹏饮料",
-      "rank_score": 0.0532
-    },
-    {
-      "code": "SH601898",
-      "name": "中煤能源",
-      "rank_score": 0.0519
-    },
-    {
-      "code": "SH600938",
-      "name": "中国海油",
-      "rank_score": 0.051
+      "code": "SZ000807",
+      "name": "云铝股份",
+      "rank_score": 0.0469
     }
   ],
   "h10": [
     {
       "code": "SZ000975",
       "name": "山金国际",
-      "rank_score": 0.1436
+      "rank_score": 0.132
     },
     {
-      "code": "SZ000807",
-      "name": "云铝股份",
-      "rank_score": 0.1179
-    },
-    {
-      "code": "SH688223",
-      "name": "晶科能源",
-      "rank_score": 0.1036
-    },
-    {
-      "code": "SH600875",
-      "name": "东方电气",
-      "rank_score": 0.1027
-    },
-    {
-      "code": "SZ300413",
-      "name": "芒果超媒",
-      "rank_score": 0.0961
-    },
-    {
-      "code": "SH601898",
-      "name": "中煤能源",
-      "rank_score": 0.0936
-    },
-    {
-      "code": "SH600938",
-      "name": "中国海油",
-      "rank_score": 0.0916
-    },
-    {
-      "code": "SH605499",
-      "name": "东鹏饮料",
-      "rank_score": 0.0897
-    },
-    {
-      "code": "SH688169",
-      "name": "石头科技",
-      "rank_score": 0.0861
+      "code": "SZ002625",
+      "name": "光启技术",
+      "rank_score": 0.1118
     },
     {
       "code": "SH600547",
       "name": "山东黄金",
-      "rank_score": 0.0855
+      "rank_score": 0.0998
+    },
+    {
+      "code": "SZ000807",
+      "name": "云铝股份",
+      "rank_score": 0.0993
+    },
+    {
+      "code": "SH601600",
+      "name": "中国铝业",
+      "rank_score": 0.0947
+    },
+    {
+      "code": "SZ001979",
+      "name": "招商蛇口",
+      "rank_score": 0.0929
+    },
+    {
+      "code": "SH600219",
+      "name": "南山铝业",
+      "rank_score": 0.0894
+    },
+    {
+      "code": "SH600489",
+      "name": "中金黄金",
+      "rank_score": 0.084
+    },
+    {
+      "code": "SH600930",
+      "name": "华电新能",
+      "rank_score": 0.0768
+    },
+    {
+      "code": "SH600188",
+      "name": "兖矿能源",
+      "rank_score": 0.0753
     }
   ],
   "h20": [
     {
       "code": "SZ000807",
       "name": "云铝股份",
-      "rank_score": 0.1823
-    },
-    {
-      "code": "SZ000975",
-      "name": "山金国际",
-      "rank_score": 0.176
+      "rank_score": 0.1528
     },
     {
       "code": "SH601600",
       "name": "中国铝业",
-      "rank_score": 0.1465
-    },
-    {
-      "code": "SH601689",
-      "name": "拓普集团",
-      "rank_score": 0.1444
+      "rank_score": 0.1371
     },
     {
       "code": "SZ001979",
       "name": "招商蛇口",
-      "rank_score": 0.1394
+      "rank_score": 0.1232
     },
     {
-      "code": "SH600482",
-      "name": "中国动力",
-      "rank_score": 0.1366
+      "code": "SZ000975",
+      "name": "山金国际",
+      "rank_score": 0.1204
     },
     {
-      "code": "SZ300413",
-      "name": "芒果超媒",
-      "rank_score": 0.116
+      "code": "SH600219",
+      "name": "南山铝业",
+      "rank_score": 0.108
     },
     {
-      "code": "SZ000408",
-      "name": "藏格矿业",
-      "rank_score": 0.1159
+      "code": "SZ002625",
+      "name": "光启技术",
+      "rank_score": 0.1043
     },
     {
-      "code": "SH603799",
-      "name": "华友钴业",
-      "rank_score": 0.1151
+      "code": "SH600489",
+      "name": "中金黄金",
+      "rank_score": 0.1025
     },
     {
       "code": "SH600547",
       "name": "山东黄金",
-      "rank_score": 0.1123
+      "rank_score": 0.1023
+    },
+    {
+      "code": "SH601689",
+      "name": "拓普集团",
+      "rank_score": 0.0989
+    },
+    {
+      "code": "SH600930",
+      "name": "华电新能",
+      "rank_score": 0.0977
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-05-01",
-  "pred_start": "2026-05-31",
-  "pred_end": "2026-06-30",
-  "pred_date": "2026-06-26"
+  "train_end": "2026-05-02",
+  "pred_start": "2026-06-01",
+  "pred_end": "2026-07-01",
+  "pred_date": "2026-06-30"
 }
