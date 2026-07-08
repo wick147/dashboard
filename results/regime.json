@@ -1,47 +1,42 @@
 {
-  "updated_at": "2026-07-07T13:39:25.808604+08:00",
+  "updated_at": "2026-07-08T12:48:16.562603+08:00",
   "current_regime": "熊市 Bear",
   "current_state": 0,
   "history": [
     {
-      "date": "2024-09-02",
-      "state": 0,
-      "regime": "熊市 Bear"
-    },
-    {
       "date": "2024-09-03",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-04",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-05",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-06",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-09",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-10",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-11",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2024-09-12",
@@ -210,8 +205,8 @@
     },
     {
       "date": "2024-11-07",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 0,
+      "regime": "熊市 Bear"
     },
     {
       "date": "2024-11-08",
@@ -735,8 +730,8 @@
     },
     {
       "date": "2025-04-15",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-04-16",
@@ -1360,13 +1355,13 @@
     },
     {
       "date": "2025-10-21",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-10-22",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-10-23",
@@ -1450,28 +1445,28 @@
     },
     {
       "date": "2025-11-14",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-17",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-18",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-19",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-20",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-21",
@@ -1745,8 +1740,8 @@
     },
     {
       "date": "2026-02-09",
-      "state": 0,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-10",
@@ -2218,43 +2213,43 @@
     {
       "state": 0,
       "regime": "熊市 Bear",
-      "mean_ret": -0.6239485614764346,
-      "mean_rv": 0.2539997118291673,
-      "days": 115,
-      "pct": 26.0
+      "mean_ret": -0.5473877126522151,
+      "mean_rv": 0.2677573612847728,
+      "days": 99,
+      "pct": 22.4
     },
     {
       "state": 1,
       "regime": "震荡 Sideways",
-      "mean_ret": 0.5403295236396026,
-      "mean_rv": 0.13606118067800024,
-      "days": 313,
-      "pct": 70.8
+      "mean_ret": 0.47843492805934207,
+      "mean_rv": 0.13811571542734788,
+      "days": 328,
+      "pct": 74.4
     },
     {
       "state": 2,
       "regime": "牛市 Bull",
-      "mean_ret": 1.9284319588631431,
-      "mean_rv": 0.6785310550488951,
+      "mean_ret": 1.936349886684455,
+      "mean_rv": 0.6793555764603192,
       "days": 14,
       "pct": 3.2
     }
   ],
   "transition_matrix": [
     [
-      0.8885673336177937,
-      0.11143266638220628,
-      1.1378099051254952e-23
+      0.8850239443686347,
+      0.11497605563136518,
+      4.3682037656978656e-23
     ],
     [
-      0.03647123307025261,
-      0.9568665327200389,
-      0.006662234209708494
+      0.035375833243321976,
+      0.9582200941661356,
+      0.0064040725905424815
     ],
     [
-      0.13906593481037927,
-      2.015628676582184e-12,
-      0.8609340651876051
+      0.14420803974679416,
+      1.6889783144645584e-12,
+      0.8557919602515168
     ]
   ],
   "error": null
