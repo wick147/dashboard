@@ -1,294 +1,294 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-07-20T13:06:23.096851+08:00",
+  "updated_at": "2026-07-21T12:47:10.302802+08:00",
   "h5": [
     {
       "code": "SZ300394",
       "name": "天孚通信",
-      "rank_score": 0.0971
+      "rank_score": 0.1168
     },
     {
-      "code": "SH688082",
-      "name": "盛美上海",
-      "rank_score": 0.089
-    },
-    {
-      "code": "SZ000988",
-      "name": "华工科技",
-      "rank_score": 0.0876
-    },
-    {
-      "code": "SH600522",
-      "name": "中天科技",
-      "rank_score": 0.0788
-    },
-    {
-      "code": "SH600549",
-      "name": "厦门钨业",
-      "rank_score": 0.0738
-    },
-    {
-      "code": "SZ002466",
-      "name": "天齐锂业",
-      "rank_score": 0.0688
-    },
-    {
-      "code": "SZ300476",
-      "name": "胜宏科技",
-      "rank_score": 0.0686
-    },
-    {
-      "code": "SH688012",
-      "name": "中微公司",
-      "rank_score": 0.0685
+      "code": "SZ000657",
+      "name": "中钨高新",
+      "rank_score": 0.0892
     },
     {
       "code": "SH600176",
       "name": "中国巨石",
-      "rank_score": 0.0682
+      "rank_score": 0.0867
     },
     {
-      "code": "SZ002371",
-      "name": "北方华创",
-      "rank_score": 0.0665
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.0847
+    },
+    {
+      "code": "SZ000988",
+      "name": "华工科技",
+      "rank_score": 0.0826
+    },
+    {
+      "code": "SH600549",
+      "name": "厦门钨业",
+      "rank_score": 0.079
+    },
+    {
+      "code": "SH688396",
+      "name": "华润微",
+      "rank_score": 0.0774
+    },
+    {
+      "code": "SZ002837",
+      "name": "英维克",
+      "rank_score": 0.0743
+    },
+    {
+      "code": "SZ002353",
+      "name": "杰瑞股份",
+      "rank_score": 0.0728
+    },
+    {
+      "code": "SZ301308",
+      "name": "江波龙",
+      "rank_score": 0.0724
     }
   ],
   "h10": [
     {
       "code": "SH600522",
       "name": "中天科技",
-      "rank_score": 0.1877
+      "rank_score": 0.1782
     },
     {
       "code": "SZ300394",
       "name": "天孚通信",
-      "rank_score": 0.1805
+      "rank_score": 0.178
     },
     {
       "code": "SZ300476",
       "name": "胜宏科技",
-      "rank_score": 0.1421
+      "rank_score": 0.1449
     },
     {
-      "code": "SZ000338",
-      "name": "潍柴动力",
-      "rank_score": 0.1156
+      "code": "SZ300316",
+      "name": "晶盛机电",
+      "rank_score": 0.134
+    },
+    {
+      "code": "SZ000988",
+      "name": "华工科技",
+      "rank_score": 0.1273
     },
     {
       "code": "SZ301308",
       "name": "江波龙",
-      "rank_score": 0.1089
-    },
-    {
-      "code": "SZ002202",
-      "name": "金风科技",
-      "rank_score": 0.1083
-    },
-    {
-      "code": "SH601138",
-      "name": "工业富联",
-      "rank_score": 0.1075
+      "rank_score": 0.1266
     },
     {
       "code": "SZ002600",
       "name": "领益智造",
-      "rank_score": 0.1069
+      "rank_score": 0.1223
     },
     {
-      "code": "SZ002466",
-      "name": "天齐锂业",
-      "rank_score": 0.1017
+      "code": "SZ002202",
+      "name": "金风科技",
+      "rank_score": 0.1222
     },
     {
-      "code": "SH600111",
-      "name": "北方稀土",
-      "rank_score": 0.1002
+      "code": "SZ002460",
+      "name": "赣锋锂业",
+      "rank_score": 0.115
+    },
+    {
+      "code": "SH688008",
+      "name": "澜起科技",
+      "rank_score": 0.115
     }
   ],
   "h20": [
     {
       "code": "SZ300394",
       "name": "天孚通信",
-      "rank_score": 0.2519
+      "rank_score": 0.2485
     },
     {
       "code": "SZ300476",
       "name": "胜宏科技",
-      "rank_score": 0.2126
-    },
-    {
-      "code": "SZ002709",
-      "name": "天赐材料",
-      "rank_score": 0.1813
+      "rank_score": 0.2211
     },
     {
       "code": "SZ300408",
       "name": "三环集团",
-      "rank_score": 0.1803
+      "rank_score": 0.2023
     },
     {
-      "code": "SH605117",
-      "name": "德业股份",
-      "rank_score": 0.1764
-    },
-    {
-      "code": "SZ000988",
-      "name": "华工科技",
-      "rank_score": 0.1683
+      "code": "SZ002709",
+      "name": "天赐材料",
+      "rank_score": 0.1784
     },
     {
       "code": "SH600522",
       "name": "中天科技",
-      "rank_score": 0.1632
+      "rank_score": 0.1783
     },
     {
-      "code": "SH601138",
-      "name": "工业富联",
-      "rank_score": 0.1615
+      "code": "SH688008",
+      "name": "澜起科技",
+      "rank_score": 0.1723
     },
     {
-      "code": "SZ000338",
-      "name": "潍柴动力",
-      "rank_score": 0.159
+      "code": "SH605117",
+      "name": "德业股份",
+      "rank_score": 0.1699
     },
     {
-      "code": "SZ002202",
-      "name": "金风科技",
-      "rank_score": 0.1566
+      "code": "SZ002460",
+      "name": "赣锋锂业",
+      "rank_score": 0.1654
+    },
+    {
+      "code": "SZ002600",
+      "name": "领益智造",
+      "rank_score": 0.1608
+    },
+    {
+      "code": "SZ000988",
+      "name": "华工科技",
+      "rank_score": 0.1529
     }
   ],
   "feature_importance": {
     "h5": [
       {
         "feature": "CORD60",
-        "importance": 406.7603
+        "importance": 431.7109
       },
       {
         "feature": "STD20",
-        "importance": 366.9545
-      },
-      {
-        "feature": "WVMA60",
-        "importance": 303.2901
-      },
-      {
-        "feature": "STD30",
-        "importance": 300.6792
-      },
-      {
-        "feature": "STD60",
-        "importance": 292.4534
+        "importance": 375.5743
       },
       {
         "feature": "MAX30",
-        "importance": 279.9223
+        "importance": 293.543
       },
       {
-        "feature": "QTLU60",
-        "importance": 270.7053
+        "feature": "STD60",
+        "importance": 291.6473
+      },
+      {
+        "feature": "STD30",
+        "importance": 285.2518
+      },
+      {
+        "feature": "WVMA60",
+        "importance": 274.3954
       },
       {
         "feature": "STD10",
-        "importance": 253.1222
+        "importance": 258.7988
       },
       {
-        "feature": "CORR60",
-        "importance": 219.7116
+        "feature": "QTLU60",
+        "importance": 256.4084
       },
       {
-        "feature": "BETA30",
-        "importance": 212.1868
+        "feature": "ROC60",
+        "importance": 218.1317
+      },
+      {
+        "feature": "CORD30",
+        "importance": 217.5935
       }
     ],
     "h10": [
       {
         "feature": "CORD60",
-        "importance": 736.1777
+        "importance": 753.7628
       },
       {
         "feature": "STD30",
-        "importance": 645.9351
+        "importance": 598.6685
       },
       {
         "feature": "WVMA60",
-        "importance": 557.2415
+        "importance": 544.0231
       },
       {
         "feature": "QTLU60",
-        "importance": 509.3674
+        "importance": 499.651
       },
       {
         "feature": "IMXD60",
-        "importance": 503.9091
+        "importance": 497.6806
       },
       {
         "feature": "STD20",
-        "importance": 489.7169
-      },
-      {
-        "feature": "CORR60",
-        "importance": 423.5475
+        "importance": 474.6494
       },
       {
         "feature": "IMIN60",
-        "importance": 402.8386
+        "importance": 420.0824
       },
       {
-        "feature": "ROC60",
-        "importance": 368.3375
+        "feature": "CORR60",
+        "importance": 419.6689
       },
       {
         "feature": "STD60",
-        "importance": 324.0937
+        "importance": 343.6288
+      },
+      {
+        "feature": "ROC60",
+        "importance": 326.7238
       }
     ],
     "h20": [
       {
         "feature": "CORD60",
-        "importance": 1099.3072
+        "importance": 1139.9302
       },
       {
         "feature": "WVMA60",
-        "importance": 899.7023
-      },
-      {
-        "feature": "IMXD60",
-        "importance": 772.8838
+        "importance": 890.0883
       },
       {
         "feature": "STD30",
-        "importance": 770.2765
+        "importance": 808.39
       },
       {
         "feature": "STD20",
-        "importance": 748.1802
+        "importance": 780.1137
       },
       {
-        "feature": "CORR60",
-        "importance": 645.4844
+        "feature": "IMXD60",
+        "importance": 704.1297
       },
       {
         "feature": "CNTN60",
-        "importance": 627.6258
+        "importance": 645.4724
       },
       {
-        "feature": "CORR30",
-        "importance": 553.1822
-      },
-      {
-        "feature": "STD60",
-        "importance": 522.8725
+        "feature": "CORR60",
+        "importance": 635.9655
       },
       {
         "feature": "ROC30",
-        "importance": 510.1441
+        "importance": 533.2462
+      },
+      {
+        "feature": "IMIN60",
+        "importance": 507.8228
+      },
+      {
+        "feature": "CORR30",
+        "importance": 485.7169
       }
     ]
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-05-21",
-  "pred_start": "2026-06-20",
-  "pred_end": "2026-07-20",
+  "train_end": "2026-05-22",
+  "pred_start": "2026-06-21",
+  "pred_end": "2026-07-21",
   "pred_date": "2026-07-17"
 }
