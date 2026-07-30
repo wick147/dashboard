@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-07-29T12:46:29.873883+08:00",
+  "updated_at": "2026-07-30T12:33:56.840831+08:00",
   "h5": [
     {
-      "code": "SH688396",
-      "name": "华润微",
-      "rank_score": 0.1293
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.1268
+    },
+    {
+      "code": "SZ000657",
+      "name": "中钨高新",
+      "rank_score": 0.1225
     },
     {
       "code": "SH688082",
       "name": "盛美上海",
-      "rank_score": 0.1195
-    },
-    {
-      "code": "SZ002709",
-      "name": "天赐材料",
-      "rank_score": 0.118
-    },
-    {
-      "code": "SH600549",
-      "name": "厦门钨业",
-      "rank_score": 0.1165
-    },
-    {
-      "code": "SZ002600",
-      "name": "领益智造",
-      "rank_score": 0.1135
-    },
-    {
-      "code": "SZ002049",
-      "name": "紫光国微",
-      "rank_score": 0.1086
-    },
-    {
-      "code": "SZ000657",
-      "name": "中钨高新",
-      "rank_score": 0.1081
-    },
-    {
-      "code": "SZ002916",
-      "name": "深南电路",
-      "rank_score": 0.1073
-    },
-    {
-      "code": "SH600183",
-      "name": "生益科技",
-      "rank_score": 0.1053
-    },
-    {
-      "code": "SZ002938",
-      "name": "鹏鼎控股",
-      "rank_score": 0.1038
-    }
-  ],
-  "h10": [
-    {
-      "code": "SZ000988",
-      "name": "华工科技",
-      "rank_score": 0.1888
+      "rank_score": 0.1072
     },
     {
       "code": "SH600522",
       "name": "中天科技",
-      "rank_score": 0.1781
+      "rank_score": 0.1063
     },
     {
-      "code": "SZ002709",
-      "name": "天赐材料",
-      "rank_score": 0.1726
+      "code": "SZ002466",
+      "name": "天齐锂业",
+      "rank_score": 0.105
     },
     {
       "code": "SZ002837",
       "name": "英维克",
-      "rank_score": 0.1627
+      "rank_score": 0.103
     },
     {
-      "code": "SZ300394",
-      "name": "天孚通信",
-      "rank_score": 0.1596
-    },
-    {
-      "code": "SZ000657",
-      "name": "中钨高新",
-      "rank_score": 0.1577
-    },
-    {
-      "code": "SZ300476",
-      "name": "胜宏科技",
-      "rank_score": 0.1403
-    },
-    {
-      "code": "SZ301308",
-      "name": "江波龙",
-      "rank_score": 0.1392
+      "code": "SZ002709",
+      "name": "天赐材料",
+      "rank_score": 0.1014
     },
     {
       "code": "SH600549",
       "name": "厦门钨业",
-      "rank_score": 0.1367
+      "rank_score": 0.1014
     },
     {
-      "code": "SZ002049",
-      "name": "紫光国微",
-      "rank_score": 0.1365
+      "code": "SH600584",
+      "name": "长电科技",
+      "rank_score": 0.0955
+    },
+    {
+      "code": "SZ002916",
+      "name": "深南电路",
+      "rank_score": 0.0948
+    }
+  ],
+  "h10": [
+    {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.1784
+    },
+    {
+      "code": "SZ000657",
+      "name": "中钨高新",
+      "rank_score": 0.1767
+    },
+    {
+      "code": "SZ000988",
+      "name": "华工科技",
+      "rank_score": 0.1754
+    },
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.1679
+    },
+    {
+      "code": "SZ300394",
+      "name": "天孚通信",
+      "rank_score": 0.1657
+    },
+    {
+      "code": "SZ002466",
+      "name": "天齐锂业",
+      "rank_score": 0.1648
+    },
+    {
+      "code": "SZ301308",
+      "name": "江波龙",
+      "rank_score": 0.1635
+    },
+    {
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.1572
+    },
+    {
+      "code": "SZ002837",
+      "name": "英维克",
+      "rank_score": 0.1567
+    },
+    {
+      "code": "SH600522",
+      "name": "中天科技",
+      "rank_score": 0.1505
     }
   ],
   "h20": [
     {
       "code": "SZ300394",
       "name": "天孚通信",
-      "rank_score": 0.2394
+      "rank_score": 0.2546
     },
     {
       "code": "SZ002916",
       "name": "深南电路",
-      "rank_score": 0.2242
+      "rank_score": 0.2519
+    },
+    {
+      "code": "SZ002463",
+      "name": "沪电股份",
+      "rank_score": 0.2344
+    },
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.2324
     },
     {
       "code": "SZ000988",
       "name": "华工科技",
-      "rank_score": 0.218
+      "rank_score": 0.2313
     },
     {
       "code": "SZ000657",
       "name": "中钨高新",
-      "rank_score": 0.218
+      "rank_score": 0.2309
+    },
+    {
+      "code": "SH600176",
+      "name": "中国巨石",
+      "rank_score": 0.2218
     },
     {
       "code": "SH600522",
       "name": "中天科技",
-      "rank_score": 0.2138
+      "rank_score": 0.2212
     },
     {
-      "code": "SZ002709",
-      "name": "天赐材料",
-      "rank_score": 0.2079
-    },
-    {
-      "code": "SZ002938",
-      "name": "鹏鼎控股",
-      "rank_score": 0.207
-    },
-    {
-      "code": "SH600183",
-      "name": "生益科技",
-      "rank_score": 0.2056
-    },
-    {
-      "code": "SH600549",
-      "name": "厦门钨业",
-      "rank_score": 0.1988
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.2156
     },
     {
       "code": "SZ301308",
       "name": "江波龙",
-      "rank_score": 0.1898
+      "rank_score": 0.2156
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-05-30",
-  "pred_start": "2026-06-29",
-  "pred_end": "2026-07-29",
-  "pred_date": "2026-07-28"
+  "train_end": "2026-05-31",
+  "pred_start": "2026-06-30",
+  "pred_end": "2026-07-30",
+  "pred_date": "2026-07-29"
 }
