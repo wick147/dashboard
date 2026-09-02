@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-09-01T14:34:40.829856+08:00",
+  "updated_at": "2026-09-02T14:12:45.304545+08:00",
   "h5": [
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.0941
-    },
-    {
-      "code": "SZ300476",
-      "name": "胜宏科技",
-      "rank_score": 0.091
-    },
-    {
-      "code": "SH688041",
-      "name": "海光信息",
-      "rank_score": 0.0866
-    },
-    {
-      "code": "SH600460",
-      "name": "士兰微",
-      "rank_score": 0.082
-    },
-    {
-      "code": "SH688256",
-      "name": "寒武纪",
-      "rank_score": 0.0806
-    },
-    {
-      "code": "SH603986",
-      "name": "兆易创新",
-      "rank_score": 0.0768
-    },
-    {
-      "code": "SH600176",
-      "name": "中国巨石",
-      "rank_score": 0.076
+      "rank_score": 0.1092
     },
     {
       "code": "SZ000657",
       "name": "中钨高新",
-      "rank_score": 0.0751
+      "rank_score": 0.0967
+    },
+    {
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.096
+    },
+    {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.0918
+    },
+    {
+      "code": "SZ300433",
+      "name": "蓝思科技",
+      "rank_score": 0.0894
     },
     {
       "code": "SZ300394",
       "name": "天孚通信",
-      "rank_score": 0.0703
+      "rank_score": 0.0862
     },
     {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0693
+      "code": "SH603986",
+      "name": "兆易创新",
+      "rank_score": 0.0804
+    },
+    {
+      "code": "SH688041",
+      "name": "海光信息",
+      "rank_score": 0.0796
+    },
+    {
+      "code": "SH600460",
+      "name": "士兰微",
+      "rank_score": 0.0767
+    },
+    {
+      "code": "SH601018",
+      "name": "宁波港",
+      "rank_score": 0.0735
     }
   ],
   "h10": [
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.1747
-    },
-    {
-      "code": "SH688041",
-      "name": "海光信息",
-      "rank_score": 0.1142
+      "rank_score": 0.1115
     },
     {
       "code": "SH603986",
       "name": "兆易创新",
-      "rank_score": 0.1119
+      "rank_score": 0.1075
     },
     {
-      "code": "SH600460",
-      "name": "士兰微",
-      "rank_score": 0.0929
+      "code": "SH688041",
+      "name": "海光信息",
+      "rank_score": 0.096
     },
     {
       "code": "SH688082",
       "name": "盛美上海",
-      "rank_score": 0.089
+      "rank_score": 0.078
+    },
+    {
+      "code": "SH600460",
+      "name": "士兰微",
+      "rank_score": 0.0748
+    },
+    {
+      "code": "SH601998",
+      "name": "中信银行",
+      "rank_score": 0.0731
+    },
+    {
+      "code": "SZ301308",
+      "name": "江波龙",
+      "rank_score": 0.0731
+    },
+    {
+      "code": "SH601939",
+      "name": "建设银行",
+      "rank_score": 0.0685
     },
     {
       "code": "SH600176",
       "name": "中国巨石",
-      "rank_score": 0.0847
+      "rank_score": 0.0653
     },
     {
-      "code": "SH600584",
-      "name": "长电科技",
-      "rank_score": 0.0683
-    },
-    {
-      "code": "SZ002384",
-      "name": "东山精密",
-      "rank_score": 0.067
-    },
-    {
-      "code": "SH688396",
-      "name": "华润微",
-      "rank_score": 0.058
-    },
-    {
-      "code": "SZ000988",
-      "name": "华工科技",
-      "rank_score": 0.0569
+      "code": "SZ300433",
+      "name": "蓝思科技",
+      "rank_score": 0.0646
     }
   ],
   "h20": [
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.1886
+      "rank_score": 0.2115
     },
     {
       "code": "SH688041",
       "name": "海光信息",
-      "rank_score": 0.1565
+      "rank_score": 0.1389
     },
     {
-      "code": "SZ002837",
-      "name": "英维克",
-      "rank_score": 0.1178
+      "code": "SH601998",
+      "name": "中信银行",
+      "rank_score": 0.1145
     },
     {
       "code": "SZ000988",
       "name": "华工科技",
-      "rank_score": 0.102
+      "rank_score": 0.1035
     },
     {
-      "code": "SZ300394",
-      "name": "天孚通信",
-      "rank_score": 0.0991
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.1018
     },
     {
       "code": "SH688256",
       "name": "寒武纪",
-      "rank_score": 0.0731
+      "rank_score": 0.0974
     },
     {
-      "code": "SH601117",
-      "name": "中国化学",
-      "rank_score": 0.0731
+      "code": "SH601939",
+      "name": "建设银行",
+      "rank_score": 0.0965
     },
     {
-      "code": "SH601838",
-      "name": "成都银行",
-      "rank_score": 0.0706
+      "code": "SZ300502",
+      "name": "新易盛",
+      "rank_score": 0.0958
     },
     {
-      "code": "SH600522",
-      "name": "中天科技",
-      "rank_score": 0.0691
+      "code": "SH600176",
+      "name": "中国巨石",
+      "rank_score": 0.0838
     },
     {
-      "code": "SH601398",
-      "name": "工商银行",
-      "rank_score": 0.0669
+      "code": "SZ002837",
+      "name": "英维克",
+      "rank_score": 0.0831
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-07-03",
-  "pred_start": "2026-08-02",
-  "pred_end": "2026-09-01",
-  "pred_date": "2026-08-28"
+  "train_end": "2026-07-04",
+  "pred_start": "2026-08-03",
+  "pred_end": "2026-09-02",
+  "pred_date": "2026-09-01"
 }
