@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-09-15T14:27:50.540745+08:00",
+  "updated_at": "2026-09-16T14:27:42.174370+08:00",
   "h5": [
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.0668
+    },
     {
       "code": "SH600886",
       "name": "国投电力",
-      "rank_score": 0.0654
+      "rank_score": 0.0667
     },
     {
       "code": "SH600085",
       "name": "同仁堂",
-      "rank_score": 0.0643
+      "rank_score": 0.0595
     },
     {
       "code": "SH600016",
-      "name": "XD民生银",
-      "rank_score": 0.0617
+      "name": "民生银行",
+      "rank_score": 0.0566
+    },
+    {
+      "code": "SH600584",
+      "name": "长电科技",
+      "rank_score": 0.0553
     },
     {
       "code": "SH601985",
       "name": "中国核电",
-      "rank_score": 0.0601
-    },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0596
-    },
-    {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0584
-    },
-    {
-      "code": "SH688521",
-      "name": "芯原股份",
-      "rank_score": 0.0555
+      "rank_score": 0.0549
     },
     {
       "code": "SZ002049",
       "name": "紫光国微",
-      "rank_score": 0.054
+      "rank_score": 0.0548
     },
-    {
-      "code": "SH601229",
-      "name": "上海银行",
-      "rank_score": 0.0535
-    },
-    {
-      "code": "SH601018",
-      "name": "宁波港",
-      "rank_score": 0.0533
-    }
-  ],
-  "h10": [
     {
       "code": "SH688041",
       "name": "海光信息",
-      "rank_score": 0.0762
-    },
-    {
-      "code": "SH600886",
-      "name": "国投电力",
-      "rank_score": 0.0729
-    },
-    {
-      "code": "SH601838",
-      "name": "成都银行",
-      "rank_score": 0.0645
-    },
-    {
-      "code": "SH688521",
-      "name": "芯原股份",
-      "rank_score": 0.0645
-    },
-    {
-      "code": "SH601998",
-      "name": "中信银行",
-      "rank_score": 0.0633
-    },
-    {
-      "code": "SH600085",
-      "name": "同仁堂",
-      "rank_score": 0.0622
-    },
-    {
-      "code": "SH600027",
-      "name": "华电国际",
-      "rank_score": 0.0616
-    },
-    {
-      "code": "SH600887",
-      "name": "伊利股份",
-      "rank_score": 0.0611
-    },
-    {
-      "code": "SH600023",
-      "name": "浙能电力",
-      "rank_score": 0.061
-    },
-    {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0562
-    }
-  ],
-  "h20": [
-    {
-      "code": "SH600887",
-      "name": "伊利股份",
-      "rank_score": 0.0836
-    },
-    {
-      "code": "SZ300274",
-      "name": "阳光电源",
-      "rank_score": 0.0765
+      "rank_score": 0.054
     },
     {
       "code": "SH688472",
       "name": "阿特斯",
-      "rank_score": 0.0765
+      "rank_score": 0.0528
     },
     {
-      "code": "SH688521",
-      "name": "芯原股份",
-      "rank_score": 0.0716
+      "code": "SZ300413",
+      "name": "芒果超媒",
+      "rank_score": 0.0523
+    }
+  ],
+  "h10": [
+    {
+      "code": "SZ300413",
+      "name": "芒果超媒",
+      "rank_score": 0.0868
     },
     {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0688
+      "code": "SH600886",
+      "name": "国投电力",
+      "rank_score": 0.085
     },
     {
-      "code": "SH601939",
-      "name": "建设银行",
-      "rank_score": 0.0688
-    },
-    {
-      "code": "SH600016",
-      "name": "XD民生银",
-      "rank_score": 0.0686
-    },
-    {
-      "code": "SH601838",
-      "name": "成都银行",
-      "rank_score": 0.0677
+      "code": "SH688041",
+      "name": "海光信息",
+      "rank_score": 0.0665
     },
     {
       "code": "SH601998",
       "name": "中信银行",
-      "rank_score": 0.0669
+      "rank_score": 0.061
     },
     {
-      "code": "SH601916",
-      "name": "浙商银行",
-      "rank_score": 0.0665
+      "code": "SZ300274",
+      "name": "阳光电源",
+      "rank_score": 0.0596
+    },
+    {
+      "code": "SH600019",
+      "name": "XD宝钢股",
+      "rank_score": 0.0577
+    },
+    {
+      "code": "SH600023",
+      "name": "浙能电力",
+      "rank_score": 0.0573
+    },
+    {
+      "code": "SH600085",
+      "name": "同仁堂",
+      "rank_score": 0.056
+    },
+    {
+      "code": "SH601838",
+      "name": "成都银行",
+      "rank_score": 0.0557
+    },
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.0543
+    }
+  ],
+  "h20": [
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.1074
+    },
+    {
+      "code": "SH601998",
+      "name": "中信银行",
+      "rank_score": 0.104
+    },
+    {
+      "code": "SH688041",
+      "name": "海光信息",
+      "rank_score": 0.0841
+    },
+    {
+      "code": "SH600886",
+      "name": "国投电力",
+      "rank_score": 0.0835
+    },
+    {
+      "code": "SZ300274",
+      "name": "阳光电源",
+      "rank_score": 0.0742
+    },
+    {
+      "code": "SZ000333",
+      "name": "美的集团",
+      "rank_score": 0.0684
+    },
+    {
+      "code": "SH688472",
+      "name": "阿特斯",
+      "rank_score": 0.0677
+    },
+    {
+      "code": "SH601939",
+      "name": "建设银行",
+      "rank_score": 0.0657
+    },
+    {
+      "code": "SH600019",
+      "name": "XD宝钢股",
+      "rank_score": 0.0634
+    },
+    {
+      "code": "SH688256",
+      "name": "寒武纪",
+      "rank_score": 0.0628
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-07-17",
-  "pred_start": "2026-08-16",
-  "pred_end": "2026-09-15",
-  "pred_date": "2026-09-14"
+  "train_end": "2026-07-18",
+  "pred_start": "2026-08-17",
+  "pred_end": "2026-09-16",
+  "pred_date": "2026-09-15"
 }
