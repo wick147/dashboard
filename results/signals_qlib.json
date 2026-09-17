@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-09-16T14:27:42.174370+08:00",
+  "updated_at": "2026-09-17T14:27:52.053378+08:00",
   "h5": [
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.0668
-    },
-    {
-      "code": "SH600886",
-      "name": "国投电力",
-      "rank_score": 0.0667
-    },
-    {
-      "code": "SH600085",
-      "name": "同仁堂",
-      "rank_score": 0.0595
-    },
-    {
-      "code": "SH600016",
-      "name": "民生银行",
-      "rank_score": 0.0566
-    },
-    {
-      "code": "SH600584",
-      "name": "长电科技",
-      "rank_score": 0.0553
+      "rank_score": 0.0695
     },
     {
       "code": "SH601985",
       "name": "中国核电",
-      "rank_score": 0.0549
+      "rank_score": 0.0629
     },
     {
-      "code": "SZ002049",
-      "name": "紫光国微",
-      "rank_score": 0.0548
+      "code": "SH600886",
+      "name": "国投电力",
+      "rank_score": 0.0556
     },
     {
-      "code": "SH688041",
-      "name": "海光信息",
-      "rank_score": 0.054
+      "code": "SH600025",
+      "name": "华能水电",
+      "rank_score": 0.0509
+    },
+    {
+      "code": "SH600023",
+      "name": "浙能电力",
+      "rank_score": 0.0472
+    },
+    {
+      "code": "SH600085",
+      "name": "同仁堂",
+      "rank_score": 0.047
     },
     {
       "code": "SH688472",
       "name": "阿特斯",
-      "rank_score": 0.0528
+      "rank_score": 0.0458
     },
     {
-      "code": "SZ300413",
-      "name": "芒果超媒",
-      "rank_score": 0.0523
+      "code": "SH600011",
+      "name": "华能国际",
+      "rank_score": 0.0443
+    },
+    {
+      "code": "SH688041",
+      "name": "海光信息",
+      "rank_score": 0.0424
+    },
+    {
+      "code": "SH600027",
+      "name": "华电国际",
+      "rank_score": 0.042
     }
   ],
   "h10": [
     {
       "code": "SZ300413",
       "name": "芒果超媒",
-      "rank_score": 0.0868
-    },
-    {
-      "code": "SH600886",
-      "name": "国投电力",
-      "rank_score": 0.085
-    },
-    {
-      "code": "SH688041",
-      "name": "海光信息",
-      "rank_score": 0.0665
-    },
-    {
-      "code": "SH601998",
-      "name": "中信银行",
-      "rank_score": 0.061
-    },
-    {
-      "code": "SZ300274",
-      "name": "阳光电源",
-      "rank_score": 0.0596
-    },
-    {
-      "code": "SH600019",
-      "name": "XD宝钢股",
-      "rank_score": 0.0577
-    },
-    {
-      "code": "SH600023",
-      "name": "浙能电力",
-      "rank_score": 0.0573
-    },
-    {
-      "code": "SH600085",
-      "name": "同仁堂",
-      "rank_score": 0.056
-    },
-    {
-      "code": "SH601838",
-      "name": "成都银行",
-      "rank_score": 0.0557
+      "rank_score": 0.0739
     },
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.0543
+      "rank_score": 0.0733
+    },
+    {
+      "code": "SH600886",
+      "name": "国投电力",
+      "rank_score": 0.0697
+    },
+    {
+      "code": "SH601985",
+      "name": "中国核电",
+      "rank_score": 0.067
+    },
+    {
+      "code": "SH600025",
+      "name": "华能水电",
+      "rank_score": 0.066
+    },
+    {
+      "code": "SH600023",
+      "name": "浙能电力",
+      "rank_score": 0.0615
+    },
+    {
+      "code": "SH600027",
+      "name": "华电国际",
+      "rank_score": 0.0601
+    },
+    {
+      "code": "SH601939",
+      "name": "建设银行",
+      "rank_score": 0.0599
+    },
+    {
+      "code": "SH600085",
+      "name": "同仁堂",
+      "rank_score": 0.05
+    },
+    {
+      "code": "SH600900",
+      "name": "长江电力",
+      "rank_score": 0.0496
     }
   ],
   "h20": [
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.1074
-    },
-    {
-      "code": "SH601998",
-      "name": "中信银行",
-      "rank_score": 0.104
+      "rank_score": 0.1304
     },
     {
       "code": "SH688041",
       "name": "海光信息",
-      "rank_score": 0.0841
+      "rank_score": 0.1001
+    },
+    {
+      "code": "SH601998",
+      "name": "中信银行",
+      "rank_score": 0.0911
     },
     {
       "code": "SH600886",
       "name": "国投电力",
-      "rank_score": 0.0835
+      "rank_score": 0.0882
     },
     {
       "code": "SZ300274",
       "name": "阳光电源",
-      "rank_score": 0.0742
+      "rank_score": 0.0783
     },
     {
-      "code": "SZ000333",
-      "name": "美的集团",
-      "rank_score": 0.0684
-    },
-    {
-      "code": "SH688472",
-      "name": "阿特斯",
-      "rank_score": 0.0677
+      "code": "SH600019",
+      "name": "宝钢股份",
+      "rank_score": 0.0738
     },
     {
       "code": "SH601939",
       "name": "建设银行",
-      "rank_score": 0.0657
+      "rank_score": 0.0683
     },
     {
-      "code": "SH600019",
-      "name": "XD宝钢股",
-      "rank_score": 0.0634
+      "code": "SH601985",
+      "name": "中国核电",
+      "rank_score": 0.0667
     },
     {
-      "code": "SH688256",
-      "name": "寒武纪",
-      "rank_score": 0.0628
+      "code": "SZ300750",
+      "name": "宁德时代",
+      "rank_score": 0.0649
+    },
+    {
+      "code": "SZ002028",
+      "name": "思源电气",
+      "rank_score": 0.0642
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-07-18",
-  "pred_start": "2026-08-17",
-  "pred_end": "2026-09-16",
-  "pred_date": "2026-09-15"
+  "train_end": "2026-07-19",
+  "pred_start": "2026-08-18",
+  "pred_end": "2026-09-17",
+  "pred_date": "2026-09-16"
 }
