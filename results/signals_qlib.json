@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-10-13T16:07:57.187886+08:00",
+  "updated_at": "2026-10-14T14:30:02.320602+08:00",
   "h5": [
     {
       "code": "SH600887",
       "name": "伊利股份",
-      "rank_score": 0.107
-    },
-    {
-      "code": "SZ000538",
-      "name": "云南白药",
-      "rank_score": 0.0962
-    },
-    {
-      "code": "SH600547",
-      "name": "山东黄金",
-      "rank_score": 0.0713
-    },
-    {
-      "code": "SH601398",
-      "name": "工商银行",
-      "rank_score": 0.0713
-    },
-    {
-      "code": "SH600019",
-      "name": "宝钢股份",
-      "rank_score": 0.0713
+      "rank_score": 0.1065
     },
     {
       "code": "SH601998",
       "name": "中信银行",
-      "rank_score": 0.0703
+      "rank_score": 0.0841
     },
-    {
-      "code": "SH600018",
-      "name": "上港集团",
-      "rank_score": 0.0673
-    },
-    {
-      "code": "SH600600",
-      "name": "青岛啤酒",
-      "rank_score": 0.0649
-    },
-    {
-      "code": "SH600085",
-      "name": "同仁堂",
-      "rank_score": 0.0642
-    },
-    {
-      "code": "SZ002384",
-      "name": "东山精密",
-      "rank_score": 0.062
-    }
-  ],
-  "h10": [
     {
       "code": "SZ000538",
       "name": "云南白药",
-      "rank_score": 0.1151
+      "rank_score": 0.0755
     },
     {
-      "code": "SH600887",
-      "name": "伊利股份",
-      "rank_score": 0.1012
-    },
-    {
-      "code": "SH600025",
-      "name": "华能水电",
-      "rank_score": 0.0874
-    },
-    {
-      "code": "SH600019",
-      "name": "宝钢股份",
-      "rank_score": 0.0835
-    },
-    {
-      "code": "SH601328",
-      "name": "交通银行",
-      "rank_score": 0.0795
-    },
-    {
-      "code": "SZ000988",
-      "name": "华工科技",
-      "rank_score": 0.0787
+      "code": "SH601398",
+      "name": "工商银行",
+      "rank_score": 0.0747
     },
     {
       "code": "SH600547",
       "name": "山东黄金",
-      "rank_score": 0.0746
+      "rank_score": 0.07
     },
     {
-      "code": "SH600900",
-      "name": "长江电力",
-      "rank_score": 0.0712
+      "code": "SZ000651",
+      "name": "格力电器",
+      "rank_score": 0.0658
     },
     {
-      "code": "SH600741",
-      "name": "华域汽车",
-      "rank_score": 0.0684
+      "code": "SH600085",
+      "name": "同仁堂",
+      "rank_score": 0.0632
     },
     {
-      "code": "SH601985",
-      "name": "中国核电",
-      "rank_score": 0.0673
+      "code": "SH600600",
+      "name": "青岛啤酒",
+      "rank_score": 0.0631
+    },
+    {
+      "code": "SH600019",
+      "name": "宝钢股份",
+      "rank_score": 0.0623
+    },
+    {
+      "code": "SH600941",
+      "name": "中国移动",
+      "rank_score": 0.0611
+    }
+  ],
+  "h10": [
+    {
+      "code": "SZ301165",
+      "name": "锐捷网络",
+      "rank_score": 0.106
+    },
+    {
+      "code": "SZ000988",
+      "name": "华工科技",
+      "rank_score": 0.1048
+    },
+    {
+      "code": "SZ300433",
+      "name": "蓝思科技",
+      "rank_score": 0.1042
+    },
+    {
+      "code": "SH600887",
+      "name": "伊利股份",
+      "rank_score": 0.1016
+    },
+    {
+      "code": "SZ000538",
+      "name": "云南白药",
+      "rank_score": 0.0989
+    },
+    {
+      "code": "SZ000657",
+      "name": "中钨高新",
+      "rank_score": 0.0932
+    },
+    {
+      "code": "SH601998",
+      "name": "中信银行",
+      "rank_score": 0.0845
+    },
+    {
+      "code": "SZ301308",
+      "name": "江波龙",
+      "rank_score": 0.0783
+    },
+    {
+      "code": "SZ002353",
+      "name": "杰瑞股份",
+      "rank_score": 0.0761
+    },
+    {
+      "code": "SH600547",
+      "name": "山东黄金",
+      "rank_score": 0.074
     }
   ],
   "h20": [
     {
       "code": "SZ002384",
       "name": "东山精密",
-      "rank_score": 0.2
+      "rank_score": 0.196
     },
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.1442
-    },
-    {
-      "code": "SZ300433",
-      "name": "蓝思科技",
-      "rank_score": 0.144
+      "rank_score": 0.1622
     },
     {
       "code": "SH603986",
       "name": "兆易创新",
-      "rank_score": 0.1147
+      "rank_score": 0.1385
+    },
+    {
+      "code": "SZ000657",
+      "name": "中钨高新",
+      "rank_score": 0.1339
+    },
+    {
+      "code": "SZ300433",
+      "name": "蓝思科技",
+      "rank_score": 0.1223
+    },
+    {
+      "code": "SZ300316",
+      "name": "晶盛机电",
+      "rank_score": 0.1032
+    },
+    {
+      "code": "SZ301165",
+      "name": "锐捷网络",
+      "rank_score": 0.0967
     },
     {
       "code": "SH601328",
       "name": "交通银行",
-      "rank_score": 0.0998
+      "rank_score": 0.096
     },
     {
       "code": "SZ002353",
       "name": "杰瑞股份",
-      "rank_score": 0.0992
+      "rank_score": 0.0949
     },
     {
-      "code": "SZ301308",
-      "name": "江波龙",
-      "rank_score": 0.0987
-    },
-    {
-      "code": "SH600019",
-      "name": "宝钢股份",
-      "rank_score": 0.096
-    },
-    {
-      "code": "SH600547",
-      "name": "山东黄金",
-      "rank_score": 0.096
-    },
-    {
-      "code": "SZ002475",
-      "name": "立讯精密",
-      "rank_score": 0.0921
+      "code": "SZ000988",
+      "name": "华工科技",
+      "rank_score": 0.0873
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-08-14",
-  "pred_start": "2026-09-13",
-  "pred_end": "2026-10-13",
-  "pred_date": "2026-10-12"
+  "train_end": "2026-08-15",
+  "pred_start": "2026-09-14",
+  "pred_end": "2026-10-14",
+  "pred_date": "2026-10-13"
 }
