@@ -1,52 +1,47 @@
 {
-  "updated_at": "2026-11-09T16:28:41.377921+08:00",
+  "updated_at": "2026-11-10T16:42:29.172679+08:00",
   "current_regime": "熊市 Bear",
-  "current_state": 1,
+  "current_state": 2,
   "history": [
     {
-      "date": "2025-01-06",
-      "state": 1,
-      "regime": "熊市 Bear"
-    },
-    {
       "date": "2025-01-07",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-08",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-09",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-10",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-13",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-14",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-15",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-01-16",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-01-17",
@@ -90,83 +85,83 @@
     },
     {
       "date": "2025-02-06",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-10",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-18",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-19",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-20",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-21",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-02-28",
@@ -295,42 +290,42 @@
     },
     {
       "date": "2025-04-07",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-08",
       "state": 2,
-      "regime": "牛市 Bull"
+      "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-09",
       "state": 2,
-      "regime": "牛市 Bull"
+      "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-10",
       "state": 2,
-      "regime": "牛市 Bull"
+      "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-11",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-14",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-15",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-04-16",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
@@ -385,68 +380,68 @@
     },
     {
       "date": "2025-05-06",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-08",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-09",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-15",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-16",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-19",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-20",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-21",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-05-23",
@@ -495,428 +490,428 @@
     },
     {
       "date": "2025-06-06",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-09",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-10",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-16",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-18",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-19",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-20",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-06-30",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-01",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-02",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-03",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-04",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-08",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-09",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-10",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-15",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-16",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-18",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-21",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-28",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-30",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-07-31",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-01",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-04",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-05",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-06",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-08",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-15",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-18",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-19",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-20",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-21",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-28",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-08-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-01",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-02",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-03",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-04",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-05",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-08",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-09",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-10",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-15",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-16",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-18",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-19",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-09-30",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-09",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-10",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-13",
@@ -970,23 +965,23 @@
     },
     {
       "date": "2025-10-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-28",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-30",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-10-31",
@@ -1050,42 +1045,42 @@
     },
     {
       "date": "2025-11-18",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-19",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-20",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-11-21",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-11-24",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-11-25",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-11-26",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2025-11-27",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
@@ -1170,138 +1165,138 @@
     },
     {
       "date": "2025-12-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-30",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2025-12-31",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-05",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-06",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-08",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-09",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-15",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-16",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-19",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-20",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-21",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-28",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-01-30",
@@ -1310,33 +1305,33 @@
     },
     {
       "date": "2026-02-02",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-03",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-04",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-05",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-06",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-09",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-02-10",
@@ -1365,23 +1360,23 @@
     },
     {
       "date": "2026-02-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-02-26",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-02-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-03-02",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-03-03",
@@ -1445,72 +1440,72 @@
     },
     {
       "date": "2026-03-19",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-20",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-23",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-24",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-25",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-26",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-27",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-30",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-03-31",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-04-01",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-04-02",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-04-03",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-04-07",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-04-08",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
@@ -1525,108 +1520,108 @@
     },
     {
       "date": "2026-04-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-15",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-16",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-20",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-21",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-27",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-28",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-29",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-04-30",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-06",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-08",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-05-15",
@@ -1705,38 +1700,38 @@
     },
     {
       "date": "2026-06-05",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-06-08",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-06-09",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-06-10",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-06-11",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-06-12",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-06-15",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-06-16",
@@ -1745,33 +1740,33 @@
     },
     {
       "date": "2026-06-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-06-18",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-06-22",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-06-23",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-06-24",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-06-25",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-06-26",
@@ -1795,128 +1790,128 @@
     },
     {
       "date": "2026-07-02",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-07-03",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-07-06",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-07-07",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-08",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-09",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-10",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-13",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-14",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-15",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-16",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-17",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-20",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-21",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-22",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-23",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-24",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-27",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-28",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-29",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-30",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-07-31",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-08-03",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-08-04",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-08-05",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-08-06",
@@ -1925,68 +1920,68 @@
     },
     {
       "date": "2026-08-07",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-10",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-11",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-12",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-13",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-14",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-17",
-      "state": 0,
-      "regime": "震荡 Sideways"
+      "state": 1,
+      "regime": "牛市 Bull"
     },
     {
       "date": "2026-08-18",
+      "state": 1,
+      "regime": "牛市 Bull"
+    },
+    {
+      "date": "2026-08-19",
       "state": 0,
       "regime": "震荡 Sideways"
     },
     {
-      "date": "2026-08-19",
-      "state": 1,
-      "regime": "熊市 Bear"
-    },
-    {
       "date": "2026-08-20",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-08-21",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-08-24",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-08-25",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-08-26",
@@ -2095,132 +2090,137 @@
     },
     {
       "date": "2026-09-24",
-      "state": 1,
-      "regime": "熊市 Bear"
+      "state": 0,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2026-09-28",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-09-29",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-09-30",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-08",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-09",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-12",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-13",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-14",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-15",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-16",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-19",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-20",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-21",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-22",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-23",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-26",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-27",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-28",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-29",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-10-30",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-02",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-03",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-04",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-05",
-      "state": 1,
+      "state": 2,
       "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-06",
-      "state": 1,
+      "state": 2,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "2026-11-09",
+      "state": 2,
       "regime": "熊市 Bear"
     }
   ],
@@ -2228,43 +2228,43 @@
     {
       "state": 0,
       "regime": "震荡 Sideways",
-      "mean_ret": 0.40409488096647356,
-      "mean_rv": 0.14954458957342892,
-      "days": 336,
-      "pct": 75.7
+      "mean_ret": -0.21011159951063127,
+      "mean_rv": 0.1730163238362101,
+      "days": 174,
+      "pct": 39.2
     },
     {
       "state": 1,
-      "regime": "熊市 Bear",
-      "mean_ret": -0.9329821852487609,
-      "mean_rv": 0.2710481205294286,
-      "days": 105,
-      "pct": 23.6
+      "regime": "牛市 Bull",
+      "mean_ret": 0.8333831331023357,
+      "mean_rv": 0.14192590118018453,
+      "days": 184,
+      "pct": 41.4
     },
     {
       "state": 2,
-      "regime": "牛市 Bull",
-      "mean_ret": 3.618181191902694,
-      "mean_rv": 0.6398325331997757,
-      "days": 3,
-      "pct": 0.7
+      "regime": "熊市 Bear",
+      "mean_ret": -0.7875940281543887,
+      "mean_rv": 0.28563863636707815,
+      "days": 86,
+      "pct": 19.4
     }
   ],
   "transition_matrix": [
     [
-      0.9743216065427288,
-      0.025678393457271097,
-      9.139864319438167e-224
+      0.9081688698620867,
+      0.057521339059836314,
+      0.03430979107807699
     ],
     [
-      0.08078630486469007,
-      0.9095973684814804,
-      0.009616326653829525
+      0.05609325843074694,
+      0.943906741569253,
+      3.0108919994145233e-43
     ],
     [
-      1.3471430742112117e-98,
-      0.3397508692091638,
-      0.6602491307908361
+      0.07186268522567399,
+      6.216236574627784e-21,
+      0.928137314774326
     ]
   ],
   "error": null
