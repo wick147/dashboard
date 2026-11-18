@@ -1,22 +1,17 @@
 {
-  "updated_at": "2026-11-17T17:36:03.632276+08:00",
-  "current_regime": "震荡 Sideways",
-  "current_state": 1,
+  "updated_at": "2026-11-18T16:55:35.087998+08:00",
+  "current_regime": "熊市 Bear",
+  "current_state": 2,
   "history": [
     {
-      "date": "2025-01-14",
-      "state": 2,
-      "regime": "熊市 Bear"
-    },
-    {
       "date": "2025-01-15",
-      "state": 2,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-01-16",
-      "state": 2,
-      "regime": "熊市 Bear"
+      "state": 1,
+      "regime": "震荡 Sideways"
     },
     {
       "date": "2025-01-17",
@@ -1675,8 +1670,8 @@
     },
     {
       "date": "2026-06-05",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 2,
+      "regime": "熊市 Bear"
     },
     {
       "date": "2026-06-08",
@@ -2200,63 +2195,68 @@
     },
     {
       "date": "2026-11-10",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 2,
+      "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-11",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 2,
+      "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-12",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 2,
+      "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-13",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 2,
+      "regime": "熊市 Bear"
     },
     {
       "date": "2026-11-16",
-      "state": 1,
-      "regime": "震荡 Sideways"
+      "state": 2,
+      "regime": "熊市 Bear"
+    },
+    {
+      "date": "2026-11-17",
+      "state": 2,
+      "regime": "熊市 Bear"
     }
   ],
   "state_stats": [
     {
       "state": 1,
       "regime": "震荡 Sideways",
-      "mean_ret": 0.27085132783932503,
-      "mean_rv": 0.1561535487668992,
-      "days": 361,
-      "pct": 81.3
+      "mean_ret": 0.3092717237567803,
+      "mean_rv": 0.15605203131688375,
+      "days": 357,
+      "pct": 80.4
     },
     {
       "state": 2,
       "regime": "熊市 Bear",
-      "mean_ret": -0.6658612407384644,
-      "mean_rv": 0.2891972866672075,
-      "days": 83,
-      "pct": 18.7
+      "mean_ret": -0.8770812416563925,
+      "mean_rv": 0.28155834512025313,
+      "days": 87,
+      "pct": 19.6
     }
   ],
   "transition_matrix": [
     [
-      3.577351958656357e-12,
-      0.9999999999964226,
-      3.129400875654355e-25
+      2.8392906276298725e-11,
+      0.9999999999716072,
+      1.0340278963452996e-24
     ],
     [
-      2.1645623832597286e-09,
-      0.9826879642728825,
-      0.017312033562555063
+      9.80597395108419e-09,
+      0.9817605627159867,
+      0.01823942747803946
     ],
     [
-      3.238146379838864e-18,
-      0.08365610074219505,
-      0.916343899257805
+      4.216908752665418e-20,
+      0.07063404468911043,
+      0.9293659553108896
     ]
   ],
   "error": null
