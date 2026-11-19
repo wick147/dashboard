@@ -1,160 +1,160 @@
 {
   "mode": "qlib",
-  "updated_at": "2026-11-18T16:53:43.390447+08:00",
+  "updated_at": "2026-11-19T17:10:18.092309+08:00",
   "h5": [
     {
       "code": "SH688521",
       "name": "芯原股份",
-      "rank_score": 0.1629
+      "rank_score": 0.1424
+    },
+    {
+      "code": "SZ002938",
+      "name": "鹏鼎控股",
+      "rank_score": 0.1292
+    },
+    {
+      "code": "SZ002916",
+      "name": "深南电路",
+      "rank_score": 0.1273
     },
     {
       "code": "SZ002463",
       "name": "沪电股份",
-      "rank_score": 0.1359
+      "rank_score": 0.1072
     },
     {
-      "code": "SZ002916",
-      "name": "深南电路",
-      "rank_score": 0.1356
-    },
-    {
-      "code": "SZ002384",
-      "name": "东山精密",
-      "rank_score": 0.129
-    },
-    {
-      "code": "SZ002938",
-      "name": "鹏鼎控股",
-      "rank_score": 0.1285
-    },
-    {
-      "code": "SH600183",
-      "name": "生益科技",
-      "rank_score": 0.1255
-    },
-    {
-      "code": "SZ300476",
-      "name": "胜宏科技",
-      "rank_score": 0.124
-    },
-    {
-      "code": "SZ300394",
-      "name": "天孚通信",
-      "rank_score": 0.1221
-    },
-    {
-      "code": "SH688082",
-      "name": "盛美上海",
-      "rank_score": 0.1204
-    },
-    {
-      "code": "SZ300408",
-      "name": "三环集团",
-      "rank_score": 0.1196
-    }
-  ],
-  "h10": [
-    {
-      "code": "SH603986",
-      "name": "兆易创新",
-      "rank_score": 0.1763
-    },
-    {
-      "code": "SZ300308",
-      "name": "中际旭创",
-      "rank_score": 0.1762
-    },
-    {
-      "code": "SH688521",
-      "name": "芯原股份",
-      "rank_score": 0.1747
-    },
-    {
-      "code": "SH600183",
-      "name": "生益科技",
-      "rank_score": 0.172
+      "code": "SH688183",
+      "name": "生益电子",
+      "rank_score": 0.0992
     },
     {
       "code": "SH688008",
       "name": "澜起科技",
-      "rank_score": 0.1716
+      "rank_score": 0.0962
     },
     {
-      "code": "SZ300394",
-      "name": "天孚通信",
-      "rank_score": 0.1666
+      "code": "SZ300408",
+      "name": "三环集团",
+      "rank_score": 0.0896
     },
     {
       "code": "SH601138",
       "name": "工业富联",
-      "rank_score": 0.1508
-    },
-    {
-      "code": "SZ002916",
-      "name": "深南电路",
-      "rank_score": 0.1468
+      "rank_score": 0.0888
     },
     {
       "code": "SZ300502",
       "name": "新易盛",
-      "rank_score": 0.1448
+      "rank_score": 0.0805
+    },
+    {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.078
+    }
+  ],
+  "h10": [
+    {
+      "code": "SZ002916",
+      "name": "深南电路",
+      "rank_score": 0.2231
+    },
+    {
+      "code": "SH600183",
+      "name": "生益科技",
+      "rank_score": 0.2115
     },
     {
       "code": "SZ002938",
       "name": "鹏鼎控股",
-      "rank_score": 0.1442
+      "rank_score": 0.1897
+    },
+    {
+      "code": "SZ002463",
+      "name": "沪电股份",
+      "rank_score": 0.1892
+    },
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.1838
+    },
+    {
+      "code": "SZ300408",
+      "name": "三环集团",
+      "rank_score": 0.1801
+    },
+    {
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.174
+    },
+    {
+      "code": "SH601138",
+      "name": "工业富联",
+      "rank_score": 0.1727
+    },
+    {
+      "code": "SH603986",
+      "name": "兆易创新",
+      "rank_score": 0.1709
+    },
+    {
+      "code": "SZ002353",
+      "name": "杰瑞股份",
+      "rank_score": 0.1659
     }
   ],
   "h20": [
     {
       "code": "SH600183",
       "name": "生益科技",
-      "rank_score": 0.2433
+      "rank_score": 0.2173
     },
     {
       "code": "SZ002916",
       "name": "深南电路",
-      "rank_score": 0.2389
+      "rank_score": 0.2097
+    },
+    {
+      "code": "SZ002938",
+      "name": "鹏鼎控股",
+      "rank_score": 0.198
     },
     {
       "code": "SH688008",
       "name": "澜起科技",
-      "rank_score": 0.2207
-    },
-    {
-      "code": "SZ300394",
-      "name": "天孚通信",
-      "rank_score": 0.1988
-    },
-    {
-      "code": "SZ300476",
-      "name": "胜宏科技",
-      "rank_score": 0.185
-    },
-    {
-      "code": "SZ002463",
-      "name": "沪电股份",
-      "rank_score": 0.1838
-    },
-    {
-      "code": "SH688521",
-      "name": "芯原股份",
-      "rank_score": 0.1788
-    },
-    {
-      "code": "SH603986",
-      "name": "兆易创新",
-      "rank_score": 0.1765
+      "rank_score": 0.1797
     },
     {
       "code": "SZ300408",
       "name": "三环集团",
-      "rank_score": 0.1717
+      "rank_score": 0.1743
     },
     {
-      "code": "SZ300308",
-      "name": "中际旭创",
-      "rank_score": 0.1689
+      "code": "SZ300476",
+      "name": "胜宏科技",
+      "rank_score": 0.1724
+    },
+    {
+      "code": "SH603986",
+      "name": "兆易创新",
+      "rank_score": 0.1721
+    },
+    {
+      "code": "SH688521",
+      "name": "芯原股份",
+      "rank_score": 0.1682
+    },
+    {
+      "code": "SZ002384",
+      "name": "东山精密",
+      "rank_score": 0.1672
+    },
+    {
+      "code": "SZ002353",
+      "name": "杰瑞股份",
+      "rank_score": 0.1636
     }
   ],
   "feature_importance": {
@@ -287,8 +287,8 @@
   },
   "error": null,
   "train_start": "2020-01-01",
-  "train_end": "2026-09-19",
-  "pred_start": "2026-10-19",
-  "pred_end": "2026-11-18",
-  "pred_date": "2026-11-17"
+  "train_end": "2026-09-20",
+  "pred_start": "2026-10-20",
+  "pred_end": "2026-11-19",
+  "pred_date": "2026-11-18"
 }
